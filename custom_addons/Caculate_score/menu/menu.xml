@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    Action-->
+    <record id="action_view_calendar_event_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="action_calendar_event"/>
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_calendar_event_form"/>
+    </record>
+
+<!--    Menu-->
+</odoo>
