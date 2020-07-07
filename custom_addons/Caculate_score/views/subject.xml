@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="student_tree" model="ir.ui.view">
-        <field name="name">student.tree</field>
-        <field name="model">student</field>
+    <record id="subject_tree" model="ir.ui.view">
+        <field name="name">subject.tree</field>
+        <field name="model">subject</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="code"/>
                 <field name="name"/>
-                <field name="date_of_birth"/>
-                <field name="position_of_birth"/>
-                <field name="congregation"/>
             </tree>
         </field>
     </record>
@@ -19,9 +15,11 @@
         <field name="model">subject</field>
         <field name="arch" type="xml">
             <form>
-                <group>
-                    <field name="name"/>
-                </group>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>

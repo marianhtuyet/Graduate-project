@@ -17,13 +17,17 @@
         <field name="model">school.year</field>
         <field name="arch" type="xml">
             <form>
-                <group>
-                <field name="name"/>
-                </group>
-                <group>
-                <field name="date_start"/>
-                <field name="date_end"/>
-                </group>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>

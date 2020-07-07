@@ -19,15 +19,27 @@
         <field name="model">student</field>
         <field name="arch" type="xml">
             <form>
-                <group>
-                    <field name="code"/>
-                    <field name="name"/>
-                    <field name="congregation"/>
-                </group>
-                <group>
-                <field name="date_of_birth"/>
-                <field name="position_of_birth"/>
-                </group>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="congregation"/>
+                        </group>
+                        <group>
+                            <field name="date_of_birth"/>
+                            <field name="position_of_birth"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Score detail">
+                            <field name="study_class_ids"/>
+
+                        </page>
+                    </notebook>
+
+                </sheet>
+
             </form>
         </field>
     </record>

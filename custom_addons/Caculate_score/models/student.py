@@ -10,4 +10,5 @@ class Student(models.Model):
     position_of_birth = fields.Char()
     congregation = fields.Char()
 
+    study_class_ids = fields.One2many('study.class', 'student_id')
 

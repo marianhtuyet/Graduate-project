@@ -1,12 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 <!--    Action-->
-    <record id="action_view_calendar_event_form" model="ir.actions.act_window.view">
-        <field name="act_window_id" ref="action_calendar_event"/>
-        <field name="sequence" eval="3"/>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="view_calendar_event_form"/>
+     <record id="action_school_year" model="ir.actions.act_window">
+        <field name="name">School year</field>
+        <field name="res_model">school.year</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="school_year_tree"/>
+    </record>
+    <record id="action_student_basic" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">student</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="student_tree"/>
+    </record>
+     <record id="action_subject" model="ir.actions.act_window">
+        <field name="name">Subject</field>
+        <field name="res_model">subject</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="subject_tree"/>
+    </record>
+    <record id="action_study_class" model="ir.actions.act_window">
+        <field name="name">Detail Study</field>
+        <field name="res_model">study.class</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="study_class_tree"/>
     </record>
 
+
 <!--    Menu-->
+       <menuitem
+            id="menu_student_view_base"
+            name="Student"
+            sequence="1"
+            groups="base.group_user"
+       />
+
+        <menuitem
+            id="menu_student_view"
+            name="Student"
+            sequence="1"
+            action="action_student_basic"
+            parent="menu_student_view_base"
+            groups="base.group_user"
+        />
+        <menuitem
+            id="menu_subject_view"
+            name="Subject"
+            sequence="2"
+            action="action_subject"
+            parent="menu_student_view_base"
+            groups="base.group_user"
+        />
+        <menuitem
+            id="menu_study_class"
+            name="Detail score"
+            sequence="3"
+            action="action_study_class"
+            parent="menu_student_view_base"
+            groups="base.group_user"
+        />
+
 </odoo>

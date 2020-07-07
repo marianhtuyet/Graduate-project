@@ -4,9 +4,9 @@ from odoo import api, fields, models
 class StudyClass(models.Model):
     _name = 'study.class'
 
-    school_year_id = fields.Many2one('school.year')
-    subject_id = fields.Many2one('subject')
-    student_id = fields.Many2one('student')
+    school_year_id = fields.Many2one('school.year', required=True)
+    subject_id = fields.Many2one('subject', required=True)
+    student_id = fields.Many2one('student', required=True)
     units = fields.Integer()
     grade_point = fields.Float()
     qualification = fields.Char(compute='_compute_qualification')
@@ -27,4 +27,11 @@ class StudyClass(models.Model):
             else:
                 rec.qualification = 'F'
 
+    @api.multi
+    def name_get(self):
+        res = []
+        for rec in self:
+            name = '%s - %s' % (rec.student_id.name, rec.school_year_id.name)
+            res.append(name if name else 'Detail Draft')
+        return res
 

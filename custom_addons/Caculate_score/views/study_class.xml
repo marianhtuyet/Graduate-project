@@ -18,14 +18,20 @@
         <field name="model">study.class</field>
         <field name="arch" type="xml">
             <form>
-                <group>
-                <field name="subject_id"/>
-                <field name="units"/>
-                </group>
-                <group>
-                <field name="grade_point"/>
-                <field name="qualification"/>
-                </group>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id"/>
+                            <field name="school_year_id"/>
+                            <field name="subject_id"/>
+                            <field name="units"/>
+                        </group>
+                        <group>
+                            <field name="grade_point"/>
+                            <field name="qualification"/>
+                        </group>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
