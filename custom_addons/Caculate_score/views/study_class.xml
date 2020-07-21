@@ -27,8 +27,12 @@
                             <field name="units"/>
                         </group>
                         <group>
+                            <field name="first_test"/>
+                            <field name="second_test"/>
+                            <field name="third_test"/>
                             <field name="grade_point"/>
                             <field name="qualification"/>
+
                         </group>
                     </group>
                 </sheet>

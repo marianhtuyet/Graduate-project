@@ -4,10 +4,13 @@ from odoo import api, fields, models
 class StudyClass(models.Model):
     _name = 'study.class'
 
-    school_year_id = fields.Many2one('school.year', required=True)
+    school_year_id = fields.Many2one('school.year')
     subject_id = fields.Many2one('subject', required=True)
     student_id = fields.Many2one('student', required=True)
     units = fields.Integer()
+    first_test = fields.Float(default=0.0, required=True)
+    second_test = fields.Float(default=0.0)
+    third_test = fields.Float(default=0.0)
     grade_point = fields.Float()
     qualification = fields.Char(compute='_compute_qualification')
 
