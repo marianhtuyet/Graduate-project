@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://D:/AnhTuyet/BaiHoc/HK2-2019-2020/Timeline/kfa-12/.idea/kfa-12.iml" filepath="D:/AnhTuyet/BaiHoc/HK2-2019-2020/Timeline/kfa-12/.idea/kfa-12.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/odoo_project.iml" filepath="$PROJECT_DIR$/.idea/odoo_project.iml" />
     </modules>
   </component>

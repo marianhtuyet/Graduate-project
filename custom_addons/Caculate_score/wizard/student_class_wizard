@@ -1,0 +1,27 @@
+<odoo>
+    <act_window id="action_student_class_wizard"
+                name="Student Score"
+                res_model="student.class.wizard"
+                target="new" multi="True"
+                view_mode="form"/>
+
+    <record id="student_class_wizard_view" model="ir.ui.view">
+        <field name="name">Student class wizard view</field>
+        <field name="model">student.class.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="report_date"/>
+                    <field name="user_create"/>
+                </group>
+                <footer>
+                    <button name="print_xlsx_report"
+                            type="object"
+                            string="Print"
+                            class="oe_highlight"/>
+                    <button special="cancel" string="Cancel" class="oe_right"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

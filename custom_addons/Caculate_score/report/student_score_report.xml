@@ -1,0 +1,12 @@
+<odoo>
+    <report
+        id="student_score_report"
+        string="Student Score Report"
+        report_type="xlsx"
+        model="student"
+        file="student_score_xlsx"
+        name="student_score_xlsx"
+        menu="False"
+    />
+
+</odoo>

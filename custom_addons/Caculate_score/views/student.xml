@@ -22,22 +22,25 @@
             <form>
                 <header>
                     <button name="add_all_subject" string="Add all Subject" type="object"/>
+                    <button name="print_report_transcript_report"
+                            type="object"
+                            string="Print Transcript"
+                            class="oe_highlight"/>
                 </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="code"/>
-
                             <field name="holy_name"/>
                             <field name="name"/>
                             <field name="first_name"/>
                             <field name="last_name"/>
-
                             <field name="congregation"/>
                         </group>
                         <group>
                             <field name="date_of_birth"/>
                             <field name="position_of_birth"/>
+                            <field name="school_year_id"/>
                         </group>
                     </group>
                     <notebook>

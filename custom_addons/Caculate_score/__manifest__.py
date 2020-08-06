@@ -7,6 +7,9 @@ Calculate score
 
 This module will calculate the score of student and arrange score for student
         """,
+    'depends': [
+        'report_xlsx',
+    ],
     'data': [
         'security/ir.model.access.csv',
         'views/study_class.xml',
@@ -14,6 +17,7 @@ This module will calculate the score of student and arrange score for student
         'views/student.xml',
         'views/subject.xml',
         'menu/menu.xml',
+        'report/student_score_report.xml',
     ],
     'installable': True,
 }

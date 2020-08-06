@@ -17,24 +17,15 @@ class StudyClass(models.Model):
     @api.depends('grade_point')
     def _compute_qualification(self):
         for rec in self:
-            if rec.grade_point >  1.0 and rec.grade_point <= 1.2:
+            if 1.0 < rec.grade_point <= 1.2:
                 rec.qualification = 'E'
-            elif rec.grade_point <= 1.45:
+            elif 1.2 < rec.grade_point <= 1.45:
                 rec.qualification = 'VG'
-            elif rec.grade_point <= 1.85:
+            elif 1.45 < rec.grade_point <= 1.85:
                 rec.qualification = 'G'
-            elif rec.grade_point <= 2.4:
+            elif 1.85 < rec.grade_point <= 2.4:
                 rec.qualification = 'F'
-            elif rec.grade_point <= 3.0:
+            elif 2.4 < rec.grade_point <= 3.0:
                 rec.qualification = 'P'
             else:
                 rec.qualification = 'F'
-
-    @api.multi
-    def name_get(self):
-        res = []
-        for rec in self:
-            name = '%s - %s' % (rec.student_id.name, rec.school_year_id.name)
-            res.append(name if name else 'Detail Draft')
-        return res
-

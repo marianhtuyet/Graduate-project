@@ -7,20 +7,26 @@ class Student(models.Model):
     holy_name = fields.Char()
     first_name = fields.Char()
     last_name = fields.Char()
-    name = fields.Char()
+    name = fields.Char(compute='_compute_name')
     code = fields.Char('ID')
     date_of_birth = fields.Char()
     position_of_birth = fields.Char()
     congregation = fields.Char()
 
     study_class_ids = fields.One2many('study.class', 'student_id')
+    school_year_id = fields.Many2one('school.year', 'School year', required=True)
 
-    @api.onchange('first_name', 'last_name')
-    def onchange_name(self):
+    @api.depends('first_name', 'last_name')
+    def _compute_name(self):
         for rec in self:
-            rec.name = \
-                rec.first_name if rec.first_name \
-                    else '' + rec. last_name if rec.last_name else ''
+            rec.name = rec.first_name + ' ' + rec.last_name
+
+    # @api.onchange('first_name', 'last_name')
+    # def onchange_name(self):
+    #     for rec in self:
+    #         rec.name = \
+    #             rec.first_name if rec.first_name \
+    #                 else '' + rec. last_name if rec.last_name else ''
 
     @api.multi
     def name_get(self):
@@ -43,4 +49,10 @@ class Student(models.Model):
                     'first_test': 0,
                })
         return True
+
+
+    def print_report_transcript_report(self):
+        self.ensure_one()
+        return self.env.ref(
+                'Caculate_score.student_score_report').report_action(self.id)
 
