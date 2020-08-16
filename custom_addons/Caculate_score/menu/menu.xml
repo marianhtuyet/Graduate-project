@@ -33,6 +33,7 @@
             name="Student"
             sequence="1"
             groups="base.group_user"
+            web_icon="Caculate_score,static/description/icon.png"
        />
 
         <menuitem
@@ -42,6 +43,7 @@
             action="action_student_basic"
             parent="menu_student_view_base"
             groups="base.group_user"
+            web_icon="Caculate_score,static/description/icon.png"
         />
         <menuitem
             id="menu_subject_view"
