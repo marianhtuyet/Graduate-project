@@ -46,6 +46,7 @@ class AcademicYear(models.Model):
     current = fields.Boolean('Current', help="Set Active Current Year")
     description = fields.Text('Description')
 
+
     @api.model
     def next_year(self, sequence):
         '''This method assign sequence to years'''
