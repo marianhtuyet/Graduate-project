@@ -30,10 +30,10 @@ class SchoolParent(models.Model):
 
     partner_id = fields.Many2one('res.partner', 'User ID', ondelete="cascade",
                                  delegate=True, required=True)
-    relation_id = fields.Many2one('parent.relation', "Relation with Child")
+    relation_id = fields.Many2one('parent.relation', "Quan hệ")
     student_id = fields.Many2many('student.student', 'students_parents_rel',
                                   'students_parent_id', 'student_id',
-                                  'Children')
+                                  'Học sinh')
     standard_id = fields.Many2many('school.standard',
                                    'school_standard_parent_rel',
                                    'class_parent_id', 'class_id',
@@ -42,7 +42,7 @@ class SchoolParent(models.Model):
                                 'standard_standard_parent_rel',
                                 'standard_parent_id', 'standard_id',
                                 'Academic Standard')
-    teacher_id = fields.Many2one('school.teacher', 'Teacher',
+    teacher_id = fields.Many2one('school.teacher', 'Giáo viên',
                                  related="standard_id.user_id", store=True)
 
     @api.model

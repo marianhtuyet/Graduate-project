@@ -157,34 +157,29 @@ class StudentStudent(models.Model):
     pid = fields.Char('Student ID', required=True,
                       default=lambda self: _('New'),
                       help='Personal IDentification Number')
-    reg_code = fields.Char('Registration Code',
-                           help='Student Registration Code')
-    student_code = fields.Char('Student Code')
-    contact_phone = fields.Char('Phone no.')
-    contact_mobile = fields.Char('Mobile no')
+    reg_code = fields.Char('Mã hồ sơ',
+                           help='Thông tin mã hồ sơ đăng ký')
+    student_code = fields.Char('Mã học sinh')
+    contact_phone = fields.Char('Điện thoại')
+    contact_mobile = fields.Char('Di động')
     roll_no = fields.Integer('Roll No.', readonly=True)
     photo = fields.Binary('Photo', default=_default_image)
-    year = fields.Many2one('academic.year', 'Academic Year', readonly=True,
+    year = fields.Many2one('academic.year', 'Năm học', readonly=True,
                            default=check_current_year)
     cast_id = fields.Many2one('student.cast', 'Religion/Caste')
     relation = fields.Many2one('student.relation.master', 'Relation')
 
-    admission_date = fields.Date('Admission Date', default=date.today())
+    admission_date = fields.Date('Ngày nhập học', default=date.today())
     middle = fields.Char('Middle Name', required=True,
                          states={'done': [('readonly', True)]})
     last = fields.Char('Surname', required=True,
                        states={'done': [('readonly', True)]})
-    gender = fields.Selection([('male', 'Male'), ('female', 'Female')],
-                              'Gender', states={'done': [('readonly', True)]})
-    date_of_birth = fields.Date('BirthDate', required=True,
+    gender = fields.Selection([('male', 'Nam'), ('female', 'Nữ')],
+                              'Giới tính', states={'done': [('readonly', True)]})
+    date_of_birth = fields.Date('Ngày sinh', required=True,
                                 states={'done': [('readonly', True)]})
-    mother_tongue = fields.Many2one('mother.toungue', "Mother Tongue")
-    age = fields.Integer(compute='_compute_student_age', string='Age',
+    age = fields.Integer(compute='_compute_student_age', string='Tuổi',
                          readonly=True)
-    maritual_status = fields.Selection([('unmarried', 'Unmarried'),
-                                        ('married', 'Married')],
-                                       'Marital Status',
-                                       states={'done': [('readonly', True)]})
     reference_ids = fields.One2many('student.reference', 'reference_id',
                                     'References',
                                     states={'done': [('readonly', True)]})
@@ -209,7 +204,7 @@ class StudentStudent(models.Model):
     dermatological = fields.Boolean('Dermatological')
     blood_pressure = fields.Boolean('Blood Pressure')
     remark = fields.Text('Remark', states={'done': [('readonly', True)]})
-    school_id = fields.Many2one('school.school', 'School',
+    school_id = fields.Many2one('school.school', 'Trường',
                                 states={'done': [('readonly', True)]})
     state = fields.Selection([('draft', 'Draft'),
                               ('done', 'Done'),
@@ -230,10 +225,10 @@ class StudentStudent(models.Model):
     stu_name = fields.Char('First Name', related='user_id.name',
                            readonly=True)
     Acadamic_year = fields.Char('Year', related='year.name',
-                                help='Academic Year', readonly=True)
+                                help='Năm học ', readonly=True)
     division_id = fields.Many2one('standard.division', 'Division')
-    medium_id = fields.Many2one('standard.medium', 'Medium')
-    standard_id = fields.Many2one('school.standard', 'Class')
+    medium_id = fields.Many2one('standard.medium','Khối ')
+    standard_id = fields.Many2one('school.standard', 'Lớp')
     parent_id = fields.Many2many('school.parent', 'students_parents_rel',
                                  'student_id',
                                  'students_parent_id', 'Parent(s)',

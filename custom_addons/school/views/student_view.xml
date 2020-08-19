@@ -8,16 +8,16 @@
         <field name="arch" type="xml">
             <form string="Student Information" create="false" delete="false">
                 <header>
-                    <button class="oe_highlight oe_stat_button" name="%(school.action_terminate_wizard)d" string="Terminate" type="action" icon="fa-ban" states="done" groups="school.group_school_administration" />
-                    <button class="oe_stat_button" name="set_alumni" string="Alumni" type="object" icon="fa-archive" states="done" groups="school.group_school_administration" />
-                    <button class="oe_stat_button" icon="fa-check" name="admission_done" type="object" string="Done" states="draft" groups="school.group_school_administration" />
+                    <button class="oe_highlight oe_stat_button" name="%(school.action_terminate_wizard)d" string="Đã thôi học" type="action" icon="fa-ban" states="done" groups="school.group_school_administration" />
+                    <button class="oe_stat_button" name="set_alumni" string="Đã tốt nghiệp" type="object" icon="fa-archive" states="done" groups="school.group_school_administration" />
+                    <button class="oe_stat_button" icon="fa-check" name="admission_done" type="object" string="Hoàn thành" states="draft" groups="school.group_school_administration" />
                     <field name="state" widget="statusbar" statusbar_visible="alumni,terminate" attrs="{'invisible':[('state','=','done')]}"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="buttons"></div>
                     <div class="oe_inline">
                         <newline />
-                        <separator string="Personal Information" />
+                        <separator string="Thông tin học sinh" />
                         <b>
                             <field name="reg_code" readonly="1" />
                         </b>
@@ -50,7 +50,7 @@
                     </group>
                     <group>
                         <group>
-                            <label for="street" string="Address" />
+                            <label for="street" string="Địa chỉ" />
                             <div class="o_address_format">
                                 <field name="street" class="o_address_street" placeholder="Street..." attrs="{'readonly':[('state','in',['alumni','terminate'])]}"/>
                                 <field name="street2" class="o_address_street" placeholder="Street2..." attrs="{'readonly':[('state','in',['alumni','terminate'])]}"/>
@@ -78,9 +78,7 @@
                                     <field name="age"/>
                                 </group>
                                 <group>
-                                    <field name="mother_tongue" attrs="{'readonly':[('state','in',['alumni','terminate'])]}"  widget="selection" placeholder="Mother Tounge"/>
                                     <field name="admission_date" widget="date" placeholder="Admission Date" attrs="{'readonly':[('state','in',['alumni','terminate'])]}" readonly="1"/>
-                                    <field name="maritual_status" attrs="{'readonly':[('state','in',['alumni','terminate'])]}" placeholder="Maritial Status"/>
                                 </group>
                                 <newline />
                                 <separator string="Emergency Contact Details" colspan="4" />
@@ -426,7 +424,7 @@
                 <sheet>
                     <div class="oe_inline">
                         <newline />
-                        <separator string="Personal Information" />
+                        <separator string="Thông tin cá nhân" />
                         <field name="photo" widget="image" class="oe_avatar oe_left" style="max-width:100px;max-height:117px;" />
                         <div class="oe_title">
                             <group>
@@ -443,13 +441,13 @@
                         </div>
                     </div>
                     <group>
-                        <group string="School Information">
+                        <group string="Thông tin trường học ">
                             <field name="school_id" placeholder="School Name" required="1" 
                                 attrs="{'readonly':[('state','=','alumni')]}" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
                             <field name="year" widget="selection" placeholder="Academic Year" readonly="1"/>
                             <field name="company_id" invisible="1"/>
                         </group>
-                        <group string="Class Information">
+                        <group string="Thông tin lớp học">
                             <field name="medium_id" placeholder="Medium" widget="selection" attrs="{'readonly':[('state','=','alumni')]}"/>
                             <field name="standard_id" placeholder="Class" domain="[('school_id','=',school_id),('medium_id','=',medium_id)]" widget="selection" attrs="{'readonly':[('state','=','alumni')]}"/>
                             <field name="division_id" placeholder="Division" widget="selection" attrs="{'readonly':[('state','=','alumni')]}" invisible="1"/>
@@ -458,14 +456,12 @@
                     </group>
                     <group colspan="4">
                         <group>
-                            <label for="street" string="Address" />
+                            <label for="street" string="Địa chỉ" />
                             <div class="o_address_format">
-                                <field name="street" placeholder="Street..." class="o_address_street" attrs="{'readonly':[('state','=','alumni')]}"/>
-                                <field name="street2" placeholder="Street2..." class="o_address_street" attrs="{'readonly':[('state','=','alumni')]}"/>
-                                <field name="country_id" placeholder="Country" class="o_address_country,oe_no_button" required="1" options="{&quot;no_open&quot;: True}" attrs="{'readonly':[('state','=','alumni')]}"/>
-                                <field name="city" placeholder="City" class="o_address_city" required="1" attrs="{'readonly':[('state','=','alumni')]}"/>
-                                <field name="state_id" class="o_address_state" domain="[('country_id','=',country_id)]" placeholder="State" options="{&quot;no_open&quot;: True}" required="1" attrs="{'readonly':[('state','=','alumni')]}"/>
-                                <field name="zip" placeholder="ZIP" class="o_address_zip" attrs="{'readonly':[('state','=','alumni')]}"/>
+                                <field name="street" placeholder="Đường..." class="o_address_street" attrs="{'readonly':[('state','=','alumni')]}"/>
+                                <field name="street2" placeholder="Đường 2..." class="o_address_street" attrs="{'readonly':[('state','=','alumni')]}"/>
+                                <field name="country_id" placeholder="Quốc tịch" class="o_address_country,oe_no_button" required="1" options="{&quot;no_open&quot;: True}" attrs="{'readonly':[('state','=','alumni')]}"/>
+                                <field name="city" placeholder="Thành phố" class="o_address_city" required="1" attrs="{'readonly':[('state','=','alumni')]}"/>
                             </div>
                         </group>
                         <group>
@@ -476,8 +472,8 @@
                         </group>
                     </group>
                     <notebook colspan="4">
-                        <page string="General">
-                            <form string="General">
+                        <page string="Thông tin chung">
+                            <form string="Thông tin chung">
                                 <sheet>
                                     <group string="General Information">
                                         <group>
@@ -486,12 +482,10 @@
                                             <field name="age" />
                                         </group>
                                         <group>
-                                            <field name="mother_tongue" widget="selection" placeholder="Mother Tongue" attrs="{'readonly':[('state','=','alumni')]}"/>
                                             <field name="admission_date" placeholder="Admission Date" attrs="{'readonly':[('state','=','alumni')]}" readonly="1"/>
-                                            <field name="maritual_status" placeholder="Select Maritual Status" attrs="{'readonly':[('state','=','alumni')]}"/>
                                         </group>
                                         <newline />
-                                        <separator string="Emergency Contact Details" colspan="4" />
+                                        <separator string="Thông tin liên lạc khẩn cấp" colspan="4" />
                                         <newline />
                                         <group colspan="4" col="4">
                                             <field name="contact_phone" attrs="{'readonly':[('state','=','alumni')]}" placeholder="Phone Number"/>
@@ -501,12 +495,12 @@
                                 </sheet>
                             </form>
                         </page>
-                        <page string="Parents">
+                        <page string="Thông tin phụ huynh">
                             <field name="parent_id" attrs="{'readonly':[('state','=','alumni')]}"
                                 context="{'form_view_ref':'school.view_parent_form','default_parent_school':1}"
                                 options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
                         </page>
-                        <page string="References">
+                        <page string="Người liên hệ">
                             <field name="reference_ids" nolabel="1" colspan="4" attrs="{'readonly':[('state','=','alumni')]}">
                                 <tree string="Reference" editable="top">
                                     <field name="name" placeholder="Firstname"/>
@@ -528,7 +522,7 @@
                                 </form>
                             </field>
                         </page>
-                        <page string="Previous School">
+                        <page string="Thông tin trường cũ">
                             <field name="previous_school_ids" nolabel="1" colspan="4" attrs="{'readonly':[('state','=','alumni')]}">
                                 <tree string="Previous School Details">
                                     <field name="name" />
@@ -552,7 +546,7 @@
                                 </form>
                             </field>
                         </page>
-                        <page string="Family Details">
+                        <page string="Thông tin gia đình">
                             <field name="family_con_ids" nolabel="1" colspan="4" attrs="{'readonly':[('state','=','alumni')]}">
                                 <tree string="Family  Contact Details">
                                     <field name="relative_name"/>
@@ -577,9 +571,9 @@
                                 </form>
                             </field>
                         </page>
-                        <page string="Remarks">
+                        <page string="Nhận xét">
                             <form string="Remarks">
-                                <field name="remark" placeholder="Remark" nolabel="1" colspan="4" attrs="{'readonly':[('state','=','alumni')]}"/>
+                                <field name="remark" placeholder="Nhận xét" nolabel="1" colspan="4" attrs="{'readonly':[('state','=','alumni')]}"/>
                             </form>
                         </page>
                     </notebook>
