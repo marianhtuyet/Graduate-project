@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="student_fee_tree" model="ir.ui.view">
+        <field name="name">student.fee.tree</field>
+        <field name="model">student.fee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_code"/>
+                <field name="student_name"/>
+                <field name="standard_id"/>
+                <field name="date_submit"/>
+                <field name="date_study"/>
+                <field name="total_submit"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="student_fee_view" model="ir.ui.view">
+        <field name="name">student.fee.view</field>
+        <field name="model">student.fee</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="add_all_fee" string="Add all Fee detail" type="object"/>
+                    <button name="print_receipt_report"
+                            type="object"
+                            string="In biên lai"
+                            class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+<!--                            Student information-->
+                            <field name="student_code"/>
+                            <field name="student_name"/>
+                            <field name="standard_id"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group>
+<!--                            fee information-->
+                            <field name="date_submit"/>
+                            <field name="date_to"/>
+                            <field name="date_apply"/>
+                            <field name="month_submit"/>
+                            <field name="total_amount"/>
+                            <field name="total_absent"/>
+                            <field name="total_submit"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Thông tin chi tiết học phí">
+                            <field name="line_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

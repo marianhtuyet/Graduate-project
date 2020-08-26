@@ -1,0 +1,49 @@
+# sphinx build directories
+_build/
+!.gitignore
+
+# compiled python files
+*.py[co]
+
+# setup.py egg_info
+*.egg-info
+
+# emacs backup files
+*~
+
+# hg stuff
+*.orig
+
+# vim tmp files
+*.swp
+.ropeproject/
+
+status
+.settings/
+
+# odoo filestore
+openerp/filestore
+
+# generated for windows installer?
+install/win32/*.bat
+install/win32/meta.py
+
+# various virtualenv
+/build/
+/dist/
+/include/
+/lib/
+/log/
+/man/
+/share/
+/src/
+/var/
+
+config/local.conf
+config/server.conf
+
+*.dump.gz
+*.dump
+
+/.idea/
+/.vscode/

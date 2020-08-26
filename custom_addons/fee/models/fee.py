@@ -7,21 +7,22 @@ class Fee(models.Model):
 
     student_id = fields.Many2one(
         'student.student',
-        'pid',
+        'Mã học sinh',
         required=True
     )
     student_code = fields.Char(
         'Mã học sinh',
-        related=student_id.student_code
+        related='student_id.student_code'
     )
-    class_id = fields.Char(
+    standard_id = fields.Many2one(
+        'school.standard',
         'Lớp học',
-        related=student_id.grade_id
+        related='student_id.standard_id'
     )
     date_study = fields.Integer('Số ngày')
     student_name = fields.Char(
         'Tên học sinh',
-        related=student_id.student_name
+        related='student_id.student_name'
     )
     date_absent = fields.Integer('Số ngày vắng')
     date_submit = fields.Datetime('Ngày nộp đến')
@@ -32,9 +33,22 @@ class Fee(models.Model):
         'res.users', "Người thu",
         default=lambda self: self.env.uid)
     line_ids = fields.One2many('fee.detail', 'fee_id')
+    currency_id = fields.Many2one('res.currency', default=lambda self: self.sudo().company_id.currency_id)
+    total_amount = fields.Monetary('Tổng tiền thu', compute='_compute_total_amount', currency_field='currency_id')
+    total_absent = fields.Monetary('Số tiền vắng', compute='_compute_total_amount', currency_field='currency_id')
+    total_submit = fields.Monetary('Tổng tiền thu thực', compute='_compute_total_amount', currency_field='currency_id')
 
     @api.depends('date_submit')
     def compute_month_submit(self):
         for rec in self:
-            rec.month_submit = str(rec.date_submit.month) + ' / '+ str(rec.date_submit.year)
+
+            rec.month_submit = str(rec.date_submit.month) + ' / '+ str(rec.date_submit.year) \
+                if rec.date_submit else 0
+
+    @api.depends('date_absent', 'date_study')
+    def _compute_total_amount(self):
+        for rec in self:
+            rec.total_amount = 1
+            rec.total_absent = 1
+            rec.total_submit = 1
 
