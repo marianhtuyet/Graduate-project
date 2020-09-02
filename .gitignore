@@ -38,7 +38,7 @@ install/win32/meta.py
 /share/
 /src/
 /var/
-
+/app/
 config/local.conf
 config/server.conf
 
@@ -47,3 +47,4 @@ config/server.conf
 
 /.idea/
 /.vscode/
+/__pycache__/
