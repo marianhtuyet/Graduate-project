@@ -131,7 +131,7 @@ class StudyclassReportXlsxTemplate(models.AbstractModel):
         for line in line_ids:
             self.xlsx_write(
                 list_column[0],
-                line.subject_id.name,
+                line.subject_id.name2,
                 self.border_left_6,
             )
             self.xlsx_write(

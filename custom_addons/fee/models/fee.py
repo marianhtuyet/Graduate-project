@@ -33,10 +33,26 @@ class Fee(models.Model):
         'res.users', "Người thu",
         default=lambda self: self.env.uid)
     line_ids = fields.One2many('fee.line.detail', 'fee_id')
-    currency_id = fields.Many2one('res.currency', default=lambda self: self.sudo().company_id.currency_id)
-    total_amount = fields.Monetary('Tổng tiền thu', compute='_compute_total_amount', currency_field='currency_id')
-    total_absent = fields.Monetary('Số tiền vắng', compute='_compute_total_amount', currency_field='currency_id')
-    total_submit = fields.Monetary('Tổng tiền thu thực', compute='_compute_total_amount', currency_field='currency_id')
+    currency_id = fields.Many2one(
+        'res.currency',
+        default=lambda self: self.env.user.company_id.currency_id.id
+    )
+
+    total_amount = fields.Monetary(
+        'Tổng tiền thu',
+        compute='_compute_total_amount',
+        currency_field='currency_id'
+    )
+    total_absent = fields.Monetary(
+        'Số tiền vắng',
+        compute='_compute_total_amount',
+        currency_field='currency_id'
+    )
+    total_submit = fields.Monetary(
+        'Tổng tiền thu thực',
+        compute='_compute_total_amount',
+        currency_field='currency_id'
+    )
 
     @api.depends('date_submit')
     def compute_month_submit(self):
@@ -57,12 +73,23 @@ class Fee(models.Model):
         fee_line_detail = self.env['fee.line.detail']
         for rec in self:
             list_fee_detail = fee_detail_env.search([('status', '=', 1)])
+            print("1"*80)
+            print(list_fee_detail)
             for fee_detail in list_fee_detail:
-                fee_line_detail.create({
+                detail = fee_line_detail.create({
                     'fee_id': rec.id,
                     'fee_detail': fee_detail.id,
                     'name': fee_detail.name,
                     'amount': fee_detail.amount,
-                    'currency_id': fee_detail.currency_id
+                    'currency_id': fee_detail.currency_id.id
                 })
+            print("1*80")
+            print(rec.line_ids)
         return True
+
+    def name_get(self):
+        list_name = []
+        for rec in self:
+            name = "{} - {}".format('Học phí', rec.student_name if rec.student_name else '')
+            list_name.append((rec.id, name))
+        return list_name

@@ -61,6 +61,12 @@
             parent="menu_student_view_base"
             groups="base.group_user"
         />
-
-
+         <menuitem
+                id="menu_school_year"
+                name="School year"
+                sequence="3"
+                action="action_school_year"
+                parent="menu_student_view_base"
+                groups="base.group_user"
+            />
 </odoo>

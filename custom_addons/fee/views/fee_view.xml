@@ -31,6 +31,7 @@
                     <group>
                         <group>
 <!--                            Student information-->
+                            <field name="student_id"/>
                             <field name="student_code"/>
                             <field name="student_name"/>
                             <field name="standard_id"/>
@@ -49,7 +50,12 @@
                     </group>
                     <notebook>
                         <page string="Thông tin chi tiết học phí">
-                            <field name="line_ids"/>
+                            <field name="line_ids">
+                                <tree editable="Bottom">
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>

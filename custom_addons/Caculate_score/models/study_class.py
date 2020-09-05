@@ -7,7 +7,7 @@ class StudyClass(models.Model):
     school_year_id = fields.Many2one('school.year')
     subject_id = fields.Many2one('subject', required=True)
     student_id = fields.Many2one('student', required=True)
-    units = fields.Integer()
+    units = fields.Integer(default=0)
     first_test = fields.Float(default=0.0, required=True)
     second_test = fields.Float(default=0.0)
     third_test = fields.Float(default=0.0)
@@ -17,7 +17,7 @@ class StudyClass(models.Model):
     @api.depends('grade_point')
     def _compute_qualification(self):
         for rec in self:
-            if 1.0 < rec.grade_point <= 1.2:
+            if 1.0 <= rec.grade_point <= 1.2:
                 rec.qualification = 'E'
             elif 1.2 < rec.grade_point <= 1.45:
                 rec.qualification = 'VG'

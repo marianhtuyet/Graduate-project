@@ -12,7 +12,9 @@ This module will save, edit, create new record about fee of student
         'security/ir.model.access.csv',
         'views/fee_view.xml',
         'views/fee_detail_view.xml',
+        'views/fee_line_detail_view.xml',
         'menu/menu.xml',
     ],
     'installable': True,
+    'application': True
 }
