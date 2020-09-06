@@ -4,7 +4,7 @@
         <field name="name">study.class.tree</field>
         <field name="model">study.class</field>
         <field name="arch" type="xml">
-            <tree editable="top">
+            <tree editable="bottom">
                 <field name="subject_id"/>
                 <field name="units"/>
                 <field name="grade_point"/>

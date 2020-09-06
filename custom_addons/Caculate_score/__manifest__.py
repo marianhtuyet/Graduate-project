@@ -16,6 +16,7 @@ This module will calculate the score of student and arrange score for student
         'views/school_year.xml',
         'views/student.xml',
         'views/subject.xml',
+        'views/congregation.xml',
         'menu/menu.xml',
         'report/student_score_report.xml',
     ],

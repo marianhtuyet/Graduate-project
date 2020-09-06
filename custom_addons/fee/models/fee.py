@@ -25,9 +25,9 @@ class Fee(models.Model):
         related='student_id.student_name'
     )
     date_absent = fields.Integer('Số ngày vắng')
-    date_submit = fields.Datetime('Ngày nộp đến')
-    date_to = fields.Datetime('Ngày đến')
-    date_apply = fields.Datetime('Ngày áp dụng')
+    date_submit = fields.Date('Ngày nộp đến')
+    date_to = fields.Date('Ngày đến')
+    date_apply = fields.Date('Ngày áp dụng')
     month_submit = fields.Char('Tháng thu', compute='compute_month_submit')
     user_id = fields.Many2one(
         'res.users', "Người thu",
@@ -60,31 +60,21 @@ class Fee(models.Model):
             rec.month_submit = str(rec.date_submit.month) + ' / '+ str(rec.date_submit.year) \
                 if rec.date_submit else 0
 
-    @api.depends('date_absent', 'date_study')
-    def _compute_total_amount(self):
-        for rec in self:
-            rec.total_amount = 1
-            rec.total_absent = 1
-            rec.total_submit = 1
-
     @api.multi
     def add_all_fee(self):
         fee_detail_env = self.env['fee.detail']
         fee_line_detail = self.env['fee.line.detail']
         for rec in self:
             list_fee_detail = fee_detail_env.search([('status', '=', 1)])
-            print("1"*80)
-            print(list_fee_detail)
             for fee_detail in list_fee_detail:
                 detail = fee_line_detail.create({
                     'fee_id': rec.id,
                     'fee_detail': fee_detail.id,
                     'name': fee_detail.name,
                     'amount': fee_detail.amount,
-                    'currency_id': fee_detail.currency_id.id
+                    'currency_id': fee_detail.currency_id.id,
+                    'type_fee': 1
                 })
-            print("1*80")
-            print(rec.line_ids)
         return True
 
     def name_get(self):
@@ -93,3 +83,11 @@ class Fee(models.Model):
             name = "{} - {}".format('Học phí', rec.student_name if rec.student_name else '')
             list_name.append((rec.id, name))
         return list_name
+
+    @api.depends('line_ids.amount', 'date_absent', 'date_study')
+    def _compute_total_amount(self):
+        for rec in self:
+            rec.total_amount = sum(line.amount for line in rec.line_ids)
+            rec.total_absent = rec.total_amount * rec.date_absent/ rec.date_study if rec.date_study !=0 else 0
+            rec.total_submit = rec.total_amount - rec.total_absent
+

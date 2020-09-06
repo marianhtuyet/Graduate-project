@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fee_price_tree" model="ir.ui.view">
+        <field name="name">fee.price.tree</field>
+        <field name="model">fee.price</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="amount"/>
+                <field name="date_apply"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fee_price_view" model="ir.ui.view">
+        <field name="name">fee.price.view</field>
+        <field name="model">fee.price</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="add_all_fee" string="Thêm chi tiết giá" type="object"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_apply"/>
+                        </group>
+                        <group>
+                            <field name="status"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Thông tin chi tiết đơn giá">
+                            <field name="detail_line_ids">
+                                <tree editable="Bottom">
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

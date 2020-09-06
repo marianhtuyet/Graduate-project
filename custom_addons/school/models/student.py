@@ -239,6 +239,7 @@ class StudentStudent(models.Model):
                                      compute="_compute_teacher_user",
                                      )
     active = fields.Boolean(default=True)
+    # reduce_code = fields.Many2one('fee.reduce', 'Mã miễn giảm')
 
     @api.multi
     def set_to_draft(self):

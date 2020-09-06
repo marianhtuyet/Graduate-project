@@ -36,6 +36,7 @@
                             <field name="first_name"/>
                             <field name="last_name"/>
                             <field name="congregation"/>
+                            <field name="congregation2"/>
                         </group>
                         <group>
                             <field name="date_of_birth"/>
@@ -46,7 +47,6 @@
                     <notebook>
                         <page string="Score detail">
                             <field name="study_class_ids"/>
-
                         </page>
                     </notebook>
 

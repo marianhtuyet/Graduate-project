@@ -1,4 +1,5 @@
 from . import caculate_score
+from . import congregation
 from . import school_year
 from . import student
 from . import study_class

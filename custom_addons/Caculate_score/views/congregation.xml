@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="congregation_tree" model="ir.ui.view">
+        <field name="name">congregation.tree</field>
+        <field name="model">congregation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="short_name"/>
+                <field name="name"/>
+                <field name="name2"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="congregation_view" model="ir.ui.view">
+        <field name="name">congregation.view</field>
+        <field name="model">congregation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="short_name"/>
+                        <field name="name"/>
+                        <field name="name2"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

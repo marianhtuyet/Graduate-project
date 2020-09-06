@@ -12,6 +12,7 @@ class Student(models.Model):
     date_of_birth = fields.Char()
     position_of_birth = fields.Char()
     congregation = fields.Char()
+    congregation2 = fields.Many2one('congregation', 'Congregation2')
     study_class_ids = fields.One2many('study.class', 'student_id')
     school_year_id = fields.Many2one('school.year', 'School year', required=True)
 

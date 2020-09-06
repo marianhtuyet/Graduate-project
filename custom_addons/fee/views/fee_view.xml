@@ -42,10 +42,8 @@
                             <field name="date_submit"/>
                             <field name="date_to"/>
                             <field name="date_apply"/>
+                            <field name="date_absent"/>
                             <field name="month_submit"/>
-                            <field name="total_amount"/>
-                            <field name="total_absent"/>
-                            <field name="total_submit"/>
                         </group>
                     </group>
                     <notebook>
@@ -58,6 +56,11 @@
                             </field>
                         </page>
                     </notebook>
+                    <group class="oe_subtotal_footer oe_right">
+                        <field name="total_amount"/>
+                        <field name="total_absent"/>
+                        <field name="total_submit" class="oe_subtotal_footer_separator"/>
+                    </group>
                 </sheet>
             </form>
         </field>
