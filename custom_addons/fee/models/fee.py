@@ -70,7 +70,6 @@ class Fee(models.Model):
                 detail = fee_line_detail.create({
                     'fee_id': rec.id,
                     'fee_detail': fee_detail.id,
-                    'name': fee_detail.name,
                     'amount': fee_detail.amount,
                     'currency_id': fee_detail.currency_id.id,
                     'type_fee': 1
@@ -87,7 +86,7 @@ class Fee(models.Model):
     @api.depends('line_ids.amount', 'date_absent', 'date_study')
     def _compute_total_amount(self):
         for rec in self:
-            rec.total_amount = sum(line.amount for line in rec.line_ids)
+            rec.total_amount = sum(line.amount for line in rec.line_ids) * rec.date_study
             rec.total_absent = rec.total_amount * rec.date_absent/ rec.date_study if rec.date_study !=0 else 0
-            rec.total_submit = rec.total_amount - rec.total_absent
-
+            rec.total_submit = (rec.total_amount - rec.total_absent)*(
+                1 - rec.student_id.reduce_code.amount if rec.student_id.reduce_code else 0)

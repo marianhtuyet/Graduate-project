@@ -42,6 +42,7 @@
                             <field name="date_submit"/>
                             <field name="date_to"/>
                             <field name="date_apply"/>
+                            <field name="date_study"/>
                             <field name="date_absent"/>
                             <field name="month_submit"/>
                         </group>
@@ -50,7 +51,7 @@
                         <page string="Thông tin chi tiết học phí">
                             <field name="line_ids">
                                 <tree editable="Bottom">
-                                    <field name="name"/>
+                                    <field name="fee_detail"/>
                                     <field name="amount"/>
                                 </tree>
                             </field>

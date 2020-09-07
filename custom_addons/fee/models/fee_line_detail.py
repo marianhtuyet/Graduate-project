@@ -7,8 +7,10 @@ class FeeLineDetail(models.Model):
     fee_id = fields.Many2one('student.fee', 'Mã học phí')
     price_id =  fields.Many2one('fee.price', 'Mã đơn giá')
     fee_detail = fields.Many2one('fee.detail','Tên loại học phí')
-    name = fields.Char('Tên')
-    currency_id = fields.Many2one('res.currency', default= lambda self: self.sudo().company_id.currency_id)
+    currency_id = fields.Many2one(
+        'res.currency',
+        default= lambda self: self.env.user.company_id.currency_id.id
+    )
     amount = fields.Monetary(string='Số tiền', currency_field='currency_id')
     type_fee = fields.Selection([
         (1, 'Chi tiết học phí'),
@@ -18,7 +20,6 @@ class FeeLineDetail(models.Model):
     @api.onchange('fee_detail')
     def onchange_fee_detail(self):
         for rec in self:
-            rec.name = rec.fee_detail.name
             rec.amount = rec.fee_detail.amount
 
     @api.depends('fee_id', 'price_id')

@@ -26,7 +26,6 @@ class FeePrice(models.Model):
                 detail = fee_line_detail.create({
                     'fee_id': rec.id,
                     'fee_detail': fee_detail.id,
-                    'name': fee_detail.name,
                     'amount': fee_detail.amount,
                     'currency_id': fee_detail.currency_id.id,
                     'type_fee': 2
