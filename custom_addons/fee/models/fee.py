@@ -53,6 +53,11 @@ class Fee(models.Model):
         compute='_compute_total_amount',
         currency_field='currency_id'
     )
+    reduce_code = fields.Float("Tỉ lệ miễn giảm %")
+    state = fields.Selection(
+        [('unpaid', 'Chưa thu'),
+         ('paid', 'Đã thu'),
+        ])
 
     @api.depends('date_submit')
     def compute_month_submit(self):
@@ -90,3 +95,9 @@ class Fee(models.Model):
             rec.total_absent = rec.total_amount * rec.date_absent/ rec.date_study if rec.date_study !=0 else 0
             rec.total_submit = (rec.total_amount - rec.total_absent)*(
                 1 - rec.student_id.reduce_code.amount if rec.student_id.reduce_code else 0)
+
+    @api.onchange('student_id')
+    def onchange_student_id(self):
+        for rec in self:
+            rec.reduce_code = rec.student_id.reduce_code.amount*100 or 0
+

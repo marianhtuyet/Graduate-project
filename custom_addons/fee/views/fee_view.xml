@@ -45,6 +45,7 @@
                             <field name="date_study"/>
                             <field name="date_absent"/>
                             <field name="month_submit"/>
+                            <field name="reduce_code"/>
                         </group>
                     </group>
                     <notebook>

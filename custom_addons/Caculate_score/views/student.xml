@@ -22,6 +22,8 @@
             <form>
                 <header>
                     <button name="add_all_subject" string="Add all Subject" type="object"/>
+                    <button name="add_all_subject" string="Add all Subject" type="object"/>
+                    <button name="add_all_subject" string="Add all Subject" type="object"/>
                     <button name="print_report_transcript_report"
                             type="object"
                             string="Print Transcript"

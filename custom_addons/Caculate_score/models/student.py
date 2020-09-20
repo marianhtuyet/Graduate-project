@@ -19,7 +19,10 @@ class Student(models.Model):
     @api.depends('first_name', 'last_name')
     def _compute_name(self):
         for rec in self:
-            rec.name = rec.first_name if rec.first_name else '' + ' ' + rec.last_name if rec.last_name else ''
+            rec.name =  '{} {}'.format(
+                rec.last_name if rec.last_name else '' ,
+                rec.first_name if rec.first_name else ''
+            )
 
     @api.multi
     def name_get(self):

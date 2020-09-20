@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-<!--    Action-->
-     <record id="action_school_year" model="ir.actions.act_window">
+    <!--    Action-->
+    <record id="action_school_year" model="ir.actions.act_window">
         <field name="name">School year</field>
         <field name="res_model">school.year</field>
         <field name="view_mode">tree,form</field>
@@ -13,7 +13,7 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="student_tree"/>
     </record>
-     <record id="action_subject" model="ir.actions.act_window">
+    <record id="action_subject" model="ir.actions.act_window">
         <field name="name">Subject</field>
         <field name="res_model">subject</field>
         <field name="view_mode">tree,form</field>
@@ -25,18 +25,24 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="study_class_tree"/>
     </record>
+    <record id="action_congregation" model="ir.actions.act_window">
+        <field name="name">Congregation</field>
+        <field name="res_model">congregation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="congregation_tree"/>
+    </record>
 
 
-<!--    Menu-->
-       <menuitem
+    <!--    Menu-->
+    <menuitem
             id="menu_student_view_base"
             name="Student"
             sequence="1"
             groups="base.group_user"
             web_icon="Caculate_score,static/description/icon.png"
-       />
+    />
 
-        <menuitem
+    <menuitem
             id="menu_student_view"
             name="Student"
             sequence="1"
@@ -44,29 +50,38 @@
             parent="menu_student_view_base"
             groups="base.group_user"
             web_icon="Caculate_score,static/description/icon.png"
-        />
-        <menuitem
+    />
+    <menuitem
             id="menu_subject_view"
             name="Subject"
             sequence="2"
             action="action_subject"
             parent="menu_student_view_base"
             groups="base.group_user"
-        />
-        <menuitem
+    />
+    <menuitem
             id="menu_study_class"
             name="Detail score"
             sequence="3"
             action="action_study_class"
             parent="menu_student_view_base"
             groups="base.group_user"
-        />
-         <menuitem
-                id="menu_school_year"
-                name="School year"
-                sequence="3"
-                action="action_school_year"
-                parent="menu_student_view_base"
-                groups="base.group_user"
-            />
+    />
+    <menuitem
+            id="menu_school_year"
+            name="School year"
+            sequence="3"
+            action="action_school_year"
+            parent="menu_student_view_base"
+            groups="base.group_user"
+    />
+    <menuitem
+            id="menu_congregation"
+            name="Congregation"
+            sequence="3"
+            action="action_congregation"
+            parent="menu_student_view_base"
+            groups="base.group_user"
+    />
+
 </odoo>

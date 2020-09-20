@@ -8,3 +8,8 @@ class Subject(models.Model):
     name2 = fields.Char('English name')
     sequence = fields.Integer()
     units = fields.Integer()
+    type_subject  = fields.Selection(
+        [('1', 'Theology'),
+         ('2', 'Philosophia')
+         ], default='1'
+    )

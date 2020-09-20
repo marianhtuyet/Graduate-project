@@ -233,6 +233,10 @@ class PosConfig(models.Model):
 
     @api.constrains('company_id', 'journal_ids')
     def _check_company_payment(self):
+        print("*"*80)
+        print('journal_ids:  ', self.journal_ids)
+        print('company_id:  ', self.company_id)
+
         if self.env['account.journal'].search_count([('id', 'in', self.journal_ids.ids), ('company_id', '!=', self.company_id.id)]):
             raise ValidationError(_("The method payments and the point of sale must belong to the same company."))
 
