@@ -1245,6 +1245,8 @@ var ClientListScreenWidget = ScreenWidget.extend({
     save_changes: function(){
         var order = this.pos.get_order();
         if( this.has_client_changed() ){
+            console.log("1111111111111111111");
+            console.log(this);
             var default_fiscal_position_id = _.findWhere(this.pos.fiscal_positions, {'id': this.pos.config.default_fiscal_position_id[0]});
             if ( this.new_client ) {
                 if (this.new_client.property_account_position_id ){
