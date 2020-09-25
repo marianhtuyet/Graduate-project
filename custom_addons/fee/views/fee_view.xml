@@ -26,6 +26,8 @@
                             type="object"
                             string="In biên lai"
                             class="oe_highlight"/>
+                    <button name="do_print_fee_notify" string="Print" groups="base.group_user" type="object"/>
+                    <button name="%(action_report_notify)d" string="In giấy báo học phí"  type="action" groups="base.group_user"/>
                 </header>
                 <sheet>
                     <group>

@@ -58,6 +58,7 @@ class Fee(models.Model):
         [('unpaid', 'Chưa thu'),
          ('paid', 'Đã thu'),
         ])
+    printed = fields.Boolean('Printed')
 
     @api.depends('date_submit')
     def compute_month_submit(self):
@@ -101,3 +102,7 @@ class Fee(models.Model):
         for rec in self:
             rec.reduce_code = rec.student_id.reduce_code.amount*100 or 0
 
+    @api.multi
+    def do_print_fee_notify(self):
+        self.write({'printed': True})
+        return self.env.ref('fee.action_report_notify').report_action(self)
