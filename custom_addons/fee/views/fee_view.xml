@@ -23,9 +23,10 @@
                 <header>
                     <button name="add_all_fee" string="Thêm học phí" type="object"/>
                     <button name="add_all_skill" string="Thêm môn năng khiếu" type="object"/>
-                    <button name="print_receipt_report"
-                            type="object"
+                    <button name="%(action_report_receipt)d"
+                            type="action"
                             string="In biên lai"
+                            groups="base.group_user"
                             class="oe_highlight"/>
 <!--                    <button name="do_print_fee_notify" string="Print" groups="base.group_user" type="object"/>-->
                     <button name="%(action_report_notify)d" string="In giấy báo học phí"  type="action" groups="base.group_user"/>

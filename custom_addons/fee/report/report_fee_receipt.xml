@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_fee_receipt_document">
+
+        <t t-call="web.html_container">
+<!--            <t t-call="web.external_layout">-->
+                <t t-set="o" t-value="o.with_context(lang='vi_VN')"/>
+                <div class="page">
+                    <table class="text-center table  mt48 ">
+                        <tr>
+                            <td>
+                            Phòng GD và đào tạo Quận Bình Thạnh<br></br>
+                            Trường mẫu giáo Thiên Thần
+                            </td>
+                            <td>
+                                CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM<br/>
+                                Độc lập - Tự do - Hạnh phúc<br/>
+                                <hr></hr>
+                            </td>
+                        </tr>
+                    </table>
+                    <h4>
+                        <p>BIÊN LAI THU HỌC PHÍ THÁNG
+                            <span t-field="o.month_submit"></span>
+                        </p>
+                        Học sinh
+                        <span t-field="o.student_id"/>
+                        <p>Lớp
+                            <span t-field="o.student_id.standard_id"/>
+                            &#160;&#160;&#160;&#160;&#160;Số ngày vắng
+                            <span t-field="o.date_absent"/>
+                        </p>
+                    </h4>
+                    <table border="1" class="table table-sm mt48 ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <strong>Loại tiền</strong>
+                                </th>
+                                <th>
+                                    <strong>Tổng cộng</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="lines" t-value="o.line_ids"/>
+                            <tr t-foreach="lines" t-as="move">
+                                    <td>
+                                    <span t-field="move.fee_detail.name"/>
+                                    <!--<strong t-if="move.fee_detail.type_fee == 1">x <span t-field="move.amount"></span></strong>-->
+                                </td>
+                                <td>
+                                    <!--<strong t-if="move.fee_detail.type_fee == 1"> <span t-field="move.amount * o.date_absent"></span></strong>-->
+                                    <span t-field="move.amount"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfooter>
+                            <tr>
+                                <td>
+                                    <b>Tổng cộng</b>
+                                </td>
+                                <td>
+                                    <span t-field="o.total_amount"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Số tiền vắng</b>
+                                </td>
+                                <td>
+                                    <span t-field="o.total_absent"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Số tiền phải nộp</b>
+                                </td>
+                                <td>
+                                    <span t-field="o.total_submit"/>
+                                </td>
+                            </tr>
+                        </tfooter>
+                    </table>
+                    <div class="text-center">
+                        <p>Thu tiền từ ngày
+                            <span t-field="o.date_submit"/>
+                            đến ngày
+                            <span t-field="o.date_to"/>
+                        </p>
+                        <p>Người thu</p>
+                        <p>
+                            <span t-field="o.user_id"/>
+                        </p>
+                    </div>
+                </div>
+            </t>
+<!--        </t>-->
+    </template>
+
+    <template id="report_fee_receipt">
+    <t t-foreach="docs" t-as="o">
+        <t t-call="fee.report_fee_receipt_document"/>
+    </t>
+    </template>
+</odoo>

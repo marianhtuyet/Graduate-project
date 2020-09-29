@@ -2,13 +2,22 @@
 <odoo>
     <data>
         <report
-            string="In biên lai"
+            string="In giấy báo học phí"
             id="action_report_notify"
             model="student.fee"
             report_type="qweb-pdf"
             name="fee.report_fee_notify"
             file="fee.report_fee_notify"
             print_report_name="In giấy báo học phí"
+        />
+        <report
+            string="In biên lai"
+            id="action_report_receipt"
+            model="student.fee"
+            report_type="qweb-pdf"
+            name="fee.report_fee_receipt"
+            file="fee.report_fee_receipt"
+            print_report_name="In biên lai"
         />
     </data>
 </odoo>

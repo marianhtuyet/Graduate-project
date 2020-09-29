@@ -45,7 +45,7 @@ class Fee(models.Model):
     line_ids = fields.One2many('fee.line.detail', 'fee_id')
     currency_id = fields.Many2one(
         'res.currency',
-        default=lambda self: self.env.user.company_id.currency_id.id
+        default=lambda self: self.env.company_id.currency_id.id
     )
 
     total_amount = fields.Monetary(
@@ -97,6 +97,11 @@ class Fee(models.Model):
     def do_print_fee_notify(self):
         self.write({'printed': True})
         return self.env.ref('fee.action_report_notify').report_action(self)
+
+    @api.multi
+    def do_print_fee_receipt(self):
+        self.write({'printed': True})
+        return self.env.ref('fee.action_report_receipt').report_action(self)
 
     @api.multi
     def add_all_fee(self):
