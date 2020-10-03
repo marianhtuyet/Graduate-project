@@ -64,7 +64,9 @@ class StudyclassReportXlsxTemplate(models.AbstractModel):
         )
         self.row_pos += 2
         scholar_year = self.scholar_year.split('-')
-        temp = int(scholar_year[1]) - int(scholar_year[0])
+        start_year = self.scholar_year.date_start.year
+        end_year = self.scholar_year.date_start.year
+        temp = end_year - start_year
         list_scholar_year = []
         total_units = sum(line.units for line in self.line_ids)
         avg_total_unit = sum(line.grade_point for line in self.line_ids) / total_units if total_units > 0 else 1

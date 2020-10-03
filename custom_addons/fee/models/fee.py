@@ -1,4 +1,5 @@
 import calendar
+import numpy
 from odoo import models, fields, api
 
 
@@ -140,6 +141,21 @@ class Fee(models.Model):
                     'type_fee': 1
                 })
         return True
+
+    @api.one
+    def transfer_fee_receipt(self):
+        for rec in self:
+            print("*"*80)
+            print(rec.line_ids)
+            list_fee = []
+            list_result = []
+            for line in rec.line_ids:
+                list_fee.append([line.fee_detail.name, line.amount])
+            list_result1, list_result2 = numpy.array_split(list_fee, 2)
+            for i in range(max(len(list_result1), len(list_result2))):
+                list_result.append([list_result1[i] , list_result2[i] if len(list_result2) > i else ['', '']])
+            print(list_result)
+        return list_result
 
 
 
