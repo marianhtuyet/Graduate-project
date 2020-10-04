@@ -19,5 +19,15 @@
             file="fee.report_fee_receipt"
             print_report_name="In biên lai"
         />
+          <report
+            string="In thư mời"
+            id="action_report_invitation"
+            model="student.fee"
+            report_type="qweb-pdf"
+            name="fee.report_fee_invitation"
+            file="fee.report_fee_invitation"
+            print_report_name="In thư mời"
+        />
+
     </data>
 </odoo>

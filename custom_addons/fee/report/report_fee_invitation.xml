@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_fee_invitation_document">
+
+        <t t-call="web.html_container">
+            <!--            <t t-call="web.external_layout">-->
+            <t t-set="o" t-value="o.with_context(lang='vi_VN')"/>
+            <div class="page font-family:times new roman" style="font-family:Times new roman !important;">
+                <table class="text-center table  mt48 ">
+                    <tr>
+                        <td>
+                            Phòng GD và đào tạo Quận Bình Thạnh
+                            <br></br>
+                            Trường mẫu giáo Thiên Thần
+                        </td>
+                        <td>
+                            CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                            <br/>
+                            Độc lập - Tự do - Hạnh phúc
+                            <br/>
+                            <hr></hr>
+                        </td>
+                    </tr>
+                </table>
+                <h4>
+                    <p  class="text-center">
+                        <b>Thư mời</b>
+                        <span>TRƯỜNG MẪU GIÁO THIÊN THẦN</span>
+                    </p>
+                    <p>
+                        Kính mời phụ huynh bé: <span t-field="o.student_id"/><br/>
+                        Lớp : <span t-field="o.student_id.standard_id"/><br/>
+                        Đến đóng tiền học phí tháng: <span t-field="o.month_submit"/><br/>
+                        Vào lúc : 7h ngày <span t-field="o.date_submit"/><br/>
+                        Tại văn phòng trường.<br/>
+                        Đề nghị phụ huynh đến đúng giờ.<br/>
+                    </p>
+                </h4>
+                <div class="text-center">
+                    <p>Ngày <span t-esc="o.date_submit.day"/>
+                        tháng <span t-esc="o.date_submit.month"/>
+                        năm <span t-esc="o.date_submit.year"/>
+                    </p>
+                    <p>TM.BGH</p>
+
+                </div>
+            </div>
+        </t>
+        <!--        </t>-->
+    </template>
+
+    <template id="report_fee_invitation">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="fee.report_fee_invitation_document"/>
+        </t>
+    </template>
+</odoo>

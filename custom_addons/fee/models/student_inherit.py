@@ -6,3 +6,4 @@ class StudentStudent(models.Model):
     _inherit = 'student.student'
 
     reduce_code = fields.Many2one('fee.reduce', 'Mã miễn giảm')
+    customize_code = fields.Char('Mã học sinh')

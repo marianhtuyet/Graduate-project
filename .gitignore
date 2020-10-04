@@ -48,3 +48,4 @@ config/server.conf
 /.idea/
 /.vscode/
 __pycache__/
+odoo.conf

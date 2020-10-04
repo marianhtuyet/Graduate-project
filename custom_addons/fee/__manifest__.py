@@ -13,6 +13,7 @@ This module will save, edit, create new record about fee of student
         'report/report_fee.xml',
         'report/report_fee_notify.xml',
         'report/report_fee_receipt.xml',
+        'report/report_fee_invitation.xml',
         'views/fee_view.xml',
         'views/fee_detail_view.xml',
         'views/fee_line_detail_view.xml',

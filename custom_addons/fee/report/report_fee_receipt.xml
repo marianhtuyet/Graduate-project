@@ -3,108 +3,125 @@
     <template id="report_fee_receipt_document">
 
         <t t-call="web.html_container">
-<!--            <t t-call="web.external_layout">-->
-                <t t-set="o" t-value="o.with_context(lang='vi_VN')"/>
-                <div class="page">
-                    <table class="text-center table  mt48 ">
-                        <tr>
-                            <td>
-                            Phòng GD và đào tạo Quận Bình Thạnh<br></br>
+            <!--            <t t-call="web.external_layout">-->
+            <t t-set="o" t-value="o.with_context(lang='vi_VN')"/>
+            <div class="page font-family:times new roman" style="font-family:Times new roman !important;">
+                <table class="text-center table  mt48 ">
+                    <tr>
+                        <td>
+                            Phòng GD và đào tạo Quận Bình Thạnh
+                            <br></br>
                             Trường mẫu giáo Thiên Thần
+                        </td>
+                        <td>
+                            CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM
+                            <br/>
+                            Độc lập - Tự do - Hạnh phúc
+                            <br/>
+                            <hr></hr>
+                        </td>
+                    </tr>
+                </table>
+                <h4>
+                    <p  class="text-center">BIÊN LAI THU HỌC PHÍ THÁNG
+                        <span t-field="o.month_submit"></span>
+                    </p>
+                    Nhận của:
+                    <b><span t-field="o.student_id"/></b>
+                    <p>Mã học sinh: <span t-field="o.student_code"/>
+                        &#160;&#160;&#160;&#160;&#160;Lớp:  <span t-field="o.student_id.standard_id"/>
+                        &#160;&#160;&#160;&#160;&#160;Số ngày vắng: <span t-field="o.date_absent"/>
+                    </p>
+                </h4>
+                <table  border="0" class="table table-sm mt48 ">
+                    <thead>
+                        <tr>
+                            <th>
+                                <strong>Loại tiền</strong>
+                            </th>
+                            <th>
+                                <strong>Tổng cộng</strong>
+                            </th>
+                            <th>
+                                <strong>Loại tiền</strong>
+                            </th>
+                            <th>
+                                <strong>Tổng cộng</strong>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="lines" t-value="o.transfer_fee_receipt()"/>
+                        <tr t-foreach="lines[0]" t-as="move">
+                            <td>
+                                <span t-esc="move[0][0]"/>
+                            </td>
+                            <td  class="text-right margin-right:15px" style="margin-right:15px !important">
+                                <span style="margin-right:100px" t-esc="'{0:,.0f}'.format(int(move[0][1]))"/>
                             </td>
                             <td>
-                                CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM<br/>
-                                Độc lập - Tự do - Hạnh phúc<br/>
-                                <hr></hr>
+                                <p t-if="len(move)> 1">
+                                    <span t-esc="move[1][0]"/>
+                                </p>
+                            </td>
+                            <td class="text-right">
+                                <p t-if="len(move) > 1">
+                                    <span style="margin-right:100px" t-esc="move[1][1]"/>
+                                </p>
                             </td>
                         </tr>
-                    </table>
-                    <h4>
-                        <p>BIÊN LAI THU HỌC PHÍ THÁNG
-                            <span t-field="o.month_submit"></span>
-                        </p>
-                        Học sinh
-                        <span t-field="o.student_id"/>
-                        <p>Lớp
-                            <span t-field="o.student_id.standard_id"/>
-                            &#160;&#160;&#160;&#160;&#160;Số ngày vắng
-                            <span t-field="o.date_absent"/>
-                        </p>
-                    </h4>
-                    <table border="1" class="table table-sm mt48 ">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <strong>Loại tiền</strong>
-                                </th>
-                                <th>
-                                    <strong>Tổng cộng</strong>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <t t-set="lines" t-value="o.transfer_fee_receipt()"/>
-                            <tr t-foreach="lines" t-as="move">
-                                    <td>
-                                        <span t-esc="move[0][0]"/>
-                                </td>
-                                <td>
-                                    <span t-esc="move[0][1]"/>
-                                </td>
-                                <td>
-                                    <span t-esc="move[1][0]"/>
-                                </td>
-                                <td>
-                                    <span t-esc="move[1][1]"/>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfooter>
-                            <tr>
-                                <td>
-                                    <b>Tổng cộng</b>
-                                </td>
-                                <td>
-                                    <span t-field="o.total_amount"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <b>Số tiền vắng</b>
-                                </td>
-                                <td>
-                                    <span t-field="o.total_absent"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <b>Số tiền phải nộp</b>
-                                </td>
-                                <td>
-                                    <span t-field="o.total_submit"/>
-                                </td>
-                            </tr>
-                        </tfooter>
-                    </table>
-                    <div class="text-center">
-                        <p>Thu tiền từ ngày
-                            <span t-field="o.date_submit"/>
-                            đến ngày
-                            <span t-field="o.date_to"/>
-                        </p>
-                        <p>Người thu</p>
-                        <p>
-                            <span t-field="o.user_id"/>
-                        </p>
-                    </div>
+                    </tbody>
+                    <tfooter>
+                        <tr>
+                            <td>
+                            <span>&#160;</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Tổng cộng</b>
+                            </td>
+                            <td class="text-right">
+                                <span style="margin-right:100px" t-field="o.total_amount"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Số tiền vắng</b>
+                            </td>
+                            <td class="text-right">
+                                <span style="margin-right:100px" t-field="o.total_absent"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Số tiền phải nộp</b>
+                            </td>
+                            <td class="text-right">
+                                <span style="margin-right:100px" t-field="o.total_submit"/>
+                            </td>
+                        </tr>
+                    </tfooter>
+                </table>
+                <div class="text-center">
+                    <p>Thu tiền từ ngày
+                        <span t-field="o.date_submit"/>
+                        đến ngày
+                        <span t-field="o.date_to"/>
+                    </p>
+                    <p>Người thu</p>
+                    <p>
+                        <span t-field="o.user_id"/>
+                    </p>
                 </div>
-            </t>
-<!--        </t>-->
+            </div>
+        </t>
+        <!--        </t>-->
     </template>
 
     <template id="report_fee_receipt">
-    <t t-foreach="docs" t-as="o">
-        <t t-call="fee.report_fee_receipt_document"/>
-    </t>
+        <t t-foreach="docs" t-as="o">
+            <t t-call="fee.report_fee_receipt_document"/>
+        </t>
     </template>
 </odoo>

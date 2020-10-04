@@ -23,7 +23,7 @@ class Fee(models.Model):
     )
     student_code = fields.Char(
         'Mã học sinh',
-        related='student_id.student_code'
+        related='student_id.customize_code'
     )
     standard_id = fields.Many2one(
         'school.standard',
@@ -105,6 +105,11 @@ class Fee(models.Model):
         return self.env.ref('fee.action_report_receipt').report_action(self)
 
     @api.multi
+    def do_print_fee_invitation(self):
+        self.write({'printed': True})
+        return self.env.ref('fee.action_report_invitation').report_action(self)
+
+    @api.multi
     def add_all_fee(self):
         fee_detail_env = self.env['fee.detail']
         fee_line_detail = self.env['fee.line.detail']
@@ -120,11 +125,6 @@ class Fee(models.Model):
                     'type_fee': 1
                 })
         return True
-
-    @api.onchange('student_id')
-    def onchange_student_id(self):
-        for rec in self:
-            rec.reduce_code = rec.student_id.reduce_code.amount*100 or 0
 
     @api.multi
     def add_all_skill(self):
@@ -142,19 +142,19 @@ class Fee(models.Model):
                 })
         return True
 
+    @api.onchange('student_id')
+    def onchange_student_id(self):
+        for rec in self:
+            rec.reduce_code = rec.student_id.reduce_code.amount * 100 or 0
+
     @api.one
     def transfer_fee_receipt(self):
         for rec in self:
-            print("*"*80)
-            print(rec.line_ids)
             list_fee = []
-            list_result = []
             for line in rec.line_ids:
-                list_fee.append([line.fee_detail.name, line.amount])
-            list_result1, list_result2 = numpy.array_split(list_fee, 2)
-            for i in range(max(len(list_result1), len(list_result2))):
-                list_result.append([list_result1[i] , list_result2[i] if len(list_result2) > i else ['', '']])
-            print(list_result)
+                list_fee.append((line.fee_detail.name, round(line.amount)))
+            list_result = numpy.array_split(
+                list_fee, len(list_fee)/2 if len(list_fee)%2==0 else len(list_fee)/2 + 1)
         return list_result
 
 
