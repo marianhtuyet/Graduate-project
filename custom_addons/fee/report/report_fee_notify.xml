@@ -5,7 +5,7 @@
         <t t-call="web.html_container">
             <!--            <t t-call="web.external_layout">-->
             <t t-set="o" t-value="o.with_context(lang='vi_VN')"/>
-            <div class="page">
+            <div class="page font-family:times new roman" style="font-family:Times new roman !important;">
                 <h4>
                     <p>Giấy thông báo học phí tháng
                         <span t-field="o.month_submit"></span>
@@ -33,30 +33,47 @@
                         <t t-set="lines" t-value="o.line_ids"/>
                         <tr t-foreach="lines" t-as="move">
                             <td>
-                                <span t-field="move.fee_detail.name"/>
-                                <!--<strong t-if="move.fee_detail.type_fee == 1">x <span t-field="move.amount"></span></strong>-->
+                                <strong t-if="move.fee_detail.type_fee == 1">
+                                    <span t-field="move.fee_detail.name"/>&#160;&#160;&#160;&#160;&#160;
+                                    <span t-field="move.count_date"/>
+                                    x
+                                    <span t-field="move.price"/>
+                                    =
+                                </strong>
+                                <strong t-if="move.fee_detail.type_fee != 1">
+                                    <span t-field="move.fee_detail.name"/>
+                                </strong>
                             </td>
                             <td>
-                                <!--<strong t-if="move.fee_detail.type_fee == 1"> <span t-field="move.amount * o.date_absent"></span></strong>-->
                                 <span t-field="move.amount"/>
                             </td>
                         </tr>
                     </tbody>
                     <tfooter>
                         <tr>
-                            <td><b>Tổng cộng</b></td>
+                            <td>
+                                <b>Tổng cộng</b>
+                            </td>
                             <td>
                                 <span t-field="o.total_amount"/>
                             </td>
                         </tr>
                         <tr>
-                            <td><b>Số tiền vắng</b></td>
                             <td>
-                                <span t-field="o.total_absent"/>
+                                <strong t-if="o.reduce_code != 0 ">
+                                    Tỉ lệ miễn giảm
+                                </strong>
+                            </td>
+                            <td>
+                                <p t-if="o.reduce_code != 0 ">
+                                    <span t-field="o.reduce_code"></span>
+                                </p>
                             </td>
                         </tr>
                         <tr>
-                            <td><b>Số tiền phải nộp</b></td>
+                            <td>
+                                <b>Số tiền phải nộp</b>
+                            </td>
                             <td>
                                 <span t-field="o.total_submit"/>
                             </td>

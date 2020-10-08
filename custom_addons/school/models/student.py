@@ -170,10 +170,10 @@ class StudentStudent(models.Model):
     relation = fields.Many2one('student.relation.master', 'Relation')
 
     admission_date = fields.Date('Ngày nhập học', default=date.today())
-    middle = fields.Char('Middle Name', required=True,
-                         states={'done': [('readonly', True)]})
-    last = fields.Char('Surname', required=True,
-                       states={'done': [('readonly', True)]})
+    # middle = fields.Char('Middle Name', required=True,
+    #                      states={'done': [('readonly', True)]})
+    # last = fields.Char('Surname', required=True,
+    #                    states={'done': [('readonly', True)]})
     gender = fields.Selection([('male', 'Nam'), ('female', 'Nữ')],
                               'Giới tính', states={'done': [('readonly', True)]})
     date_of_birth = fields.Date('Ngày sinh', required=True,

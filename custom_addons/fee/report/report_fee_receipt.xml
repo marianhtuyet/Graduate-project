@@ -23,17 +23,22 @@
                     </tr>
                 </table>
                 <h4>
-                    <p  class="text-center">BIÊN LAI THU HỌC PHÍ THÁNG
+                    <p class="text-center">BIÊN LAI THU HỌC PHÍ THÁNG
                         <span t-field="o.month_submit"></span>
                     </p>
                     Nhận của:
-                    <b><span t-field="o.student_id"/></b>
-                    <p>Mã học sinh: <span t-field="o.student_code"/>
-                        &#160;&#160;&#160;&#160;&#160;Lớp:  <span t-field="o.student_id.standard_id"/>
-                        &#160;&#160;&#160;&#160;&#160;Số ngày vắng: <span t-field="o.date_absent"/>
+                    <b>
+                        <span t-field="o.student_id"/>
+                    </b>
+                    <p>Mã học sinh:
+                        <span t-field="o.student_code"/>
+                        &#160;&#160;&#160;&#160;&#160;Lớp:
+                        <span t-field="o.student_id.standard_id"/>
+                        &#160;&#160;&#160;&#160;&#160;Số ngày vắng:
+                        <span t-field="o.date_absent"/>
                     </p>
                 </h4>
-                <table  border="0" class="table table-sm mt48 ">
+                <table border="0" class="table table-sm mt48 ">
                     <thead>
                         <tr>
                             <th>
@@ -56,7 +61,7 @@
                             <td>
                                 <span t-esc="move[0][0]"/>
                             </td>
-                            <td  class="text-right margin-right:15px" style="margin-right:15px !important">
+                            <td class="text-right margin-right:15px" style="margin-right:15px !important">
                                 <span style="margin-right:100px" t-esc="'{0:,.0f}'.format(int(move[0][1]))"/>
                             </td>
                             <td>
@@ -74,7 +79,7 @@
                     <tfooter>
                         <tr>
                             <td>
-                            <span>&#160;</span>
+                                <span>&#160;</span>
                             </td>
                         </tr>
                         <tr>
@@ -87,10 +92,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <b>Số tiền vắng</b>
+                                <strong t-if="o.reduce_code != 0 ">
+                                    Tỉ lệ miễn giảm
+                                </strong>
                             </td>
-                            <td class="text-right">
-                                <span style="margin-right:100px" t-field="o.total_absent"/>
+                            <td>
+                                <p t-if="o.reduce_code != 0 ">
+                                    <span t-field="o.reduce_code"></span>
+                                </p>
                             </td>
                         </tr>
                         <tr>

@@ -6,21 +6,106 @@
         <field name="model">student.student</field>
         <field name="inherit_id" ref="school.view_student_student_form_2"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='pid']" position="after">
+                <field name="customize_code"/>
+                <field name="custom_name"/>
+            </xpath>
             <xpath expr="//field[@name='standard_id']" position="after">
                 <field name="reduce_code"/>
-                <field name="customize_code"/>
             </xpath>
+            <xpath expr="//field[@name='contact_mobile']" position="after">
+                <field name="father_name"/>
+                <field name="father_job"/>
+                <field name="mother_name"/>
+                <field name="mother_job"/>
+                <field name="phone_father"/>
+                <field name="phone_mother"/>
+            </xpath>
+
         </field>
     </record>
-     <record model="ir.ui.view" id="view_student_student_inherit_1">
+    <record model="ir.ui.view" id="view_student_student_inherit_1">
         <field name="name">view.student.student.inherit</field>
         <field name="model">student.student</field>
         <field name="inherit_id" ref="school.view_student_student_form_1"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='pid']" position="after">
+                <field name="customize_code"/>
+                <field name="custom_name"/>
+            </xpath>
             <xpath expr="//field[@name='standard_id']" position="after">
                 <field name="reduce_code"/>
-                <field name="customize_code"/>
+            </xpath>
+            <xpath expr="//field[@name='contact_mobile']" position="after">
+                <field name="father_name"/>
+                <field name="father_job"/>
+                <field name="mother_name"/>
+                <field name="mother_job"/>
+                <field name="phone_father"/>
+                <field name="phone_mother"/>
             </xpath>
         </field>
     </record>
+    <record model="ir.ui.view" id="view_student_student_inherit_tree_1">
+        <field name="name">view.student.student.inherit</field>
+        <field name="model">student.student</field>
+        <field name="inherit_id" ref="school.view_student_student_tree_1"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pid']" position="after">
+                <field name="customize_code"/>
+                <field name="custom_name"/>
+                <field name="date_of_birth"/>
+            </xpath>
+            <xpath expr="//field[@name='gender']" position="after">
+                <field name="father_name"/>
+                <field name="father_job"/>
+                <field name="mother_name"/>
+                <field name="mother_job"/>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_student_student_inherit_tree_2">
+        <field name="name">view.student.student.inherit</field>
+        <field name="model">student.student</field>
+        <field name="inherit_id" ref="school.view_student_student_tree_2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pid']" position="after">
+                <field name="customize_code"/>
+                <field name="custom_name"/>
+                <field name="date_of_birth"/>
+            </xpath>
+            <xpath expr="//field[@name='gender']" position="after">
+                <field name="father_name"/>
+                <field name="father_job"/>
+                <field name="mother_name"/>
+                <field name="mother_job"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_student_student_inherit_search_1">
+        <field name="name">view.student.student.inherit</field>
+        <field name="model">student.student</field>
+        <field name="inherit_id" ref="school.view_student_student_search_1"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pid']" position="after">
+                <field name="customize_code"/>
+                <field name="custom_name"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_student_student_inherit_search_2">
+        <field name="name">view.student.student.inherit</field>
+        <field name="model">student.student</field>
+        <field name="inherit_id" ref="school.view_student_student_search_2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='standard_id']" position="before">
+                <field name="customize_code"/>
+                <field name="custom_name"/>
+            </xpath>
+        </field>
+    </record>
+
+
 </odoo>

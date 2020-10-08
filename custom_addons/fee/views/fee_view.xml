@@ -28,14 +28,16 @@
                             string="In biên lai"
                             groups="base.group_user"
                             class="oe_highlight"/>
-<!--                    <button name="do_print_fee_notify" string="Print" groups="base.group_user" type="object"/>-->
-                    <button name="%(action_report_notify)d" string="In giấy báo học phí"  type="action" groups="base.group_user"/>
-                    <button name="%(action_report_invitation)d" string="In thư mời"  type="action" groups="base.group_user"/>
+                    <!--                    <button name="do_print_fee_notify" string="Print" groups="base.group_user" type="object"/>-->
+                    <button name="%(action_report_notify)d" string="In giấy báo học phí" type="action"
+                            groups="base.group_user"/>
+                    <button name="%(action_report_invitation)d" string="In thư mời" type="action"
+                            groups="base.group_user"/>
                 </header>
                 <sheet>
                     <group>
                         <group>
-<!--                            Student information-->
+                            <!--                            Student information-->
                             <field name="student_id"/>
                             <field name="student_code"/>
                             <field name="student_name"/>
@@ -43,7 +45,7 @@
                             <field name="user_id"/>
                         </group>
                         <group>
-<!--                            fee information-->
+                            <!--                            fee information-->
                             <field name="date_submit"/>
                             <field name="date_to"/>
                             <field name="date_apply"/>
@@ -58,6 +60,8 @@
                             <field name="line_ids">
                                 <tree editable="Bottom">
                                     <field name="fee_detail"/>
+                                    <field name="count_date"/>
+                                    <field name="price"/>
                                     <field name="amount"/>
                                 </tree>
                             </field>
@@ -65,7 +69,7 @@
                     </notebook>
                     <group class="oe_subtotal_footer oe_right">
                         <field name="total_amount"/>
-                        <field name="total_absent"/>
+                        <field name="reduce_code"/>
                         <field name="total_submit" class="oe_subtotal_footer_separator"/>
                     </group>
                 </sheet>
