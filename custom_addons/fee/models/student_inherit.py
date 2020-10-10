@@ -1,5 +1,6 @@
 from datetime import date
 from odoo import models, fields, api
+from odoo.osv import expression
 
 
 class StudentStudent(models.Model):
@@ -22,3 +23,18 @@ class StudentStudent(models.Model):
             name = '{} - {}'.format(rec.customize_code, rec.custom_name)
             result.append((rec.id, name))
         return result
+
+    @api.model
+    def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
+        args = args or []
+        invoice_ids = []
+        print("*"*80)
+        # domain = args + ['|', ('custom_name', operator, name), ('customize_code', operator, name)]
+        if operator == 'ilike' and not (name or '').strip():
+            domain = []
+        else:
+            connector = '&' if operator in expression.NEGATIVE_TERM_OPERATORS else '|'
+            domain = [connector, ('custom_name', operator, name), ('customize_code', operator, name)]
+        journal_ids = self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
+        return self.browse(journal_ids).name_get()
+

@@ -1,6 +1,7 @@
 import calendar
 import numpy
-from odoo import models, fields, api
+from odoo import _, api, models, fields
+from odoo.exceptions import UserError
 
 
 class Fee(models.Model):
@@ -19,11 +20,13 @@ class Fee(models.Model):
     student_id = fields.Many2one(
         'student.student',
         'Mã học sinh',
-        required=True
+        required=True,
+        domain="[('state', '=', 'draft')]"
+
     )
     student_code = fields.Char(
         'Mã học sinh',
-        # related='student_id.customize_code'
+         related='student_id.customize_code'
     )
     standard_id = fields.Many2one(
         'school.standard',
@@ -33,7 +36,7 @@ class Fee(models.Model):
     date_study = fields.Integer('Số ngày', default=_last_business_day_in_month)
     student_name = fields.Char(
         'Tên học sinh',
-        related='student_id.student_name'
+        related='student_id.custom_name'
     )
     date_absent = fields.Integer('Số ngày vắng', default=0)
     date_submit = fields.Date('Ngày nộp đến', default=fields.Date.today)
@@ -68,7 +71,7 @@ class Fee(models.Model):
     state = fields.Selection(
         [('unpaid', 'Chưa thu'),
          ('paid', 'Đã thu'),
-        ])
+        ], readonly=True, default='unpaid', string='Status')
     printed = fields.Boolean('Printed')
 
     def name_get(self):
@@ -96,6 +99,7 @@ class Fee(models.Model):
             rec.total_submit = (total)*(1 - rec.reduce_code if rec.reduce_code != 0 else 1)
 
 
+
     @api.multi
     def do_print_fee_notify(self):
         self.write({'printed': True})
@@ -103,7 +107,11 @@ class Fee(models.Model):
 
     @api.multi
     def do_print_fee_receipt(self):
-        self.write({'printed': True})
+        self.write({'printed': True, 'state': 'paid'})
+        if not self.line_ids:
+            raise UserError(_(
+                "Vui lòng nhập chi tiết!"
+            ))
         return self.env.ref('fee.action_report_receipt').report_action(self)
 
     @api.multi
@@ -165,6 +173,5 @@ class Fee(models.Model):
             list_result = numpy.array_split(
                 list_fee, len(list_fee)/2 if len(list_fee)%2==0 else len(list_fee)/2 + 1)
         return list_result
-
 
 
