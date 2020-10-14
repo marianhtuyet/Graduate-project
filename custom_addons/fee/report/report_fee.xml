@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record model="report.paperformat" id="paperformat_report_fee_notify">
+            <field name="name">paperformat.report.fee.notify</field>
+            <field name="default" eval="True"/>
+            <field name="format">A5</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">5</field>
+            <field name="margin_right">5</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">5</field>
+            <field name="dpi">90</field>
+        </record>
+
         <report
-            string="In giấy báo học phí"
-            id="action_report_notify"
-            model="student.fee"
-            report_type="qweb-pdf"
-            name="fee.report_fee_notify"
-            file="fee.report_fee_notify"
-            print_report_name="In giấy báo học phí"
+                string="In giấy báo học phí"
+                id="action_report_notify"
+                model="student.fee"
+                report_type="qweb-pdf"
+                name="fee.report_fee_notify"
+                file="fee.report_fee_notify"
+                paperformat="fee.paperformat_report_fee_notify"
+                print_report_name="'In giấy báo học phí'"
         />
         <report
-            string="In biên lai"
-            id="action_report_receipt"
-            model="student.fee"
-            report_type="qweb-pdf"
-            name="fee.report_fee_receipt"
-            file="fee.report_fee_receipt"
-            print_report_name="In biên lai"
+                string="In biên lai"
+                id="action_report_receipt"
+                model="student.fee"
+                report_type="qweb-pdf"
+                name="fee.report_fee_receipt"
+                file="fee.report_fee_receipt"
+                print_report_name="'In biên lai'"
         />
-          <report
-            string="In thư mời"
-            id="action_report_invitation"
-            model="student.fee"
-            report_type="qweb-pdf"
-            name="fee.report_fee_invitation"
-            file="fee.report_fee_invitation"
-            print_report_name="In thư mời"
+        <report
+                string="In thư mời"
+                id="action_report_invitation"
+                model="student.fee"
+                report_type="qweb-pdf"
+                name="fee.report_fee_invitation"
+                file="fee.report_fee_invitation"
+                print_report_name="'In thư mời'"
         />
 
     </data>

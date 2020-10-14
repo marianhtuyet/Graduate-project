@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <template id="fee_layout">
+        <t t-call="web.html_container">
+             <t t-if="not company">
+                        <!-- Multicompany -->
+                        <t t-if="company_id">
+                            <t t-set="company" t-value="company_id"/>
+                        </t>
+                        <t t-elif="o and 'company_id' in o">
+                            <t t-set="company" t-value="o.company_id.sudo()"/>
+                        </t>
+                        <t t-else="else">
+                            <t t-set="company" t-value="res_company"/>
+                        </t>
+                    </t>
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                 t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer o_standard_footer">
+                <div class="text-center" style="border-top: 1px solid black;">
+
+                    <div name="financial_infos">
+                        <span t-field="company.report_footer"/>
+                    </div>
+
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Trang:
+                        <span class="page"/>
+                        /
+                        <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
     <template id="report_notify_document">
 
-        <t t-call="web.html_container">
-            <!--            <t t-call="web.external_layout">-->
+        <!--        <t t-call="web.html_container">-->
+        <t t-call="fee.fee_layout">
             <t t-set="o" t-value="o.with_context(lang='vi_VN')"/>
             <div class="page font-family:times new roman" style="font-family:Times new roman !important;">
                 <h4>

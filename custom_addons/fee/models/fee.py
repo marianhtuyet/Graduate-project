@@ -7,6 +7,7 @@ from odoo.exceptions import UserError
 class Fee(models.Model):
     _name = 'student.fee'
 
+
     def _last_business_day_in_month(self):
         current_date = fields.Date.today()
         array_temp =  calendar.monthcalendar(current_date.year, current_date.month)
@@ -49,7 +50,7 @@ class Fee(models.Model):
     line_ids = fields.One2many('fee.line.detail', 'fee_id')
     currency_id = fields.Many2one(
         'res.currency',
-        default=lambda self: self.env.company_id.currency_id.id
+         default = lambda self: self.env.user.company_id.currency_id.id
     )
 
     total_amount = fields.Monetary(

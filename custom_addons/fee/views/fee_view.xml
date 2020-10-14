@@ -23,7 +23,8 @@
                 <header>
                     <button name="add_all_fee" string="Thêm học phí" type="object"/>
                     <button name="add_all_skill" string="Thêm môn năng khiếu" type="object"/>
-                    <button name="do_print_fee_receipt"  class="oe_highlight" string="In biên lai" states='unpaid' type="object"/>
+                    <button name="do_print_fee_receipt"  class="oe_highlight" string="In biên lai"
+                            states='unpaid' type="object"/>
 <!--                    <button name="%(action_report_receipt)d"-->
 <!--                            type="action"-->
 <!--                            string="In biên lai"-->
