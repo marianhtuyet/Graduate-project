@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="voucher_breakfast_tree" model="ir.ui.view">
+        <field name="name">voucher.breakfast.tree</field>
+        <field name="model">voucher.breakfast</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name_food"/>
+                <field name="total_student"/>
+                <field name="name"/>
+                <field name="total_amount"/>
+                <field name="total_2_text"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="voucher_breakfast_view" model="ir.ui.view">
+        <field name="name">voucher.breakfast.view</field>
+        <field name="model">voucher.breakfast</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name_food"/>
+                            <field name="company_id"/>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="street"/>
+                            <field name="total_student"/>
+                        </group>
+                        <group>
+                            <field name="receiver"/>
+                            <field name="transfer_user"/>
+                            <field name="create_user"/>
+                            <field name="currency_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Thông tin chi tiết phiếu sáng">
+                            <field name="line_ids">
+                                <tree editable="Bottom">
+                                    <field name="ingredient_id"/>
+                                    <field name="uom_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price"/>
+                                    <field name="amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group class="oe_subtotal_footer oe_right">
+                        <field name="total_amount" class="oe_subtotal_footer_separator"/>
+                        <field name="total_2_text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

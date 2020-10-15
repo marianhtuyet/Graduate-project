@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Action-->
+    <record id="action_voucher_breakfast" model="ir.actions.act_window">
+        <field name="name">Voucher Breakfast</field>
+        <field name="res_model">voucher.breakfast</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="voucher_breakfast_tree"/>
+    </record>
+    <record id="action_ingredient" model="ir.actions.act_window">
+        <field name="name">Ingredient</field>
+        <field name="res_model">ingredient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="ingredient_tree"/>
+    </record>
+    <!--    Menu-->
+    <menuitem
+            id="menu_voucher_breakfast_base"
+            name="Voucher Breakfast"
+            sequence="2"
+            groups="base.group_user"
+            web_icon="voucher,static/description/voucher.jpg"
+    />
+
+    <menuitem
+            id="menu_voucher_breakfast"
+            name="Voucher Breakfast"
+            sequence="1"
+            action="action_voucher_breakfast"
+            parent="menu_voucher_breakfast_base"
+            groups="base.group_user"
+    />
+    <menuitem
+            id="menu_ingredient"
+            name="Ingredient"
+            sequence="2"
+            action="action_ingredient"
+            parent="menu_voucher_breakfast_base"
+            groups="base.group_user"
+    />
+    <menuitem
+            id="menu_uom_inherit"
+            name="UOM"
+            sequence="3"
+            action="uom.product_uom_form_action"
+            parent="menu_voucher_breakfast_base"
+            groups="base.group_user"
+    />
+
+</odoo>

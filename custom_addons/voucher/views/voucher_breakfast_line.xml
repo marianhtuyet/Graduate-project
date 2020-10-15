@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="voucher_breakfast_line_tree" model="ir.ui.view">
+        <field name="name">voucher.breakfast.line.tree</field>
+        <field name="model">voucher.breakfast.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ingredient_id"/>
+                <field name="uom_id"/>
+                <field name="quantity"/>
+                <field name="price"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="voucher_breakfast_line_view" model="ir.ui.view">
+        <field name="name">voucher.breakfast.line.view</field>
+        <field name="model">voucher.breakfast.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="voucher_id"/>
+                            <field name="ingredient_id"/>
+                            <field name="currency_id"/>
+                            <field name="uom_id"/>
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                            <field name="price"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

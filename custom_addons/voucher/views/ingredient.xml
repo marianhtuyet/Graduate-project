@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ingredient_tree" model="ir.ui.view">
+        <field name="name">ingredient.tree</field>
+        <field name="model">ingredient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="uom_id"/>
+                <field name="name2"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ingredient_view" model="ir.ui.view">
+        <field name="name">ingredient.view</field>
+        <field name="model">ingredient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="name2"/>
+                            <field name="uom_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
