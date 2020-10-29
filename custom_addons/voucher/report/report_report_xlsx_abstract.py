@@ -1,4 +1,3 @@
-from datetime import datetime
 from odoo import fields, models
 
 import logging
@@ -214,6 +213,13 @@ class ReportXlsxAbstract(models.AbstractModel):
             'valign': 'vcenter',
             'bold': True,
             'font_size': 14,
+            'font_name': DEFAULT_FONT,
+        })
+        self.bold_center_28 = self.wb.add_format({
+            'align': 'center',
+            'valign': 'vcenter',
+            'bold': True,
+            'font_size': 28,
             'font_name': DEFAULT_FONT,
         })
 
@@ -464,4 +470,4 @@ class ReportXlsxAbstract(models.AbstractModel):
         )
 
     def date_format(self, my_date):
-        return datetime.strftime(my_date, "%d / %m / %Y")
+        return fields.Date.to_string(my_date)

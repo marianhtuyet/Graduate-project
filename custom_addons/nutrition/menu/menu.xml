@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Action-->
+    <record id="action_nutrition" model="ir.actions.act_window">
+        <field name="name">nutrition</field>
+        <field name="res_model">nutrition</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="nutrition_tree"/>
+    </record>
+    <!--    Menu-->
+    <menuitem
+            id="menu_nutrition_base"
+            name="Dinh dưỡng"
+            sequence="2"
+            groups="base.group_user"
+            web_icon="nutrition,static/description/nutrition.png"
+    />
+
+    <menuitem
+            id="menu_nutrition"
+            name="Dinh dưỡng"
+            sequence="1"
+            action="action_nutrition"
+            parent="menu_nutrition_base"
+            groups="base.group_user"
+    />
+</odoo>

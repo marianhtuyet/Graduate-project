@@ -1,3 +1,4 @@
+from num2words import num2words
 from odoo import api, fields, models
 
 
@@ -15,6 +16,8 @@ class VoucherBreakfast(models.Model):
     name_food = fields.Char('Điểm tâm', help="Món ăn")
     transfer_user  = fields.Char("Người giao")
     create_user = fields.Char("Người tạo phiếu")
+    date_create = fields.Date('Ngày tạo',  default=fields.Date.today)
+    month_create = fields.Integer('Tháng')
     currency_id = fields.Many2one(
         'res.currency',
         default=lambda self: self.env.user.company_id.currency_id.id
@@ -31,3 +34,11 @@ class VoucherBreakfast(models.Model):
     def _compute_total_amount(self):
         for rec in self:
             rec.total_amount = sum(line.amount for line in rec.line_ids)
+            total_2_text = num2words(rec.total_amount, lang='vi_VN') + ' đồng '
+            rec.total_2_text = total_2_text.capitalize()
+
+    @api.onchange('date_create')
+    def _onchange_date_create(self):
+        for rec in self:
+            if rec.date_create:
+                rec.month_create = rec.date_create.month

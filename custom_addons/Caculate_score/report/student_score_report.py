@@ -9,6 +9,7 @@ class StudyclassReportXlsxTemplate(models.AbstractModel):
     def generate_xlsx_report(self, workbook, data, objs):
         self.company = self.env.user.company_id
         self.scholar_year = objs.school_year_id.name
+        self.school_year_id = objs.school_year_id
         self.line_ids = objs.study_class_ids
         self.wb = workbook
 
@@ -64,8 +65,8 @@ class StudyclassReportXlsxTemplate(models.AbstractModel):
         )
         self.row_pos += 2
         scholar_year = self.scholar_year.split('-')
-        start_year = self.scholar_year.date_start.year
-        end_year = self.scholar_year.date_start.year
+        start_year = self.school_year_id.date_start.year
+        end_year = self.school_year_id.date_start.year
         temp = end_year - start_year
         list_scholar_year = []
         total_units = sum(line.units for line in self.line_ids)

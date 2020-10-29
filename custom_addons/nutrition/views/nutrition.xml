@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="nutrition_tree" model="ir.ui.view">
+        <field name="name">nutrition.tree</field>
+        <field name="model">nutrition</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="protein"/>
+                <field name="lipit"/>
+                <field name="gluco"/>
+                <field name="calo"/>
+                <field name="photpho"/>
+                <field name="transfer_gam"/>
+                <field name="type_food"/>
+                <field name="uom_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="nutrition_view" model="ir.ui.view">
+        <field name="name">nutrition.view</field>
+        <field name="model">nutrition</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="constant"/>
+                            <field name="protein"/>
+                            <field name="lipit"/>
+                            <field name="gluco"/>
+                            <field name="calo"/>
+                        </group>
+                        <group>
+                            <field name="photpho"/>
+                            <field name="fe"/>
+                            <field name="caroten"/>
+                            <field name="b1"/>
+                            <field name="b2"/>
+                            <field name="pp"/>
+                        </group>
+                        <group>
+                            <field name="cacbon"/>
+                            <field name="cholesterol"/>
+                            <field name="is_vegetable"/>
+                            <field name="is_animal"/>
+                            <field name="is_fruit"/>
+
+                        </group>
+                        <group>
+                            <field name="transfer_gam"/>
+                            <field name="packaging_id"/>
+                            <field name="type_food"/>
+                            <field name="uom_id"/>
+                        </group>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

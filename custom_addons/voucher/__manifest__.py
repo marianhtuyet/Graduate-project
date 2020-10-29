@@ -12,6 +12,7 @@ This module will summary voucher breakfast in the school in one month
     ],
     'data': [
         'security/ir.model.access.csv',
+        'report/voucher_breakfast.xml',
         'views/ingredient.xml',
         'views/voucher_breakfast.xml',
         'views/voucher_breakfast_line.xml',

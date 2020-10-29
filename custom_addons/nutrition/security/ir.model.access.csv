@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nutrition,access_nutrition,model_nutrition,base.group_user,1,1,1,1
+access_packaging,access_packaging,model_packaging,base.group_user,1,1,1,1
+access_type_food,access_type_food,model_type_food,base.group_user,1,1,1,1

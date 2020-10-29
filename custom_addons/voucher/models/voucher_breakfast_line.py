@@ -23,13 +23,9 @@ class VoucherBreakfastline(models.Model):
     @api.depends('price', 'quantity')
     def _compute_amount(self):
         for rec in self:
-            print("*"*80)
-            print('rec.quantity:  ', rec.quantity)
-            print('rec.price: ', rec.price)
             rec.amount = rec.quantity * rec.price
 
     @api.onchange('price', 'quantity')
-    def onchange_quantity(self):
+    def onchange_price(self):
         for rec in self:
-            print("1"*80)
             rec.amount = rec.quantity * rec.price

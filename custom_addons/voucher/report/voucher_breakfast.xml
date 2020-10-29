@@ -1,0 +1,12 @@
+<odoo>
+    <report
+        id="action_print_voucher_breakfast"
+        string="Voucher Breakfast"
+        report_type="xlsx"
+        model="voucher.breakfast"
+        file="voucher_breakfast_xlsx"
+        name="voucher_breakfast_xlsx"
+        menu="False"
+    />
+
+</odoo>
