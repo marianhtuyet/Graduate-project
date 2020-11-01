@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="menu_food_line_tree" model="ir.ui.view">
+        <field name="name">menu.food.line.tree</field>
+        <field name="model">menu.food.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="nutrition_id"/>
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="menu_food_line_view" model="ir.ui.view">
+        <field name="name">menu.food.line.view</field>
+        <field name="model">menu.food.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="menu_food_id"/>
+                            <field name="nutrition_id"/>
+                            <field name="quantity"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

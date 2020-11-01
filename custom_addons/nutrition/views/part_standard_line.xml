@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="part_standard_line_tree" model="ir.ui.view">
+        <field name="name">part.standard.line.tree</field>
+        <field name="model">part.standard.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="nutrition_id"/>
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="part_standard_view" model="ir.ui.view">
+        <field name="name">part.standard.line.view</field>
+        <field name="model">part.standard.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="part_standard_id"/>
+                            <field name="nutrition_id"/>
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

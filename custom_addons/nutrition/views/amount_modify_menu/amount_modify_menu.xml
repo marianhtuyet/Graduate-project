@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="amount_modify_menu_tree" model="ir.ui.view">
+        <field name="name">amount.modify.menu.tree</field>
+        <field name="model">amount.modify.menu</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="menu_food_id"/>
+                <field name="standard_material_id"/>
+                <field name="is_breakfast"/>
+                <field name="total_student"/>
+                <field name="price"/>
+                <field name="payment_stock"/>
+                <field name="payment"/>
+                <field name="payment_service"/>
+                <field name="exchange_payment"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="amount_modify_menu_view" model="ir.ui.view">
+        <field name="name">amount.modify.menu.view</field>
+        <field name="model">amount.modify.menu</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="menu_food_id"/>
+                            <field name="standard_material_id"/>
+                            <field name="is_breakfast"/>
+                            <field name="total_student"/>
+                            <field name="price"/>
+                        </group>
+                        <group>
+                            <field name="payment_stock"/>
+                            <field name="payment"/>
+                            <field name="payment_service"/>
+                            <field name="exchange_payment"/>
+                            <field name="date_create"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Chi tiết thực đơn">
+                            <field name="line_ids"/>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

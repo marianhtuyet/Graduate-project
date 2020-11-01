@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="part_standard_tree" model="ir.ui.view">
+        <field name="name">part.standard.tree</field>
+        <field name="model">part.standard</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type_part"/>
+                <field name="standard_material_id"/>
+                <field name="part_min"/>
+                <field name="part_max"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="part_standard_view" model="ir.ui.view">
+        <field name="name">part.standard.view</field>
+        <field name="model">part.standard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="type_part"/>
+                            <field name="standard_material_id"/>
+                        </group>
+                        <group>
+                            <field name="part_min"/>
+                            <field name="part_max"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Số phần">
+                            <field name="line_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -19,7 +19,7 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="base.view_partner_form"/>
     </record>
-     <record id="action_type_food" model="ir.actions.act_window">
+    <record id="action_type_food" model="ir.actions.act_window">
         <field name="name">Loại thực phẩm</field>
         <field name="res_model">type.food</field>
         <field name="view_mode">tree,form</field>
@@ -39,7 +39,18 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="menu_food_tree"/>
     </record>
-
+    <record id="action_part_standard" model="ir.actions.act_window">
+        <field name="name">Số phần định mức</field>
+        <field name="res_model">part.standard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="part_standard_tree"/>
+    </record>
+     <record id="action_modify_menu_food" model="ir.actions.act_window">
+        <field name="name">Điều chỉnh thực đơn</field>
+        <field name="res_model">modify.menu.food</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="modify_menu_food_tree"/>
+    </record>
     <!--    Menu -->
     <menuitem
             id="menu_nutrition_base"
@@ -64,14 +75,21 @@
             groups="base.group_user"
     />
     <menuitem
+            id="menu_modify_food_base"
+            name="Điều chỉnh thực đơn"
+            sequence="3"
+            parent="menu_nutrition_base"
+            groups="base.group_user"
+    />
+    <menuitem
             id="menu_configuration"
             name="Tổng hợp"
             sequence="15"
             parent="menu_nutrition_base"
     />
 
-<!--    Menu chi tiết-->
-<!--    Thực đơn-->
+    <!--    Menu chi tiết-->
+    <!--    Thực đơn-->
     <menuitem
             id="menu_menu_food"
             name="Thực đơn"
@@ -79,8 +97,17 @@
             action="action_menu_food"
             parent="menu_food_base"
     />
-<!--    Configuration-->
-     <menuitem
+    <!--    Điều chỉnh thực đơn -->
+
+    <menuitem
+            id="menu_modify_menu_food"
+            name="Điều chỉnh thực đơn"
+            sequence="1"
+            action="action_modify_menu_food"
+            parent="menu_modify_food_base"
+    />
+    <!--    Configuration-->
+    <menuitem
             id="menu_packaging"
             name="Bao bì"
             sequence="1"
@@ -94,21 +121,25 @@
             action="action_type_food"
             parent="menu_configuration"
     />
-     <menuitem
+    <menuitem
             id="menu_res_partner_nutrition"
             name="Nhà cung cấp"
             sequence="3"
             action="action_res_partner_nutrition"
             parent="menu_configuration"
     />
-     <menuitem
+    <menuitem
             id="menu_standard_material"
             name="Định mức dinh dưỡng"
             sequence="4"
             action="action_standard_material"
             parent="menu_configuration"
     />
-
-
-
+    <menuitem
+            id="menu_part_standard"
+            name="Số phần định mức dinh dưỡng"
+            sequence="5"
+            action="action_part_standard"
+            parent="menu_configuration"
+    />
 </odoo>

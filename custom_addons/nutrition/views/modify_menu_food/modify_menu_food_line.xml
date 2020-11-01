@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="modify_menu_food_line_tree" model="ir.ui.view">
+        <field name="name">modify.menu.food.line.tree</field>
+        <field name="model">modify.menu.food.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="nutrition_id"/>
+                <field name="quantity"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="menu_modify_food_line_view" model="ir.ui.view">
+        <field name="name">modify.menu.food.line.view</field>
+        <field name="model">modify.menu.food.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="modify_menu_food_id"/>
+                            <field name="nutrition_id"/>
+                            <field name="quantity"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

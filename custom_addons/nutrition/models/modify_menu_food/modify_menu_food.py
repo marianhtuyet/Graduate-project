@@ -1,13 +1,14 @@
 from odoo import api, fields, models
 
 
-class MenuFood(models.Model):
-    _name = 'menu.food'
-    _description = 'Thực đơn'
+class ModifyMenuFood(models.Model):
+    _name = 'modify.menu.food'
+    _description = 'Điều chỉnh thực đơn'
 
     standard_material_id = fields.Many2one('standard.material', 'Định mức dinh dưỡng')
+    menu_food_id = fields.Many2one('menu.food', 'Tên thực đơn')
     is_breakfast = fields.Boolean('Thực đơn sáng')
-    name = fields.Char('Tên thực đơn')
+    name = fields.Char('Tên thực đơn 2')
     appetizer = fields.Char('Khai vị')
     breakfast = fields.Char('Món sáng')
     soup = fields.Char('Canh')
@@ -21,4 +22,4 @@ class MenuFood(models.Model):
     total_student = fields.Integer('Sĩ số')
     price = fields.Float('Giá 1 phần')
     date_create = fields.Date('Ngày lập', default=fields.Date.today)
-    line_ids = fields.One2many('menu.food.line', 'menu_food_id')
+    line_ids = fields.One2many('modify.menu.food.line', 'menu_food_id')

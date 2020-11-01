@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="menu_food_tree" model="ir.ui.view">
-        <field name="name">menu.food.tree</field>
-        <field name="model">menu.food</field>
+    <record id="modify_menu_food_tree" model="ir.ui.view">
+        <field name="name">modify.menu.food.tree</field>
+        <field name="model">modify.menu.food</field>
         <field name="arch" type="xml">
             <tree>
-
                 <field name="name"/>
+                <field name="menu_food_id"/>
                 <field name="appetizer"/>
                 <field name="breakfast"/>
                 <field name="soup"/>
@@ -19,14 +19,15 @@
         </field>
     </record>
 
-    <record id="menu_food_view" model="ir.ui.view">
-        <field name="name">menu.food.view</field>
-        <field name="model">menu.food</field>
+    <record id="modify_menu_food_view" model="ir.ui.view">
+        <field name="name">modify.menu.food.view</field>
+        <field name="model">modify.menu.food</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <group>
+                            <field name="menu_food_id"/>
                             <field name="name"/>
                             <field name="appetizer"/>
                             <field name="breakfast"/>
@@ -51,7 +52,6 @@
                         <page string="Chi tiết thực đơn">
                             <field name="line_ids"/>
                         </page>
-
                     </notebook>
                 </sheet>
             </form>
