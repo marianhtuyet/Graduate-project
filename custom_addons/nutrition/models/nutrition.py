@@ -4,7 +4,10 @@ from odoo import api, fields, models
 class Nutrition(models.Model):
     _name = 'nutrition'
 
-    name = fields.Char('Tên thực phẩm', required=True)
+    product_id = fields.Many2one('product.template', 'Sản phẩm', ondelete="cascade",
+                              required=True, delegate=True)
+    # Inherit các trường của product mà không lấy view của product
+    # name = fields.Char('Tên thực phẩm', required=True)
     constant = fields.Float('Hệ số thai bo')
     protein = fields.Float('Đạm')
     lipit = fields.Float('Béo')
@@ -26,6 +29,6 @@ class Nutrition(models.Model):
     # MaNhaCungCap
     packaging_id = fields.Many2one('packaging', 'Bao bì')
     type_food = fields.Many2one('type.food', 'Loại thức ăn')
-    uom_id = fields.Many2one(
-        'uom.uom',
-        string='Đơn vị tính')
+    # uom_id = fields.Many2one(
+    #     'uom.uom',
+    #     string='Đơn vị tính')

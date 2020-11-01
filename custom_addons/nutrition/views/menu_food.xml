@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="menu_food_tree" model="ir.ui.view">
+        <field name="name">menu.food.tree</field>
+        <field name="model">menu.food</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="name"/>
+                <field name="appetizer"/>
+                <field name="breakfast"/>
+                <field name="soup"/>
+                <field name="meat"/>
+                <field name="after_lunch"/>
+                <field name="fruit"/>
+                <field name="total_student"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="menu_food_view" model="ir.ui.view">
+        <field name="name">menu.food.view</field>
+        <field name="model">menu.food</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="appetizer"/>
+                            <field name="breakfast"/>
+                            <field name="soup"/>
+                            <field name="meat"/>
+                            <field name="after_lunch"/>
+                            <field name="fruit"/>
+                        </group>
+                        <group>
+                            <field name="total_student"/>
+                            <field name="price"/>
+                            <field name="standard_material_id"/>
+                            <field name="is_breakfast"/>
+                            <field name="soup2"/>
+                            <field name="meat2"/>
+                            <field name="after_lunch2"/>
+                            <field name="fruit2"/>
+                            <field name="date_create"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
