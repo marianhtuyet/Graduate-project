@@ -28,6 +28,7 @@ This module will manage and calculate nutrition in food
         'views/modify_menu_food/modify_menu_food_line.xml',
         'menu/menu.xml',
         'data/installer_helper.xml',
+        'data/installer_nutrition.xml',
         'data/ir_cron_data.xml',
     ],
     'installable': True,

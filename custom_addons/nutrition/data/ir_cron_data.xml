@@ -14,4 +14,19 @@
         <field name="code">model.rename_nutrition()</field>
         <field name="nextcall" eval="(datetime.now(pytz.timezone('UTC')) + timedelta(days=1)).strftime('%Y-%m-%d 05:30:00')"/>
     </record>
+    <record id="cron_compute_balance_nutrition" model="ir.cron">
+        <field name="name">Caculate nutrition balance </field>
+        <field name="user_id" eval="1"/>
+        <field name="active">False</field>
+        <field name="priority" eval="10"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="doall" eval="True"/>
+        <field name="numbercall">-1</field>
+        <field name="model_id"
+               ref="nutrition.model_modify_menu_food_line"/>
+        <field name="state">code</field>
+        <field name="code">model._compute_balance_nutrition()</field>
+        <field name="nextcall" eval="(datetime.now(pytz.timezone('UTC')) + timedelta(days=1)).strftime('%Y-%m-%d 05:30:00')"/>
+    </record>
 </odoo>

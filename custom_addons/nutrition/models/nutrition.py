@@ -40,10 +40,5 @@ class Nutrition(models.Model):
     def rename_nutrition(self):
         env_nutrition = self.search([])
         for rec in env_nutrition:
-            print("*" * 80)
-            print('rec.name: ', rec.name)
-            print('rec.name2:  ', rec.name2)
-            print('rec.product_id.name:  ', rec.product_id.name)
-            print('rec.product_id.name:  ', rec.product_id.name2)
             rec.product_id.name = rec.name2
             rec.name = rec.name2

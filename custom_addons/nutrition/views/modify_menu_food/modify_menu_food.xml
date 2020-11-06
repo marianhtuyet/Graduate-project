@@ -55,7 +55,11 @@
                         <page string="CTTD sổ tính tiền ăn">
                             <field name="amount_line_ids"/>
                         </page>
+
                     </notebook>
+                    <group string="Định mức dinh dưỡng">
+                        <field name="standard_check" widget="html"/>
+                    </group>
                 </sheet>
             </form>
         </field>

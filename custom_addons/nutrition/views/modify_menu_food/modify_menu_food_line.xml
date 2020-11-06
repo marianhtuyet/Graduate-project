@@ -8,6 +8,18 @@
                 <field name="nutrition_id"/>
                 <field name="quantity"/>
                 <field name="price"/>
+                <field name="qty_g"/>
+                <field name="amount"/>
+                <field name="qty_eat"/>
+                <field name="constant"/>
+                <field name="qty_buy"/>
+                <field name="protein_a"/>
+                <field name="protein_v"/>
+                <field name="lipit_a"/>
+                <field name="lipit_v"/>
+                <field name="gluco"/>
+                <field name="calo"/>
+                <field name="qty_uom"/>
             </tree>
         </field>
     </record>
@@ -23,6 +35,22 @@
                             <field name="modify_menu_food_id"/>
                             <field name="nutrition_id"/>
                             <field name="quantity"/>
+                            <field name="qty_g"/>
+                            <field name="price"/>
+                            <field name="amount"/>
+                            <field name="qty_eat"/>
+                            <field name="constant"/>
+                            <field name="qty_buy"/>
+
+                        </group>
+                        <group>
+                            <field name="protein_a"/>
+                            <field name="protein_v"/>
+                            <field name="lipit_a"/>
+                            <field name="lipit_v"/>
+                            <field name="gluco"/>
+                            <field name="calo"/>
+                            <field name="qty_uom"/>
                         </group>
                     </group>
                 </sheet>
