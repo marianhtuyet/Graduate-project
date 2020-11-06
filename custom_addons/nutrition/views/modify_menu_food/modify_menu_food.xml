@@ -52,6 +52,9 @@
                         <page string="Chi tiết thực đơn">
                             <field name="line_ids"/>
                         </page>
+                        <page string="CTTD sổ tính tiền ăn">
+                            <field name="amount_line_ids"/>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

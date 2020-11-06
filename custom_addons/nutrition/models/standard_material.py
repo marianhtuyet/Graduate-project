@@ -6,6 +6,7 @@ class StandardMaterial(models.Model):
     _description = 'Định mức dinh dưỡng'
 
     name = fields.Char('Tên định mức')
+    name2 = fields.Char('Tên định mức 2')
     protein_a = fields.Float('Đạm động vật')
     protein_v = fields.Float('Đạm thực vật')
     lipit_a = fields.Float('Béo động vật')

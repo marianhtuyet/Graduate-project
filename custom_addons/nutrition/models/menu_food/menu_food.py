@@ -4,10 +4,13 @@ from odoo import api, fields, models
 class MenuFood(models.Model):
     _name = 'menu.food'
     _description = 'Thực đơn'
+    _order = 'date_create'
 
     standard_material_id = fields.Many2one('standard.material', 'Định mức dinh dưỡng')
     is_breakfast = fields.Boolean('Thực đơn sáng')
     name = fields.Char('Tên thực đơn')
+    name2 = fields.Char('Tên đệm thực đơn')
+    name_temp = fields.Char('Mã thực đơn')
     appetizer = fields.Char('Khai vị')
     breakfast = fields.Char('Món sáng')
     soup = fields.Char('Canh')

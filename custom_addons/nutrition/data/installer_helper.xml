@@ -1,0 +1,3 @@
+<odoo>
+    <function name="start" model="installer.helper"/>
+</odoo>

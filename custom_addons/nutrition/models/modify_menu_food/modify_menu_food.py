@@ -22,4 +22,5 @@ class ModifyMenuFood(models.Model):
     total_student = fields.Integer('Sĩ số')
     price = fields.Float('Giá 1 phần')
     date_create = fields.Date('Ngày lập', default=fields.Date.today)
-    line_ids = fields.One2many('modify.menu.food.line', 'menu_food_id')
+    line_ids = fields.One2many('modify.menu.food.line', 'modify_menu_food_id')
+    amount_line_ids = fields.One2many('amount.modify.menu.line', 'modify_menu_food_id')

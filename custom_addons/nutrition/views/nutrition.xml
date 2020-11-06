@@ -10,6 +10,7 @@
                 <field name="lipit"/>
                 <field name="gluco"/>
                 <field name="calo"/>
+                <field name="ca"/>
                 <field name="photpho"/>
                 <field name="transfer_gam"/>
                 <field name="type_food"/>
@@ -26,12 +27,15 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="ma_tp"/>
+                            <field name="name2"/>
                             <field name="name"/>
                             <field name="constant"/>
                             <field name="protein"/>
                             <field name="lipit"/>
                             <field name="gluco"/>
                             <field name="calo"/>
+                            <field name="ca"/>
                         </group>
                         <group>
                             <field name="photpho"/>

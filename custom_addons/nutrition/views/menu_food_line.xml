@@ -4,7 +4,8 @@
         <field name="name">menu.food.line.tree</field>
         <field name="model">menu.food.line</field>
         <field name="arch" type="xml">
-            <tree editable="bottom">
+            <tree>
+                <field name="menu_food_id"/>
                 <field name="nutrition_id"/>
                 <field name="quantity"/>
             </tree>

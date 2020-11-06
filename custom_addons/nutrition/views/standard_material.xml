@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="name2"/>
                 <field name="protein_a"/>
                 <field name="protein_v"/>
                 <field name="lipit_a"/>
@@ -26,6 +27,7 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="name2"/>
                             <field name="name"/>
                             <field name="protein_a"/>
                             <field name="protein_v"/>

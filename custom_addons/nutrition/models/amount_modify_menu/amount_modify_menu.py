@@ -15,4 +15,4 @@ class AmountModifyMenu(models.Model):
     payment_service = fields.Float('Đã chi dịch vụ')
     exchange_payment = fields.Float('Chênh lệch cuối ngày')
     date_create = fields.Date('Ngày lập', default=fields.Date.today)
-    line_ids = fields.One2many('amount.modify.menu.line', 'menu_food_id')
+

@@ -40,12 +40,7 @@
                             <field name="date_create"/>
                         </group>
                     </group>
-                    <notebook>
-                        <page string="Chi tiết thực đơn">
-                            <field name="line_ids"/>
-                        </page>
 
-                    </notebook>
                 </sheet>
             </form>
         </field>

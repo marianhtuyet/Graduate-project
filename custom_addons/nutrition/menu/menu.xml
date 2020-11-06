@@ -32,25 +32,51 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="standard_material_tree"/>
     </record>
-
+    <!--Thực đơn-->
     <record id="action_menu_food" model="ir.actions.act_window">
         <field name="name">Thực đơn</field>
         <field name="res_model">menu.food</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="menu_food_tree"/>
     </record>
+    <record id="action_menu_food_line" model="ir.actions.act_window">
+        <field name="name">Chi tiết thực đơn</field>
+        <field name="res_model">menu.food.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="menu_food_line_tree"/>
+    </record>
+    <!--    Điều chỉnh thực đơn-->
     <record id="action_part_standard" model="ir.actions.act_window">
         <field name="name">Số phần định mức</field>
         <field name="res_model">part.standard</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="part_standard_tree"/>
     </record>
-     <record id="action_modify_menu_food" model="ir.actions.act_window">
+    <record id="action_modify_menu_food" model="ir.actions.act_window">
         <field name="name">Điều chỉnh thực đơn</field>
         <field name="res_model">modify.menu.food</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="modify_menu_food_tree"/>
     </record>
+     <record id="action_modify_menu_food_line" model="ir.actions.act_window">
+        <field name="name">chi tiết Điều chỉnh thực đơn</field>
+        <field name="res_model">modify.menu.food.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="modify_menu_food_line_tree"/>
+    </record>
+     <record id="action_amount_modify_menu_food" model="ir.actions.act_window">
+        <field name="name">DCTD Sổ tính tiền ăn</field>
+        <field name="res_model">amount.modify.menu</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="amount_modify_menu_tree"/>
+    </record>
+     <record id="action_amount_modify_menu_food_line" model="ir.actions.act_window">
+        <field name="name">CT DCTD Sổ tính tiền ăn</field>
+        <field name="res_model">amount.modify.menu.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="amount_modify_menu_line_tree"/>
+    </record>
+
     <!--    Menu -->
     <menuitem
             id="menu_nutrition_base"
@@ -97,6 +123,14 @@
             action="action_menu_food"
             parent="menu_food_base"
     />
+    <menuitem
+            id="menu_menu_food_line"
+            name="Chi tiết thực đơn"
+            sequence="1"
+            action="action_menu_food_line"
+            parent="menu_food_base"
+    />
+
     <!--    Điều chỉnh thực đơn -->
 
     <menuitem
@@ -106,6 +140,31 @@
             action="action_modify_menu_food"
             parent="menu_modify_food_base"
     />
+    <menuitem
+            id="menu_modify_menu_food_line"
+            name="CT Điều chỉnh thực đơn"
+            sequence="1"
+            action="action_modify_menu_food_line"
+            parent="menu_modify_food_base"
+    />
+
+    <!--    Điều chỉnh thực đơn -->
+
+    <menuitem
+            id="menu_amount_modify_menu_food"
+            name="DCTD Sổ tính tiền ăn"
+            sequence="3"
+            action="action_amount_modify_menu_food"
+            parent="menu_modify_food_base"
+    />
+    <menuitem
+            id="menu_amount_modify_menu_food_line"
+            name="CT DCTD Sổ tính tiền ăn"
+            sequence="4"
+            action="action_amount_modify_menu_food_line"
+            parent="menu_modify_food_base"
+    />
+
     <!--    Configuration-->
     <menuitem
             id="menu_packaging"
