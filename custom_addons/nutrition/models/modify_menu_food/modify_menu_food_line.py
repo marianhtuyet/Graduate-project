@@ -61,7 +61,10 @@ class ModifyMenuFoodLine(models.Model):
                  'modify_menu_food_id.menu_food_id', 'modify_menu_food_id.amount_line_ids',
                  'modify_menu_food_id.total_student')
     def _compute_balance_nutrition(self):
+        print("*"*80)
+        print(len(self))
         for record in self:
+
             line_ids = record.modify_menu_food_id.line_ids
             for rec in line_ids:
                 amount_ids = rec.modify_menu_food_id.amount_line_ids

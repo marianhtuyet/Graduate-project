@@ -55,6 +55,11 @@
                         <page string="CTTD sổ tính tiền ăn">
                             <field name="amount_line_ids"/>
                         </page>
+                        <page string="Khác">
+                            <field name="protein_cal"/>
+                            <field name="limit_cal"/>
+                            <field name="gluco_cal"/>
+                        </page>
 
                     </notebook>
                     <group string="Định mức dinh dưỡng">

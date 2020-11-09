@@ -29,6 +29,9 @@ class ModifyMenuFood(models.Model):
         compute='_compute_standard_check',
         help="Tính toán ra số lượng định mức so với chuẩn của bộ giáo dục đưa ra",
     )
+    protein_cal = fields.Float('Hệ số đạm', default=4)
+    limit_cal = fields.Float('Hệ số béo', default=9)
+    gluco_cal = fields.Float('Hệ số đường', default=4)
 
     @api.depends('line_ids', 'amount_line_ids', 'standard_material_id')
     def _compute_standard_check(self):
@@ -134,7 +137,7 @@ class ModifyMenuFood(models.Model):
                     <td> 26.00</td>
                     <td> 60.00 </td>
                 """
-
+            # p =
             PLG = """"""
             standard = """
                     <td> Định mức 1 ngày </td>

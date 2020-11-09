@@ -33,6 +33,7 @@ class InstallerNutrition(models.TransientModel):
     def recompute_balance_nutrition(self):
         menu_env = self.env["modify.menu.food.line"]
         menus = menu_env.search([])
+
         self.env.add_todo(menu_env._fields["protein_a"], menus)
         self.env.add_todo(menu_env._fields["protein_v"], menus)
         self.env.add_todo(menu_env._fields["qty_g"], menus)
