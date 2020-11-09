@@ -64,13 +64,13 @@ class ModifyMenuFoodLine(models.Model):
         print("*"*80)
         print(len(self))
         for record in self:
-
             line_ids = record.modify_menu_food_id.line_ids
             for rec in line_ids:
                 amount_ids = rec.modify_menu_food_id.amount_line_ids
                 total_student = rec.modify_menu_food_id.total_student
                 qty_buy = qty_eat = 0
                 nutrition_id = rec.nutrition_id
+
                 for line in amount_ids:
                     if line.nutrition_id.name == rec.nutrition_id.name:
                        qty_buy = line.quantity
@@ -80,6 +80,11 @@ class ModifyMenuFoodLine(models.Model):
                 rec.qty_g = 0 if total_student == 0 else qty_eat * 1000 / total_student
                 rec.qty_uom = 0 if total_student == 0 else qty_eat / total_student
                 rec.amount = 0 if total_student == 0 else qty_buy * rec.price / total_student
+                print('-'*80)
+                print('rec: ', rec)
+                print('total_student, qty_buy, nutrition_id', total_student, qty_buy, nutrition_id)
+                print('rec.qty_eat, rec.qty_buy,  rec.qty_g , rec.qty_uom, rec.amount',
+                      rec.qty_eat, rec.qty_buy,  rec.qty_g , rec.qty_uom, rec.amount)
                 if nutrition_id:
                     if nutrition_id.is_fruit:
                         rec.protein_v = 0 if total_student == 0 else \
@@ -90,4 +95,4 @@ class ModifyMenuFoodLine(models.Model):
                         rec.lipit_a = 0 if total_student == 0 else nutrition_id.lipit* qty_eat / total_student
                     rec.gluco = 0 if total_student == 0 else nutrition_id.gluco* qty_eat / total_student
                     rec.calo = 0 if total_student == 0 else nutrition_id.calo* qty_eat / total_student
-            return True
+        return True

@@ -30,12 +30,11 @@ class ModifyMenuFood(models.Model):
         help="Tính toán ra số lượng định mức so với chuẩn của bộ giáo dục đưa ra",
     )
     protein_cal = fields.Float('Hệ số đạm', default=4)
-    limit_cal = fields.Float('Hệ số béo', default=9)
+    lipit_cal = fields.Float('Hệ số béo', default=9)
     gluco_cal = fields.Float('Hệ số đường', default=4)
 
     @api.depends('line_ids', 'amount_line_ids', 'standard_material_id')
     def _compute_standard_check(self):
-        print("*" * 80)
         for rec in self:
             line_ids = rec.line_ids
             standard_id = rec.standard_material_id
@@ -50,7 +49,7 @@ class ModifyMenuFood(models.Model):
                 t_calo += line.calo
                 t_amount += line.amount
             total = """
-                    <td> Tổng cộng</td>
+                    <td style="text-align:left;"><b> Tổng cộng</b></td>
                     <td> {t_protein_a}</td>
                     <td> {t_protein_v}</td>
                     <td> {t_lipit_a}</td>
@@ -59,13 +58,13 @@ class ModifyMenuFood(models.Model):
                     <td> {t_calo}</td>
                     <td> {t_amount}</td>
                 """.format(
-                t_protein_a=t_protein_a,
-                t_protein_v=t_protein_v,
-                t_lipit_a=t_lipit_a,
-                t_lipit_v=t_lipit_v,
-                t_gluco=t_gluco,
-                t_calo=t_calo,
-                t_amount=t_amount
+                t_protein_a="%.2f" % t_protein_a,
+                t_protein_v="%.2f" % t_protein_v,
+                t_lipit_a="%.2f" % t_lipit_a,
+                t_lipit_v="%.2f" % t_lipit_v,
+                t_gluco="%.2f" % t_gluco,
+                t_calo="%.2f" % t_calo,
+                t_amount="%.2f" % t_amount
             )
             p_protein_a = 0 if standard_id.protein_a == 0 else t_protein_a / standard_id.protein_a
             p_protein_v = 0 if standard_id.protein_v == 0 else t_protein_v / standard_id.protein_v
@@ -74,7 +73,7 @@ class ModifyMenuFood(models.Model):
             p_gluco = 0 if standard_id.gluco == 0 else t_gluco / standard_id.gluco
             p_calo = 0 if standard_id.calo == 0 else t_calo / standard_id.calo
             percent = """
-                    <td> Tỷ lệ từng loại % </td>
+                    <td style="text-align:left;"> <b>Tỷ lệ từng loại % </b> </td>
                     <td> {p_protein_a}</td>
                     <td> {p_protein_v}</td>
                     <td> {p_lipit_a}</td>
@@ -82,12 +81,12 @@ class ModifyMenuFood(models.Model):
                     <td> {p_gluco}</td>
                     <td> {p_calo}</td>
                 """.format(
-                p_protein_a=p_protein_a,
-                p_protein_v=p_protein_v,
-                p_lipit_a=p_lipit_a,
-                p_lipit_v=p_lipit_v,
-                p_gluco=p_gluco,
-                p_calo=p_calo,
+                p_protein_a="%.2f" % p_protein_a,
+                p_protein_v="%.2f" % p_protein_v,
+                p_lipit_a="%.2f" % p_lipit_a,
+                p_lipit_v="%.2f" % p_lipit_v,
+                p_gluco="%.2f" % p_gluco,
+                p_calo="%.2f" % p_calo,
             )
             p_protein_a2 = 0 if (t_protein_a + t_protein_v) == 0 else \
                 t_protein_a * 100 / (t_protein_a + t_protein_v)
@@ -99,17 +98,18 @@ class ModifyMenuFood(models.Model):
                 t_lipit_v * 100 / (t_lipit_a + t_lipit_v)
 
             percent_av = """
-                    <td> Động vật thực vật </td>
+                    <td style="text-align:left;"><b> Động vật thực vật </b> </td>
                     <td> {p_protein_a2}</td>
                     <td> {p_protein_v2}</td>
                     <td> {p_lipit_a2}</td>
                     <td> {p_lipit_v2}</td>
-                    
+                    <td/>
+                    <td/>
                 """.format(
-                p_protein_a2=p_protein_a2,
-                p_protein_v2=p_protein_v2,
-                p_lipit_a2=p_lipit_a2,
-                p_lipit_v2=p_lipit_v2
+                p_protein_a2="%.2f" % p_protein_a2,
+                p_protein_v2="%.2f" % p_protein_v2,
+                p_lipit_a2="%.2f" % p_lipit_a2,
+                p_lipit_v2="%.2f" % p_lipit_v2
             )
 
             d_protein = (t_protein_a + t_protein_v)*100/(
@@ -119,28 +119,44 @@ class ModifyMenuFood(models.Model):
             d_calo = t_calo*100/standard_id.calo
 
             rate_ok = """
-                <td> Tỉ lệ đạt </td>
-                <td> {d_protein}</td>
-                <td> {d_lipit}</td>
+                <td style="text-align:left;"> <b> Tỉ lệ đạt </b></td>
+                <td colspan="2"> {d_protein}</td>
+                <td colspan="2"> {d_lipit}</td>
                 <td> {d_gluco}</td>
                 <td> {d_calo}</td>
                     """.format(
-                d_protein=d_protein,
-                d_lipit=d_lipit,
-                d_gluco=d_gluco,
-                d_calo=d_calo
+                d_protein="%.2f" % d_protein,
+                d_lipit="%.2f" % d_lipit,
+                d_gluco="%.2f" % d_gluco,
+                d_calo="%.2f" % d_calo
             )
 
             apply = """
-                    <td> Định mức 1 ngày </td>
-                    <td> 14.00</td>
-                    <td> 26.00</td>
+                    <td style="text-align:left;"> <b>Cơ cấu áp dụng </b></td>
+                    <td colspan="2"> 14.00</td>
+                    <td colspan="2"> 26.00</td>
                     <td> 60.00 </td>
+                    <td/>
+                    
                 """
-            # p =
-            PLG = """"""
+            total_p = (t_protein_v + t_protein_a) * rec.protein_cal
+            total_l = (t_lipit_v + t_lipit_a) * rec.lipit_cal
+            total_g = t_gluco * rec.gluco_cal
+            total_calo = total_p + total_l + total_g
+            p = l = g = 0
+            if total_calo != 0:
+                p = total_p*100/total_calo
+                l = total_l*100/total_calo
+                g = total_g*100/total_calo
+            PLG = """
+                 <td style="text-align:left;"><b>Tỷ lệ P - L - G </b></td>
+                    <td colspan="2"> {p}</td>
+                    <td colspan="2"> {l}</td>
+                    <td colspan="2"> {g}</td>
+                    <td/>
+            """.format(p="%.2f" % p, l="%.2f" % l, g="%.2f" % g)
             standard = """
-                    <td> Định mức 1 ngày </td>
+                    <td style="text-align:left;"> <b>Định mức 1 ngày</b></td>
                     <td> {p_protein_a}</td>
                     <td> {p_protein_v}</td>
                     <td> {p_lipit_a}</td>
@@ -148,37 +164,40 @@ class ModifyMenuFood(models.Model):
                     <td> {p_gluco}</td>
                     <td> {p_calo}</td>
                 """.format(
-                p_protein_a=standard_id.protein_a,
-                p_protein_v=standard_id.protein_v,
-                p_lipit_a=standard_id.lipit_a,
-                p_lipit_v=standard_id.lipit_v,
-                p_gluco=standard_id.gluco,
-                p_calo=standard_id.calo,
+                p_protein_a="%.2f" % standard_id.protein_a,
+                p_protein_v="%.2f" % standard_id.protein_v,
+                p_lipit_a="%.2f" % standard_id.lipit_a,
+                p_lipit_v="%.2f" % standard_id.lipit_v,
+                p_gluco="%.2f" % standard_id.gluco,
+                p_calo="%.2f" % standard_id.calo,
             )
 
 
             content = """
-                <div style="padding: 20px; font-family: Verdana, Geneva, sans-serif;">
-                    <table style="background-color: #D2D2D2; height: 50px;
+                <div style="padding: 20px; font-family: Verdana, Geneva, sans-serif; text-align:center;">
+                    <table style="background-color: white;
                     border-collapse: collapse; width: 100%;">
+                    <thead  style="background-color: #D2D2D2;">
                         <tr>
-                            <th style="width: 200px;">
-                            <th style="width: 200px; " colspan="2">Đạm (g)</th>
-                            <th style="width: 200px; " colspan="2">Béo (g)</th>
-                            <th style="width: 100px; ">Đường (g)</th>
-                            <th style="width: 100px; ">Calo (g)</th>
-                            <th style="width: 120px; ">Tiền</th>
+                            <th style="width=200px"/>
+                            <th style="" colspan="2">Đạm (g)</th>
+                            <th style="" colspan="2">Béo (g)</th>
+                            <th style="">Đường (g)</th>
+                            <th style="">Calo (g)</th>
+                            <th style="">Tiền</th>
                         </tr>
                         <tr>
-                            <th/>
-                            <th style="width: 100px; ">Động vật (g)</th>
-                            <th style="width: 100px; ">Thực vật (g)</th>
-                            <th style="width: 100px; ">Động vật (g)</th>
-                            <th style="width: 100px; ">Thực vật (g)</th>
+                            <th style="width=200px"/>
+                            <th style="">Động vật (g)</th>
+                            <th style="">Thực vật (g)</th>
+                            <th style="">Động vật (g)</th>
+                            <th style="">Thực vật (g)</th>
                             <th/>
                             <th/>
                             <th/>
                         </tr>
+                    </thead>
+                    <tbody>
                         <tr>
                             {total}
                         </tr>
@@ -200,8 +219,9 @@ class ModifyMenuFood(models.Model):
                         <tr>
                             {PLG}
                         </tr>
+                    </tbody>
+                    <tfood/>
                     </table>
-                    <br/>
                 </div>
                 """.format(
                 total=total,

@@ -15,10 +15,11 @@ class InstallerNutrition(models.TransientModel):
             "nutrition.installer",
             [
                 "update_name_nutrition",
+                "recompute_balance_nutrition"
             ],
 
         )
-        self.recompute_balance_nutrition()
+
         return True
 
     @api.multi

@@ -3,4 +3,9 @@ access_nutrition,access_nutrition,model_nutrition,base.group_user,1,1,1,1
 access_packaging,access_packaging,model_packaging,base.group_user,1,1,1,1
 access_type_food,access_type_food,model_type_food,base.group_user,1,1,1,1
 access_standard_material,access_standard_material,model_standard_material,base.group_user,1,1,1,1
-access_modify
+access_modify_menu_food,access_modify_menu_food,model_modify_menu_food,base.group_user,1,1,1,1
+access_modify_menu_food_line,access_modify_menu_food_line,model_modify_menu_food_line,base.group_user,1,1,1,1
+access_amount_modify_menu,access_amount_modify_menu,model_amount_modify_menu,base.group_user,1,1,1,1
+access_amount_modify_menu_line,access_amount_modify_menu_line,model_amount_modify_menu_line,base.group_user,1,1,1,1
+access_part_standard,access_part_standard,model_part_standard,base.group_user,1,1,1,1
+access_part_standard_line,access_part_standard_line,model_part_standard_line,base.group_user,1,1,1,1
