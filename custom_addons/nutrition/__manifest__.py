@@ -8,7 +8,7 @@ Nutrition
 This module will manage and calculate nutrition in food
         """,
     'depends': [
-        'report_xlsx', 'uom', 'product'
+        'report_xlsx', 'uom', 'product', 'Caculate_score'
     ],
     'data': [
 
@@ -32,6 +32,8 @@ This module will manage and calculate nutrition in food
         'data/installer_helper.xml',
         'data/installer_nutrition.xml',
         'data/ir_cron_data.xml',
+        'report/nutrition_balance_xlsx.xml',
+        'wizard/balance_weekly_wizard.xml',
     ],
     'installable': True,
     'application': True

@@ -1,0 +1,23 @@
+<odoo>
+
+    <record id="nutrition_balance_wizard_view" model="ir.ui.view">
+        <field name="name">nutrition.balance.wizard.view</field>
+        <field name="model">nutrition.balance.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="nutrition_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button name="print_xlsx_report"
+                            type="object"
+                            string="Print"
+                            class="oe_highlight"/>
+                    <button special="cancel" string="Cancel" class="oe_right"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

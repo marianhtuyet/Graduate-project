@@ -1,0 +1,11 @@
+<odoo>
+    <report
+        id="nutrition_balance_xlsx"
+        model="nutrition.balance.wizard"
+        string="Print"
+        report_type="xlsx"
+        name="nutrition.nutrition_balance_xlsx"
+        file="nutrition.nutrition_balance_xlsx"
+        attachment_use="False"
+    />
+</odoo>

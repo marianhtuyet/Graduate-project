@@ -181,6 +181,19 @@
             action="action_amount_modify_menu_food_line"
             parent="menu_modify_food_base"
     />
+    <act_window
+            id="nutrition.action_nutrition_balance_wizard"
+            name="Cân bằng dinh dưỡng"
+            res_model="nutrition.balance.wizard"
+            target="new" multi="True"
+            view_mode="form"
+    />
+
+    <menuitem id="menu_nutrition_balance"
+              name="Báo cáo khẩu phần tuần"
+              parent="menu_modify_food_base"
+              action="nutrition.action_nutrition_balance_wizard"
+              sequence="5"/>
 
     <!--   Món ăn-->
     <menuitem
@@ -234,4 +247,6 @@
             action="action_part_standard"
             parent="menu_configuration"
     />
+
+
 </odoo>
