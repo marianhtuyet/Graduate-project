@@ -8,3 +8,4 @@ class MenuFoodLine(models.Model):
     menu_food_id = fields.Many2one('menu.food')
     nutrition_id = fields.Many2one('nutrition')
     quantity = fields.Float('Lượng khẩu phần đơn vị tính', digits=(32,12))
+

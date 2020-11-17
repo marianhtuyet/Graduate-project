@@ -61,8 +61,6 @@ class ModifyMenuFoodLine(models.Model):
                  'modify_menu_food_id.menu_food_id', 'modify_menu_food_id.amount_line_ids',
                  'modify_menu_food_id.total_student')
     def _compute_balance_nutrition(self):
-        print("*"*80)
-        print(len(self))
         for record in self:
             line_ids = record.modify_menu_food_id.line_ids
             for rec in line_ids:
@@ -80,11 +78,6 @@ class ModifyMenuFoodLine(models.Model):
                 rec.qty_g = 0 if total_student == 0 else qty_eat * 1000 / total_student
                 rec.qty_uom = 0 if total_student == 0 else qty_eat / total_student
                 rec.amount = 0 if total_student == 0 else qty_buy * rec.price / total_student
-                print('-'*80)
-                print('rec: ', rec)
-                print('total_student, qty_buy, nutrition_id', total_student, qty_buy, nutrition_id)
-                print('rec.qty_eat, rec.qty_buy,  rec.qty_g , rec.qty_uom, rec.amount',
-                      rec.qty_eat, rec.qty_buy,  rec.qty_g , rec.qty_uom, rec.amount)
                 if nutrition_id:
                     if nutrition_id.is_fruit:
                         rec.protein_v = 0 if total_student == 0 else \

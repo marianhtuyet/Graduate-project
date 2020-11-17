@@ -1,5 +1,6 @@
 from . import amount_modify_menu
 from . import menu_food
+from . import meal
 from . import modify_menu_food
 from . import installer_helper
 from . import installer_nutrition

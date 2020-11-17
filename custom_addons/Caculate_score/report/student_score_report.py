@@ -14,7 +14,6 @@ class StudyclassReportXlsxTemplate(models.AbstractModel):
         self.wb = workbook
 
         self.obj = objs
-        print('objs', objs)
         self.sheet_name = 'Transcript of record'
         self.sheet = self.wb.add_worksheet(self.sheet_name)
         self.sheet.insert_image(
@@ -128,7 +127,6 @@ class StudyclassReportXlsxTemplate(models.AbstractModel):
     def generate_one_semmeter(
             self, line_ids, list_column, start_line, max_row_count=0, is_last=False,
             total_units=0, avg_total_unit=0):
-        print('start_line:   ', start_line)
         self.row_pos = start_line
         total_unit = 0
         for line in line_ids:

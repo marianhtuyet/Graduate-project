@@ -28,7 +28,6 @@ class StudentStudent(models.Model):
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
         args = args or []
         invoice_ids = []
-        print("*"*80)
         # domain = args + ['|', ('custom_name', operator, name), ('customize_code', operator, name)]
         if operator == 'ilike' and not (name or '').strip():
             domain = []

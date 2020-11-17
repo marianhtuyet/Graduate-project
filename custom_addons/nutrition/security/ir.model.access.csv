@@ -9,3 +9,5 @@ access_amount_modify_menu,access_amount_modify_menu,model_amount_modify_menu,bas
 access_amount_modify_menu_line,access_amount_modify_menu_line,model_amount_modify_menu_line,base.group_user,1,1,1,1
 access_part_standard,access_part_standard,model_part_standard,base.group_user,1,1,1,1
 access_part_standard_line,access_part_standard_line,model_part_standard_line,base.group_user,1,1,1,1
+access_meal_food,access_meal_food,model_meal_food,base.group_user,1,1,1,1
+access_meal_food_line,access_meal_food_line,model_meal_food_line,base.group_user,1,1,1,1

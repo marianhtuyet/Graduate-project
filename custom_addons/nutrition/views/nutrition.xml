@@ -65,4 +65,19 @@
             </form>
         </field>
     </record>
+    <record id="nutrition_view_search" model="ir.ui.view">
+        <field name="name">nutrition.search</field>
+        <field name="model">nutrition</field>
+        <field name="arch" type="xml">
+            <search string="Dinh dưỡng">
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="type_food"/>
+<!--                <group expand="1" string="Group By">-->
+<!--                    <filter string="Pivot" name="pivot_by"-->
+<!--                            context="{'pivot_row_groupby': ['product_id'], 'pivot_column_groupby': ['date:week'],'pivot_measures': ['quantity']}"/>-->
+<!--                    <filter string="Graph" name="graph_by" context="{'graph_groupbys': ['date:week', 'product_id']}"/>-->
+<!--                </group>-->
+            </search>
+        </field>
+    </record>
 </odoo>

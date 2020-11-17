@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="meal_food_line_tree" model="ir.ui.view">
+        <field name="name">meal.food.line.tree</field>
+        <field name="model">meal.food.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nutrition_id"/>
+                <field name="quantity"/>
+                <field name="protein_a"/>
+                <field name="protein_v"/>
+                <field name="lipit_a"/>
+                <field name="lipit_v"/>
+                <field name="gluco"/>
+                <field name="calo"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="meal_food_line_view" model="ir.ui.view">
+        <field name="name">meal.food.line.view</field>
+        <field name="model">meal.food.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="meal_food_id"/>
+                            <field name="nutrition_id"/>
+                            <field name="quantity"/>
+                            <field name="protein_a"/>
+                            <field name="protein_v"/>
+                            <field name="lipit_a"/>
+                            <field name="lipit_v"/>
+                            <field name="gluco"/>
+                            <field name="calo"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
