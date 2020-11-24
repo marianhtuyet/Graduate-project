@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="menu_automatic_weekly_line_tree" model="ir.ui.view">
+        <field name="name">menu.automatic.weekly.line.tree</field>
+        <field name="model">menu.automatic.weekly.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="day_in_week"/>
+                <field name="breakfast1"/>
+                <field name="breakfast2"/>
+                <field name="main_lunch"/>
+                <field name="soup1"/>
+                <field name="soup2"/>
+                <field name="lunch"/>
+                <field name="tea1"/>
+                <field name="tea2"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="menu_automatic_weekly_line_view" model="ir.ui.view">
+        <field name="name">menu.automatic.weekly.line.view</field>
+        <field name="model">menu.automatic.weekly.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="calculate_menu_daily"
+                            string="Calculate menu daily"
+                            type="object"
+                            class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="day_in_week"/>
+                            <field name="breakfast1"/>
+                            <field name="breakfast2"/>
+                            <field name="main_lunch"/>
+                            <field name="soup1"/>
+                        </group>
+                        <group>
+                            <field name="soup2"/>
+                            <field name="lunch"/>
+                            <field name="tea1"/>
+                            <field name="tea2"/>
+                            <field name="menu_automatic_weekly_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

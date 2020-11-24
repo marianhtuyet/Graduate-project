@@ -10,7 +10,9 @@ class NutritionReportXlsxTemplate(models.AbstractModel):
         self.company = self.env.user.company_id
         self.date_from = objs.date_from
         self.date_to = objs.date_to
-
+        self.line_ids = self.env['modify.menu.food'].search(
+            ['date_create', '>=', self.date_from], ['date_create', '<=', self.date_to])
+        print(self.line_ids)
         self.wb = workbook
         self.obj = objs[0]
         self.sheet_name = 'Balance'

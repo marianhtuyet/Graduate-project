@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="menu_automatic_weekly_tree" model="ir.ui.view">
+        <field name="name">menu.automatic.weekly.tree</field>
+        <field name="model">menu.automatic.weekly</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="menu_automatic_weekly_view" model="ir.ui.view">
+        <field name="name">menu.automatic.weekly.view</field>
+        <field name="model">menu.automatic.weekly</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Detail Food">
+                            <field name="line_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
