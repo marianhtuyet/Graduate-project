@@ -5,6 +5,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="kfa-12" />
+    <orderEntry type="module" module-name="ga_exams_scheduling-master" />
+    <orderEntry type="module" module-name="fast_extension-master" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />

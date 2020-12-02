@@ -50,3 +50,4 @@ config/server.conf
 __pycache__/
 odoo.conf
 /var/
+.idea

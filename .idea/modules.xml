@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Desktop/fast_extension-master/.idea/fast_extension-master.iml" filepath="$USER_HOME$/Desktop/fast_extension-master/.idea/fast_extension-master.iml" />
+      <module fileurl="file://D:/AnhTuyet/BaiHoc/HK2-2019-2020/Timeline/example_code/ga_exams_scheduling-master/.idea/ga_exams_scheduling-master.iml" filepath="D:/AnhTuyet/BaiHoc/HK2-2019-2020/Timeline/example_code/ga_exams_scheduling-master/.idea/ga_exams_scheduling-master.iml" />
       <module fileurl="file://D:/AnhTuyet/BaiHoc/HK2-2019-2020/Timeline/kfa-12/.idea/kfa-12.iml" filepath="D:/AnhTuyet/BaiHoc/HK2-2019-2020/Timeline/kfa-12/.idea/kfa-12.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/odoo_project.iml" filepath="$PROJECT_DIR$/.idea/odoo_project.iml" />
     </modules>
