@@ -5,7 +5,7 @@ from odoo import api, fields, models
 class MenuAutomaticWeeklyLine(models.Model):
     _name = 'menu.automatic.weekly.line'
 
-    menu_automatic_weekly_id = fields.Many2one('menu.automatic.weekly')
+    menu_automatic_weekly_id = fields.Many2one('menu.automatic.weekly', ondelete='cascade')
     day_in_week = fields.Integer()
     breakfast1 = fields.Many2one(
         'meal.food',

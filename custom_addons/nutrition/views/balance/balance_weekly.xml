@@ -29,6 +29,9 @@
                         <page string="Detail Food">
                             <field name="line_ids"/>
                         </page>
+                        <page string="Detail nutrition">
+                            <field name="line_nutrition_ids"/>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

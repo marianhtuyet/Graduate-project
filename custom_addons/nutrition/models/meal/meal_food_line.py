@@ -5,8 +5,9 @@ class MealFoodLine(models.Model):
     _name = 'meal.food.line'
     _description = 'Chi tiết món ăn'
 
-    meal_food_id = fields.Many2one('meal.food')
+    meal_food_id = fields.Many2one('meal.food', ondelete='cascade')
     nutrition_id = fields.Many2one('nutrition')
+    menu_automatic_id = fields.Many2one('menu.automatic.weekly', ondelete='cascade')
     quantity = fields.Float('Lượng khẩu phần phù hợp với 1 trẻ', digits=(32,12), default=100)
     protein_a = fields.Float(
         'Đạm động vật',

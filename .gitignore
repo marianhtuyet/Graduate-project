@@ -49,3 +49,4 @@ config/server.conf
 /.vscode/
 __pycache__/
 odoo.conf
+/var/

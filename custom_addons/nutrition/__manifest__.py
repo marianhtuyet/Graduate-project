@@ -34,6 +34,7 @@ This module will manage and calculate nutrition in food
         'data/installer_helper.xml',
         'data/installer_nutrition.xml',
         'data/ir_cron_data.xml',
+        'data/ir_config_data.xml',
         'report/nutrition_balance_xlsx.xml',
 
         'wizard/balance_weekly_wizard.xml',
