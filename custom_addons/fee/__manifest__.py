@@ -9,6 +9,7 @@ This module will save, edit, create new record about fee of student
         """,
     'depends':['school', 'web'],
     'data': [
+        'security/fee_security.xml',
         'security/ir.model.access.csv',
         'report/report_fee.xml',
         'report/report_fee_notify.xml',

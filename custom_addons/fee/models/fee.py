@@ -97,7 +97,7 @@ class Fee(models.Model):
                 line.amount = line.price * line.count_date if line.fee_detail.type_fee == 1 else line.amount
                 total += line.amount
             rec.total_amount = total
-            rec.total_submit = (total)*(1 - rec.reduce_code if rec.reduce_code != 0 else 1)
+            rec.total_submit = (total)*(1 - rec.reduce_code/100 if rec.reduce_code != 0 else 1)
 
 
 

@@ -1,6 +1,7 @@
 from datetime import date
-from odoo import models, fields, api
+from odoo import _, api, fields, models
 from odoo.osv import expression
+from odoo.exceptions import UserError
 
 
 class StudentStudent(models.Model):
@@ -37,3 +38,9 @@ class StudentStudent(models.Model):
         journal_ids = self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
         return self.browse(journal_ids).name_get()
 
+    def unlink(self):
+        fees = self.env['student.fee'].search([('student_id', 'in', self.ids)])
+        if fees:
+            raise UserError(_('Students have fee, cannot delete.'))
+        # With the non plannified picking, draft moves could have some move lines.
+        return super(StudentStudent, self).unlink()

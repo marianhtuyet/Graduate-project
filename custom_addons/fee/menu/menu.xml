@@ -31,7 +31,7 @@
             id="menu_fee_view_base"
             name="Fee"
             sequence="2"
-            groups="base.group_user"
+            groups="fee.group_school_vice_principal,fee.group_school_principal,fee.group_school_receiption"
             web_icon="fee,static/description/fee.png"
     />
 
@@ -41,7 +41,7 @@
             sequence="1"
             action="action_fee_basic"
             parent="menu_fee_view_base"
-            groups="base.group_user"
+            groups="fee.group_school_vice_principal,fee.group_school_principal,fee.group_school_receiption"
             web_icon="Caculate_score,static/description/icon.png"
     />
     <menuitem
@@ -50,7 +50,7 @@
             sequence="2"
             action="action_fee_detail"
             parent="menu_fee_view_base"
-            groups="base.group_user"
+            groups="fee.group_school_vice_principal,fee.group_school_principal,fee.group_school_receiption"
     />
     <menuitem
             id="menu_fee_reduce_view"
@@ -58,7 +58,7 @@
             sequence="3"
             action="action_fee_reduce"
             parent="menu_fee_view_base"
-            groups="base.group_user"
+            groups="fee.group_school_vice_principal,fee.group_school_principal,fee.group_school_receiption"
     />
     <menuitem
             id="menu_fee_price_view"
@@ -66,6 +66,13 @@
             sequence="4"
             action="action_fee_price"
             parent="menu_fee_view_base"
-            groups="base.group_user"
+            groups="fee.group_school_vice_principal,fee.group_school_principal,fee.group_school_receiption"
     />
+    <menuitem
+            id="menu_hidden"
+            name="Menu_hidden"
+            sequence="5"
+
+    />
+
 </odoo>

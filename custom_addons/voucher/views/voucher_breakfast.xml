@@ -48,7 +48,7 @@
                         <page string="Thông tin chi tiết phiếu sáng">
                             <field name="line_ids">
                                 <tree editable="Bottom">
-                                    <field name="ingredient_id"/>
+                                    <field name="nutrition_id"/>
                                     <field name="uom_id"/>
                                     <field name="quantity"/>
                                     <field name="price"/>
@@ -76,6 +76,9 @@
         <field eval="10" name="priority"/>
         <field name="arch" type="xml">
             <search>
+                <field name="name_food"/>
+                <field name="date_create"/>
+                <field name="month_create"/>
                 <group string='Group by...'>
                     <filter string='Tháng' name="month_create_group" domain="[]"
                             context="{'group_by': 'month_create'}"/>

@@ -12,11 +12,11 @@ class VoucherBreakfastline(models.Model):
     quantity = fields.Float('Số lượng')
     price = fields.Monetary(string='Đơn giá', currency_field='currency_id')
     amount = fields.Monetary(string='Thành tiền', currency_field='currency_id', compute='_compute_amount')
-    ingredient_id = fields.Many2one('ingredient', 'Tên loại thực phẩm')
+    nutrition_id = fields.Many2one('nutrition', 'Tên loại thực phẩm')
     uom_id = fields.Many2one(
         'uom.uom',
         string='Unit of Measure',
-        related='ingredient_id.uom_id',
+        related='nutrition_id.uom_id',
         readonly=False
     )
 

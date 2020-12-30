@@ -56,9 +56,15 @@ class SchoolTeacher(models.Model):
                      'login': teacher_id.work_email,
                      'email': teacher_id.work_email,
                      }
+        print("*" * 80)
         ctx_vals = {'teacher_create': True,
-                    'school_id': teacher_id.school_id.company_id.id}
+                    'school_id': teacher_id.school_id.company_id.id,
+                    'company_id': self.env.company.id
+                    }
         user_id = user_obj.with_context(ctx_vals).create(user_vals)
+
+        print('user_id:   ', user_id)
+        print('user_id.company_id:  ', user_id.company_id)
         teacher_id.employee_id.write({'user_id': user_id.id})
         if vals.get('is_parent'):
             self.parent_crt(teacher_id)

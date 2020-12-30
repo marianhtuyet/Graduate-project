@@ -64,9 +64,8 @@ class StudentStudent(models.Model):
             start = self.date_of_birth
             age_calc = ((current_dt - start).days / 365)
             # Check if age less than 5 years
-            if age_calc < 5:
-                raise ValidationError(_('''Age of student should be greater
-                than 5 years!'''))
+            if age_calc < 3 or age_calc > 5:
+                raise ValidationError(_('''Age of student should be from 3 to 5'''))
 
     @api.model
     def create(self, vals):

@@ -4,10 +4,22 @@ from itertools import chain
 from odoo import api, fields, models
 import random
 import logging
-import unidecode
+# import unidecode
 from deap import base
 from deap import creator
 from deap import tools
+
+import math
+import random
+
+from itertools import repeat
+
+from urllib3.connectionpool import xrange
+
+try:
+    from collections.abc import Sequence
+except ImportError:
+    from collections import Sequence
 # models.TransientModel
 
 
@@ -19,10 +31,10 @@ DAYS = 5
 
 # Genetic algorithm variables
 POPULATION_COUNT = 1000
-GENERATIONS_NUMBER = 100
+GENERATIONS_NUMBER = 1000
 CROSSOVER_PROBABILITY = 0.2
-MUTATION_PROBABILITY = 0.1
-MUTATION_CHANGE_EXAM_PROBABILITY = 0.1
+MUTATION_PROBABILITY = 0.5
+MUTATION_CHANGE_EXAM_PROBABILITY = 0.5
 
 available_timeslots = DAYS * timeslots_per_day
 
@@ -32,7 +44,7 @@ STUDENT_TAKING_MORE_THAN_TWO_EXAMS_IN_ONE_DAY = 10
 STUDENT_TAKING_EXAMS_ONE_AFTER_ANOTHER = 5
 STUDENT_TAKING_TWO_EXAMS_IN_ONE_DAY = 4
 meal_not_right = 1000
-meal_enough_nutrition = 10000
+meal_enough_nutrition = 1000
 meal1 =5
 daily_meal = [_ for _ in range(10)]
 # Maps year to list of students (each student is represented as a list of exams)
@@ -137,10 +149,7 @@ class MenuAutomaticWeekly(models.Model):
         punishments += exam_after_another * STUDENT_TAKING_EXAMS_ONE_AFTER_ANOTHER
         punishments += more_than_two_exams_at_one_day * STUDENT_TAKING_MORE_THAN_TWO_EXAMS_IN_ONE_DAY
         punishments += two_exams_at_one_day * STUDENT_TAKING_TWO_EXAMS_IN_ONE_DAY
-        if inverse:
-            return 1.0 / (1.0 + punishments),
-        else:
-            is_valid = two_exams_at_once == 0
+
         meals = self.env['meal.food'].search([])
         fixed_meal = meals.filtered(lambda m: ('Cố định') in m.name)
         list_meals = []
@@ -154,8 +163,6 @@ class MenuAutomaticWeekly(models.Model):
             list_meals.append(meals[individual[4 + i * 10]])
             list_meals.append(meals[individual[1 + i * 10]])
             list_meals.append(meals[individual[6 + i * 10]])
-
-
         for line in list_meals:
             for nutrition in line.line_ids:
                 list_meal_food_line_ids.append(nutrition)
@@ -165,11 +172,21 @@ class MenuAutomaticWeekly(models.Model):
                 list_meal_food_line_ids.append(line)
         p, l, g = self._compute_standard_check(list_meal_food_line_ids)
 
-        if p > 12 and p < 20 and 30 > l > 23 and 65 > g > 60:
-            logging.info("2"*100)
-            punishments -= meal_enough_nutrition
+        punishments += 100 * meal_enough_nutrition
+        if p > 14 and p < 16 and 29 > l > 24 and 65 > g > 60:
+            punishments -= 100 * meal_enough_nutrition
+        if 14 <= p <= 16:
+            punishments -= (14) * meal_enough_nutrition
+        if 24 <= l <= 29:
+            punishments -= (26) * meal_enough_nutrition
+        if 60 <= g <= 65:
+            punishments -= (60) * meal_enough_nutrition
+        if punishments < 0:
+            punishments = 0
+        if inverse:
+            return 1.0 / (1.0 + punishments),
         else:
-            punishments += meal_enough_nutrition
+            is_valid = two_exams_at_once == 0
         return punishments, is_valid, {
             "two exams at once": two_exams_at_once,
             "exam after another": exam_after_another,
@@ -280,8 +297,9 @@ class MenuAutomaticWeekly(models.Model):
         # tạo ra tuple của 2 thằng ngẫu nhiên. sử dụng random int của python
         logging.info('available_timeslots:  {}'.format(available_timeslots))
         logging.info('mut_change_exam_prob:  {}'.format(mut_change_exam_prob))
-        toolbox.register("mutate", tools.mutUniformInt, low=0, up=available_timeslots - 1, indpb=mut_change_exam_prob)
-
+        # toolbox.register("mutate", tools.mutUniformInt, low=0, up= 1, indpb=mut_change_exam_prob)
+        toolbox.register("mutate", tools.mutUniformInt, low=0, up= 1, indpb=mut_change_exam_prob)
+        # toolbox.register("mutate", tools.mutShuffleIndexes, indpb=mut_change_exam_prob)
         toolbox.register("evaluate", evaluate_func)
         # gọi hàm evaluate_func
 
@@ -298,15 +316,24 @@ class MenuAutomaticWeekly(models.Model):
         # tập hợp mẫu tạo ra để chọn các cá thể, trong naỳ có 50 phần tử, mỗi phần tử có len=14.
         best_ever = pop[0]
         # Calculate fitness for first generation, chọn ra 100 cá thể, lấy cá thể tốt nhất
+        list_pop = []
+        list_best_ever = []
         for ind in pop:
             ind.fitness.values = toolbox.evaluate(ind)
+            list_pop.append((ind, ind.fitness.values))
             if ind.fitness.values > best_ever.fitness.values:
                 best_ever = toolbox.clone(ind)
+
+        list_pop.sort(key=lambda x:x[1], reverse=True)
+        for i in range(50):
+            list_best_ever.append(list_pop[i][0])
+
         # Lai ghép 50 thế hệ
         logging.info("Algorithm start")
 
         for gen in range(generations_number):
-            offspring = toolbox.select(pop, len(pop))
+        # while best_ever.fitness.values[0] < 0.02:
+            offspring = toolbox.select(list_best_ever, len(list_best_ever))
             # Clone the selected individuals
             # (nhân bản, set offspring = với pop, lấy 100 phần tử từ pop
             offspring = list(map(toolbox.clone, offspring))
@@ -327,7 +354,23 @@ class MenuAutomaticWeekly(models.Model):
                 self.check_ind(mutant)
                 if random.random() < mut_prob:  # mut_prob = 0.1 cái này dùng để giới hạn lại số lần đột biến
                     logging.info('mutant:  {}'.format( mutant))
-                    toolbox.mutate(mutant)
+                    # toolbox.mutate(mutant)
+                    self.Mutate_new(mutant, low = 0, up = 1, indpb = mut_change_exam_prob,
+                                    meals1_indexes=max(meals1_indexes),
+                                    meals2_indexes=max(meals2_indexes),
+                                    meals3_indexes=max(meals3_indexes),
+                                    meals4_indexes=max(meals4_indexes),
+                                    meals5_indexes=max(meals5_indexes)
+                                    )
+                    print('mutant:  {}'.format( mutant))
+                    print('toolbox.mutate(mutant):  ',
+                          self.Mutate_new(mutant, low = 0, up = 1, indpb = mut_change_exam_prob,
+                                          meals1_indexes=max(meals1_indexes),
+                                          meals2_indexes=max(meals2_indexes),
+                                          meals3_indexes=max(meals3_indexes),
+                                          meals4_indexes=max(meals4_indexes),
+                                          meals5_indexes=max(meals5_indexes)
+                                          ))
                     up = available_timeslots - 1
                     indpb = mut_change_exam_prob
                     del mutant.fitness.values
@@ -336,6 +379,7 @@ class MenuAutomaticWeekly(models.Model):
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
             # tìm những cá thể không có fitness, là những cá thể đã biến đổi trước đó (lai hoặc đột biến)
             fitnesses = toolbox.map(toolbox.evaluate, invalid_ind)
+            print('fitnesses 2:  ', list(fitnesses))
             # tính fitness cho các cá thể đó lưu lại thành 1 danh sách
             for ind, fit in zip(invalid_ind, fitnesses):
                 ind.fitness.values = fit
@@ -359,7 +403,6 @@ class MenuAutomaticWeekly(models.Model):
             logging.info('meals:  {}'.format( meals))
             type_food = ''
             for index in ind:
-
                 if meals[index].is_breakfast == 1:
                     type_food = 'Sáng: '
                 if meals[index].is_brunch == 1:
@@ -444,6 +487,11 @@ class MenuAutomaticWeekly(models.Model):
             l = total_l * 100 / total_calo
             g = total_g * 100 / total_calo
         logging.info("*"*80)
+        print("*"*80)
+        print('total_p, total_l, total_g, total_calo:  {} {} {} {}'.format(total_p, total_l, total_g, total_calo))
+        print('p:  ', p)
+        print('l:  ', l)
+        print('g:  ', g)
         logging.info('total_p, total_l, total_g, total_calo:  {} {} {} {}'.format(total_p, total_l, total_g, total_calo))
         logging.info('p: {}'.format(p))
         logging.info('l: {}'.format(l))
@@ -466,3 +514,51 @@ class MenuAutomaticWeekly(models.Model):
             'res_id': automatic_menu.id,
             'view_id': view_id,
         }
+
+    def Mutate_new(self, individual, low, up, indpb, meals1_indexes, meals2_indexes, meals3_indexes, meals4_indexes, meals5_indexes):
+
+        """Mutate an individual by replacing attributes, with probability *indpb*,
+        by a integer uniformly drawn between *low* and *up* inclusively.
+        :param individual: :term:`Sequence <sequence>` individual to be mutated.
+        :param low: The lower bound or a :term:`python:sequence` of
+                    of lower bounds of the range from which to draw the new
+                    integer.
+        :param up: The upper bound or a :term:`python:sequence` of
+                   of upper bounds of the range from which to draw the new
+                   integer.
+        :param indpb: Independent probability for each attribute to be mutated.
+        :returns: A tuple of one individual.
+        """
+        size = len(individual)
+        low = list(repeat(0, size))
+        up = list(repeat(0, size))
+        # Tạo các phần tử Sáng, xế, canh mặn xào trong 1 khoảng xác định. tương tự như individual
+        for index, x in enumerate(low):
+            if index % 5 == 0:
+                low[index] = 0
+            if index % 5 == 1:
+                low[index] = meals1_indexes + 1
+            if index % 5 == 2:
+                low[index] = meals2_indexes + 1
+            if index % 5 == 3:
+                low[index] = meals3_indexes + 1
+            if index % 5 == 4:
+                low[index] = meals4_indexes + 1
+        for index, x in enumerate(up):
+            if index % 5 == 0:
+                up[index] = meals1_indexes
+            if index % 5 == 1:
+                up[index] = meals2_indexes
+            if index % 5 == 2:
+                up[index] = meals3_indexes
+            if index % 5 == 3:
+                up[index] = meals4_indexes
+            if index % 5 == 4:
+                up[index] = meals5_indexes
+        print('low:  ', low)
+        print('up: ', up)
+        for i, xl, xu in zip(xrange(size), low, up):
+            if random.random() < indpb:
+                print('i, xl, xu: ', i, xl, xu)
+                individual[i] = random.randint(xl, xu)
+        return individual

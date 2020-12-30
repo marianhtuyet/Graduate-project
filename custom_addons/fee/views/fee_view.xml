@@ -79,4 +79,15 @@
             </form>
         </field>
     </record>
+     <record id="fee_view_search" model="ir.ui.view">
+        <field name="name">student.fee.search</field>
+        <field name="model">student.fee</field>
+        <field name="arch" type="xml">
+            <search string="Học phí">
+                <field name="student_code"/>
+                <field name="month_submit"/>
+                <field name="date_submit"/>
+            </search>
+        </field>
+    </record>
 </odoo>

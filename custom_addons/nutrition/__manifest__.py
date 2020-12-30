@@ -11,7 +11,7 @@ This module will manage and calculate nutrition in food
         'report_xlsx', 'uom', 'product', 'Caculate_score'
     ],
     'data': [
-
+        'security/nutrition_security.xml',
         'security/ir.model.access.csv',
         'views/amount_modify_menu/amount_modify_menu.xml',
         'views/amount_modify_menu/amount_modify_menu_line.xml',

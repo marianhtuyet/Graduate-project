@@ -1,4 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_voucher_breakfast,access_voucher_breakfast,model_voucher_breakfast,base.group_user,1,1,1,1
-access_voucher_breakfast_line,access_voucher_breakfast_line,model_voucher_breakfast_line,base.group_user,1,1,1,1
-access_ingredient,access_ingredient,model_ingredient,base.group_user,1,1,1,1
+access_voucher_breakfast,access_voucher_breakfast,model_voucher_breakfast,voucher.group_school_principal,1,1,1,1
+access_voucher_breakfast_line,access_voucher_breakfast_line,model_voucher_breakfast_line,voucher.group_school_principal,1,1,1,1
+access_ingredient,access_ingredient,model_ingredient,voucher.group_school_principal,1,1,1,1
+access_voucher_breakfast,access_voucher_breakfast,model_voucher_breakfast,voucher.group_school_vice_principal,1,1,1,1
+access_voucher_breakfast_line,access_voucher_breakfast_line,model_voucher_breakfast_line,voucher.group_school_vice_principal,1,1,1,1
+access_ingredient,access_ingredient,model_ingredient,voucher.group_school_vice_principal,1,1,1,1
+

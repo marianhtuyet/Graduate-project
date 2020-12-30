@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="menu_food_id"/>
+<!--                <field name="menu_food_id"/>-->
                 <field name="appetizer"/>
                 <field name="breakfast"/>
                 <field name="soup"/>
@@ -27,7 +27,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="menu_food_id"/>
+<!--                            <field name="menu_food_id"/>-->
                             <field name="name"/>
                             <field name="appetizer"/>
                             <field name="breakfast"/>
@@ -49,12 +49,14 @@
                         </group>
                     </group>
                     <notebook>
+                        <page string="CTTD sổ tính tiền ăn">
+                            <button name="create_line_ids" string="Add dinh dưỡng" type="object"/>
+                            <field name="amount_line_ids"/>
+                        </page>
                         <page string="Chi tiết thực đơn">
                             <field name="line_ids"/>
                         </page>
-                        <page string="CTTD sổ tính tiền ăn">
-                            <field name="amount_line_ids"/>
-                        </page>
+
                         <page string="Khác">
                             <field name="protein_cal"/>
                             <field name="lipit_cal"/>
@@ -67,6 +69,16 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+     <record id="modify_menu_food_view_search" model="ir.ui.view">
+        <field name="name">modify.menu.food.search</field>
+        <field name="model">modify.menu.food</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="date_create"/>
+            </search>
         </field>
     </record>
 </odoo>

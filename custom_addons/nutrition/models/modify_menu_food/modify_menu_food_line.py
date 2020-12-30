@@ -58,17 +58,17 @@ class ModifyMenuFoodLine(models.Model):
     )
 
     @api.depends('nutrition_id', 'nutrition_id.gluco', 'modify_menu_food_id',
-                 'modify_menu_food_id.menu_food_id', 'modify_menu_food_id.amount_line_ids',
-                 'modify_menu_food_id.total_student')
+                 'modify_menu_food_id.amount_line_ids',
+                 'modify_menu_food_id.total_student', 'quantity')
     def _compute_balance_nutrition(self):
         for record in self:
+            print("*"*80)
             line_ids = record.modify_menu_food_id.line_ids
             for rec in line_ids:
                 amount_ids = rec.modify_menu_food_id.amount_line_ids
                 total_student = rec.modify_menu_food_id.total_student
                 qty_buy = qty_eat = 0
                 nutrition_id = rec.nutrition_id
-
                 for line in amount_ids:
                     if line.nutrition_id.name == rec.nutrition_id.name:
                        qty_buy = line.quantity
@@ -88,4 +88,8 @@ class ModifyMenuFoodLine(models.Model):
                         rec.lipit_a = 0 if total_student == 0 else nutrition_id.lipit* qty_eat / total_student
                     rec.gluco = 0 if total_student == 0 else nutrition_id.gluco* qty_eat / total_student
                     rec.calo = 0 if total_student == 0 else nutrition_id.calo* qty_eat / total_student
+                print('total_student:  ', total_student)
+                print('rec.gluco:  ', rec.gluco)
+                print(' rec.calo:  ',  rec.calo)
+
         return True

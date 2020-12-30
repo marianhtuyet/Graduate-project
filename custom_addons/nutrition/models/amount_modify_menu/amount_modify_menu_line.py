@@ -10,4 +10,3 @@ class AmountModifyMenuLine(models.Model):
     price = fields.Float('Đơn giá')
     quantity = fields.Float('Số lượng')
     is_stock = fields.Boolean('Kho')
-

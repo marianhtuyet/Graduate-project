@@ -1,0 +1,620 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* fee
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-09 03:11+0000\n"
+"PO-Revision-Date: 2020-12-09 03:11+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "<b>Số tiền phải nộp</b>"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "<b>Thư mời</b>\n"
+"                        <span>TRƯỜNG MẪU GIÁO THIÊN THẦN</span>"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "<b>Tổng cộng</b>"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "<br/>\n"
+"                        Lớp :"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "<br/>\n"
+"                        Tại văn phòng trường.<br/>\n"
+"                        Đề nghị phụ huynh đến đúng giờ.<br/>"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "<br/>\n"
+"                        Vào lúc : 7h ngày"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "<br/>\n"
+"                        Đến đóng tiền học phí tháng:"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "<strong>Loại tiền</strong>"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "<strong>Tổng cộng</strong>"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+msgid "BIÊN LAI THU HỌC PHÍ THÁNG"
+msgstr ""
+
+#. module: fee
+#: selection:fee.line.detail,type_fee:0
+msgid "Chi tiết học phí"
+msgstr ""
+
+#. module: fee
+#: selection:fee.line.detail,type_fee:0
+msgid "Chi tiết đơn giá"
+msgstr ""
+
+#. module: fee
+#: selection:student.fee,state:0
+msgid "Chưa thu"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__create_uid
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__create_uid
+#: model:ir.model.fields,field_description:fee.field_fee_price__create_uid
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__create_uid
+#: model:ir.model.fields,field_description:fee.field_student_fee__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__create_date
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__create_date
+#: model:ir.model.fields,field_description:fee.field_fee_price__create_date
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__create_date
+#: model:ir.model.fields,field_description:fee.field_student_fee__create_date
+msgid "Created on"
+msgstr "Thời điểm tạo"
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__currency_id
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__currency_id
+#: model:ir.model.fields,field_description:fee.field_student_fee__currency_id
+msgid "Currency"
+msgstr "Tiền tệ"
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+msgid "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM\n"
+"                            <br/>\n"
+"                            Độc lập - Tự do - Hạnh phúc\n"
+"                            <br/>"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_price__detail_line_ids
+msgid "Detail Line"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__display_name
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__display_name
+#: model:ir.model.fields,field_description:fee.field_fee_price__display_name
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__display_name
+#: model:ir.model.fields,field_description:fee.field_student_fee__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: fee
+#: code:addons/fee/models/fee_line_detail.py:36
+#, python-format
+msgid "Dòng chi tiết chỉ có thể là đơn giá hoặc chi tiết giá của học sinh."
+msgstr ""
+
+#. module: fee
+#: model:ir.actions.act_window,name:fee.action_fee_basic
+#: model:ir.ui.menu,name:fee.menu_fee_view
+#: model:ir.ui.menu,name:fee.menu_fee_view_base
+msgid "Fee"
+msgstr ""
+
+#. module: fee
+#: model:ir.ui.menu,name:fee.menu_fee_detail_view
+msgid "Fee Detail"
+msgstr ""
+
+#. module: fee
+#: model:ir.ui.menu,name:fee.menu_fee_price_view
+msgid "Fee Price"
+msgstr ""
+
+#. module: fee
+#: model:ir.ui.menu,name:fee.menu_fee_reduce_view
+msgid "Fee Reduce"
+msgstr ""
+
+#. module: fee
+#: model:ir.actions.act_window,name:fee.action_fee_detail
+msgid "Fee detail"
+msgstr ""
+
+#. module: fee
+#: model:ir.actions.act_window,name:fee.action_fee_price
+msgid "Fee price"
+msgstr ""
+
+#. module: fee
+#: model:ir.actions.act_window,name:fee.action_fee_reduce
+msgid "Fee reduce"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "Giấy thông báo học phí tháng"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "Học sinh"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__id
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__id
+#: model:ir.model.fields,field_description:fee.field_fee_price__id
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__id
+#: model:ir.model.fields,field_description:fee.field_student_fee__id
+msgid "ID"
+msgstr ""
+
+#. module: fee
+#: model:ir.actions.report,name:fee.action_report_receipt
+#: model_terms:ir.ui.view,arch_db:fee.student_fee_view
+msgid "In biên lai"
+msgstr ""
+
+#. module: fee
+#: model:ir.actions.report,name:fee.action_report_notify
+#: model_terms:ir.ui.view,arch_db:fee.student_fee_view
+msgid "In giấy báo học phí"
+msgstr ""
+
+#. module: fee
+#: model:ir.actions.report,name:fee.action_report_invitation
+#: model_terms:ir.ui.view,arch_db:fee.student_fee_view
+msgid "In thư mời"
+msgstr ""
+
+#. module: fee
+#: selection:fee.detail,status:0
+#: selection:fee.price,status:0
+#: selection:fee.reduce,status:0
+msgid "Không sử dụng"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "Kính mời phụ huynh bé:"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail____last_update
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail____last_update
+#: model:ir.model.fields,field_description:fee.field_fee_price____last_update
+#: model:ir.model.fields,field_description:fee.field_fee_reduce____last_update
+#: model:ir.model.fields,field_description:fee.field_student_fee____last_update
+msgid "Last Modified on"
+msgstr "Sửa lần cuối vào"
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__write_uid
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__write_uid
+#: model:ir.model.fields,field_description:fee.field_fee_price__write_uid
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__write_uid
+#: model:ir.model.fields,field_description:fee.field_student_fee__write_uid
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__write_date
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__write_date
+#: model:ir.model.fields,field_description:fee.field_fee_price__write_date
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__write_date
+#: model:ir.model.fields,field_description:fee.field_student_fee__write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__line_ids
+msgid "Line"
+msgstr "Dòng"
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__type_fee
+msgid "Loại tiền"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "Lớp"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__standard_id
+msgid "Lớp học"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+msgid "Lớp:"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__fee_id
+msgid "Mã học phí"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__student_code
+#: model:ir.model.fields,field_description:fee.field_student_fee__student_id
+#: model:ir.model.fields,field_description:fee.field_student_student__customize_code
+msgid "Mã học sinh"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+msgid "Mã học sinh:"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_student__reduce_code
+msgid "Mã miễn giảm"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__price_id
+msgid "Mã đơn giá"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_student__father_job
+msgid "Nghề nghiệp Cha"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_student__mother_job
+msgid "Nghề nghiệp Mẹ"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "Ngày"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__date_submit
+msgid "Ngày nộp đến"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_price__date_apply
+#: model:ir.model.fields,field_description:fee.field_student_fee__date_apply
+msgid "Ngày áp dụng"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__date_to
+msgid "Ngày đến"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__user_id
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "Người thu"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+msgid "Nhận của:"
+msgstr ""
+
+#. module: fee
+#: selection:fee.detail,type_fee:0
+msgid "Năng khiếu"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+msgid "Phòng GD và đào tạo Quận Bình Thạnh\n"
+"                            <br/>\n"
+"                            Trường mẫu giáo Thiên Thần"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__printed
+msgid "Printed"
+msgstr "Đã được in"
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__state
+msgid "Status"
+msgstr "Trạng thái"
+
+#. module: fee
+#: model:ir.model,name:fee.model_student_student
+msgid "Student Information"
+msgstr ""
+
+#. module: fee
+#: code:addons/fee/models/student_inherit.py:44
+#, python-format
+msgid "Students have fee, cannot delete."
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_student__phone_father
+msgid "SĐT Cha"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_student__phone_mother
+msgid "SĐT Mẹ"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__count_date
+#: model:ir.model.fields,field_description:fee.field_student_fee__date_study
+msgid "Số ngày"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__date_absent
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "Số ngày vắng"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+msgid "Số ngày vắng:"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_price__amount
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__amount
+msgid "Số phần trăm"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__amount
+msgid "Số tiền"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__total_absent
+msgid "Số tiền vắng"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "TM.BGH"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "Thu tiền từ ngày"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__month_submit
+msgid "Tháng thu"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.fee_price_view
+msgid "Thêm chi tiết giá"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.student_fee_view
+msgid "Thêm học phí"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.student_fee_view
+msgid "Thêm môn năng khiếu"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.student_fee_view
+msgid "Thông tin chi tiết học phí"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.fee_price_view
+msgid "Thông tin chi tiết đơn giá"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.fee_layout
+msgid "Trang:\n"
+"                        <span class=\"page\"/>\n"
+"                        /\n"
+"                        <span class=\"topage\"/>"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__status
+#: model:ir.model.fields,field_description:fee.field_fee_price__status
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__status
+msgid "Trạng thái"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__type_fee
+msgid "Type Fee"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_detail__name
+#: model:ir.model.fields,field_description:fee.field_fee_price__name
+#: model:ir.model.fields,field_description:fee.field_fee_reduce__name
+msgid "Tên"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_student__father_name
+msgid "Tên Cha"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_student__mother_name
+msgid "Tên Mẹ"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__student_name
+#: model:ir.model.fields,field_description:fee.field_student_student__custom_name
+msgid "Tên học sinh"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__fee_detail
+msgid "Tên loại học phí"
+msgstr ""
+
+#. module: fee
+#: selection:fee.detail,type_fee:0
+msgid "Tính theo ngày"
+msgstr ""
+
+#. module: fee
+#: selection:fee.detail,type_fee:0
+msgid "Tính theo tháng"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "Tỉ lệ miễn giảm"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__reduce_code
+msgid "Tỉ lệ miễn giảm %"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__amount
+msgid "Tổng cộng"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__total_amount
+msgid "Tổng tiền thu"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_student_fee__total_submit
+msgid "Tổng tiền thu thực"
+msgstr ""
+
+#. module: fee
+#: code:addons/fee/models/fee.py:113
+#, python-format
+msgid "Vui lòng nhập chi tiết!"
+msgstr ""
+
+#. module: fee
+#: model:ir.model,name:fee.model_fee_detail
+msgid "fee.detail"
+msgstr ""
+
+#. module: fee
+#: model:ir.model,name:fee.model_fee_line_detail
+msgid "fee.line.detail"
+msgstr ""
+
+#. module: fee
+#: model:ir.model,name:fee.model_fee_price
+msgid "fee.price"
+msgstr ""
+
+#. module: fee
+#: model:ir.model,name:fee.model_fee_reduce
+msgid "fee.reduce"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "năm"
+msgstr ""
+
+#. module: fee
+#: model:ir.model,name:fee.model_student_fee
+msgid "student.fee"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_invitation_document
+msgid "tháng"
+msgstr ""
+
+#. module: fee
+#: selection:fee.detail,status:0
+#: selection:fee.price,status:0
+#: selection:fee.reduce,status:0
+msgid "Đang sử dụng"
+msgstr ""
+
+#. module: fee
+#: selection:student.fee,state:0
+msgid "Đã thu"
+msgstr ""
+
+#. module: fee
+#: model:ir.model.fields,field_description:fee.field_fee_line_detail__price
+msgid "Đơn giá"
+msgstr ""
+
+#. module: fee
+#: model_terms:ir.ui.view,arch_db:fee.report_fee_receipt_document
+#: model_terms:ir.ui.view,arch_db:fee.report_notify_document
+msgid "đến ngày"
+msgstr ""
+

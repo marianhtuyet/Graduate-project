@@ -73,7 +73,7 @@ class StudyclassReportXlsxTemplate(models.AbstractModel):
         for line in rec.line_ids:
             count_line += 1
             self.xlsx_write('A', count_line, self.border_center_14)
-            self.xlsx_write('B', line.ingredient_id.name, self.border_left_14)
+            self.xlsx_write('B', line.nutrition_id.name, self.border_left_14)
             self.xlsx_write('C', line.uom_id.name, self.border_center_14)
             self.xlsx_write('D', '{:,.0f}'.format(line.quantity), self.border_center_14)
             self.xlsx_write('E', '{:,.0f}'.format(line.price), self.border_center_14)

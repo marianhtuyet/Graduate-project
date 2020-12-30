@@ -33,6 +33,7 @@ class ModifyMenuFood(models.Model):
     lipit_cal = fields.Float('Hệ số béo', default=9)
     gluco_cal = fields.Float('Hệ số đường', default=4)
 
+
     @api.depends('line_ids', 'amount_line_ids', 'standard_material_id')
     def _compute_standard_check(self):
         for rec in self:
@@ -113,10 +114,12 @@ class ModifyMenuFood(models.Model):
             )
 
             d_protein = (t_protein_a + t_protein_v)*100/(
-                    standard_id.protein_a + standard_id.protein_v)
-            d_lipit = (t_lipit_a + t_lipit_v) * 100 / (standard_id.lipit_a + standard_id.lipit_v)
-            d_gluco = t_gluco*100/standard_id.gluco
-            d_calo = t_calo*100/standard_id.calo
+                    standard_id.protein_a + standard_id.protein_v)\
+                if (standard_id.protein_a + standard_id.protein_v) != 0 else 0
+            d_lipit = (t_lipit_a + t_lipit_v) * 100 / (standard_id.lipit_a + standard_id.lipit_v) \
+                if (standard_id.lipit_a + standard_id.lipit_v) != 0 else 0
+            d_gluco = t_gluco*100/standard_id.gluco if standard_id.gluco != 0 else 0
+            d_calo = t_calo*100/standard_id.calo if standard_id.calo != 0 else 0
 
             rate_ok = """
                 <td style="text-align:left;"> <b> Tỉ lệ đạt </b></td>
@@ -235,4 +238,22 @@ class ModifyMenuFood(models.Model):
             rec.standard_check = content
         return True
 
+    @api.multi
+    def create_line_ids(self):
+        modify_menu_line_env = self.env['modify.menu.food.line']
+
+        for rec in self:
+            rec.line_ids.unlink()
+            nutrition_ids = []
+            line_ids = [line.nutrition_id for line in rec.line_ids]
+            quantity = []
+            for line in rec.amount_line_ids:
+                nutrition_ids.append([line.nutrition_id, line.quantity])
+                quantity.append(line.quantity)
+            for i in nutrition_ids:
+                modify_menu_line_env.create({
+                    'modify_menu_food_id': rec.id,
+                    'nutrition_id': i[0].id,
+                    'qty_buy': i[1],
+                })
 

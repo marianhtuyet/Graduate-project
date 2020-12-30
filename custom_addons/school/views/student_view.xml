@@ -119,54 +119,54 @@
                                    context="{'form_view_ref':'school.view_parent_form','default_parent_school':1}"
                                    options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
                         </page>
-                        <page string="References">
-                            <field name="reference_ids" nolabel="1" colspan="4"
-                                   attrs="{'readonly':[('state','in',['alumni','terminate'])]}">
-                                <tree string="Reference" editable="top">
-                                    <field name="name"/>
-                                    <!--                                    <field name="middle" />-->
-                                    <!--                                    <field name="last" />-->
-                                    <field name="designation"/>
-                                    <field name="phone"/>
-                                    <field name="gender"/>
-                                </tree>
-                                <form string="Reference">
-                                    <group col="4" colspan="4">
-                                        <field name="name" placeholder="First Name"/>
-                                        <field name="gender"/>
-                                        <!--                                        <field name="middle" placeholder="Middle Name"/>-->
-                                        <field name="designation" placeholder="Designation"/>
-                                        <!--                                        <field name="last" placeholder="Last Name"/>-->
-                                        <field name="phone" placeholder="Phone Number"/>
-                                    </group>
-                                </form>
-                            </field>
-                        </page>
-                        <page string="Previous School">
-                            <field name="previous_school_ids" nolabel="1" colspan="4"
-                                   attrs="{'readonly':[('state','in',['alumni','terminate'])]}">
-                                <tree string="Previous School Details">
-                                    <field name="name"/>
-                                    <field name="registration_no"/>
-                                    <field name="admission_date"/>
-                                    <field name="exit_date"/>
-                                    <field name="course_id" widget="selection"/>
-                                </tree>
-                                <form string="Previous School Details">
-                                    <separator string="Previous School Details"/>
-                                    <group col="4" colspan="4">
-                                        <field name="name" placeholder="School Name"/>
-                                        <field name="registration_no" placeholder="Registration No"/>
-                                        <field name="admission_date"/>
-                                        <field name="exit_date"/>
-                                        <field name="course_id" widget="selection"/>
-                                        <newline/>
-                                        <separator string="Subjects Details"/>
-                                        <field name="add_sub" nolabel="1" colspan="4"/>
-                                    </group>
-                                </form>
-                            </field>
-                        </page>
+<!--                        <page string="References">-->
+<!--                            <field name="reference_ids" nolabel="1" colspan="4"-->
+<!--                                   attrs="{'readonly':[('state','in',['alumni','terminate'])]}">-->
+<!--                                <tree string="Reference" editable="top">-->
+<!--                                    <field name="name"/>-->
+<!--                                    &lt;!&ndash;                                    <field name="middle" />&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                    <field name="last" />&ndash;&gt;-->
+<!--                                    <field name="designation"/>-->
+<!--                                    <field name="phone"/>-->
+<!--                                    <field name="gender"/>-->
+<!--                                </tree>-->
+<!--                                <form string="Reference">-->
+<!--                                    <group col="4" colspan="4">-->
+<!--                                        <field name="name" placeholder="First Name"/>-->
+<!--                                        <field name="gender"/>-->
+<!--                                        &lt;!&ndash;                                        <field name="middle" placeholder="Middle Name"/>&ndash;&gt;-->
+<!--                                        <field name="designation" placeholder="Designation"/>-->
+<!--                                        &lt;!&ndash;                                        <field name="last" placeholder="Last Name"/>&ndash;&gt;-->
+<!--                                        <field name="phone" placeholder="Phone Number"/>-->
+<!--                                    </group>-->
+<!--                                </form>-->
+<!--                            </field>-->
+<!--                        </page>-->
+<!--                        <page string="Previous School">-->
+<!--                            <field name="previous_school_ids" nolabel="1" colspan="4"-->
+<!--                                   attrs="{'readonly':[('state','in',['alumni','terminate'])]}">-->
+<!--                                <tree string="Previous School Details">-->
+<!--                                    <field name="name"/>-->
+<!--                                    <field name="registration_no"/>-->
+<!--                                    <field name="admission_date"/>-->
+<!--                                    <field name="exit_date"/>-->
+<!--                                    <field name="course_id" widget="selection"/>-->
+<!--                                </tree>-->
+<!--                                <form string="Previous School Details">-->
+<!--                                    <separator string="Previous School Details"/>-->
+<!--                                    <group col="4" colspan="4">-->
+<!--                                        <field name="name" placeholder="School Name"/>-->
+<!--                                        <field name="registration_no" placeholder="Registration No"/>-->
+<!--                                        <field name="admission_date"/>-->
+<!--                                        <field name="exit_date"/>-->
+<!--                                        <field name="course_id" widget="selection"/>-->
+<!--                                        <newline/>-->
+<!--                                        <separator string="Subjects Details"/>-->
+<!--                                        <field name="add_sub" nolabel="1" colspan="4"/>-->
+<!--                                    </group>-->
+<!--                                </form>-->
+<!--                            </field>-->
+<!--                        </page>-->
                         <page string="Award Info">
                             <field name="award_list" nolabel="1" colspan="4"
                                    attrs="{'readonly':[('state','in',['alumni','terminate'])]}">
@@ -264,42 +264,42 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Remarks">
-                            <field name="description" nolabel="1" colspan="4"
-                                   attrs="{'readonly':[('state','in',['alumni','terminate'])]}">
-                                <form string="Extra Details">
-                                    <group col="4" colspan="2">
-                                        <field name="name" placeholder="Field Name"/>
-                                        <field name="description" placeholder="Description"/>
-                                    </group>
-                                </form>
-                                <tree string="Remarks" editable="top">
-                                    <field name="name" required="1" placeholder="Enter Name"/>
-                                    <field name="description" placeholder="Enter Description"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="History"
-                              groups="school.group_school_administration,school.group_school_teacher,school.group_school_parent,school.group_school_student">
-                            <field name="history_ids" nolabel="1" colspan="4" readonly="1"
-                                   attrs="{'readonly':[('state','in',['alumni','terminate'])]}"
-                                   options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}">
-                                <tree string="History">
-                                    <field name="academice_year_id" required="1"/>
-                                    <field name="standard_id" required="1"/>
-                                    <field name="percentage"/>
-                                    <field name="result"/>
-                                </tree>
-                                <form string="History">
-                                    <group col="4" colspan="4">
-                                        <field name="academice_year_id" placeholder="Acadamic Year"/>
-                                        <field name="standard_id" placeholder="Select or Create Standard"/>
-                                        <field name="percentage"/>
-                                        <field name="result"/>
-                                    </group>
-                                </form>
-                            </field>
-                        </page>
+<!--                        <page string="Remarks">-->
+<!--                            <field name="description" nolabel="1" colspan="4"-->
+<!--                                   attrs="{'readonly':[('state','in',['alumni','terminate'])]}">-->
+<!--                                <form string="Extra Details">-->
+<!--                                    <group col="4" colspan="2">-->
+<!--                                        <field name="name" placeholder="Field Name"/>-->
+<!--                                        <field name="description" placeholder="Description"/>-->
+<!--                                    </group>-->
+<!--                                </form>-->
+<!--                                <tree string="Remarks" editable="top">-->
+<!--                                    <field name="name" required="1" placeholder="Enter Name"/>-->
+<!--                                    <field name="description" placeholder="Enter Description"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                        </page>-->
+<!--                        <page string="History"-->
+<!--                              groups="school.group_school_administration,school.group_school_teacher,school.group_school_parent,school.group_school_student">-->
+<!--                            <field name="history_ids" nolabel="1" colspan="4" readonly="1"-->
+<!--                                   attrs="{'readonly':[('state','in',['alumni','terminate'])]}"-->
+<!--                                   options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}">-->
+<!--                                <tree string="History">-->
+<!--                                    <field name="academice_year_id" required="1"/>-->
+<!--                                    <field name="standard_id" required="1"/>-->
+<!--                                    <field name="percentage"/>-->
+<!--                                    <field name="result"/>-->
+<!--                                </tree>-->
+<!--                                <form string="History">-->
+<!--                                    <group col="4" colspan="4">-->
+<!--                                        <field name="academice_year_id" placeholder="Acadamic Year"/>-->
+<!--                                        <field name="standard_id" placeholder="Select or Create Standard"/>-->
+<!--                                        <field name="percentage"/>-->
+<!--                                        <field name="result"/>-->
+<!--                                    </group>-->
+<!--                                </form>-->
+<!--                            </field>-->
+<!--                        </page>-->
                     </notebook>
                 </sheet>
             </form>
@@ -497,7 +497,7 @@
                             <field name="medium_id" placeholder="Medium" widget="selection"
                                    attrs="{'readonly':[('state','=','alumni')]}"/>
                             <field name="standard_id" placeholder="Class"
-                                   domain="[('school_id','=',school_id),('medium_id','=',medium_id)]" widget="selection"
+                                   domain="" widget="selection"
                                    attrs="{'readonly':[('state','=','alumni')]}"/>
                             <field name="division_id" placeholder="Division" widget="selection"
                                    attrs="{'readonly':[('state','=','alumni')]}" invisible="1"/>
@@ -560,54 +560,54 @@
                                    context="{'form_view_ref':'school.view_parent_form','default_parent_school':1}"
                                    options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
                         </page>
-                        <page string="Người liên hệ">
-                            <field name="reference_ids" nolabel="1" colspan="4"
-                                   attrs="{'readonly':[('state','=','alumni')]}">
-                                <tree string="Reference" editable="top">
-                                    <field name="name" placeholder="Firstname"/>
-                                    <!--                                    <field name="middle" placeholder="Middlename"/>-->
-                                    <!--                                    <field name="last" placeholder="Surname"/>-->
-                                    <field name="designation" placeholder="Designation"/>
-                                    <field name="phone" placeholder="Phone"/>
-                                    <field name="gender" placeholder="Gender"/>
-                                </tree>
-                                <form string="Reference">
-                                    <group col="4" colspan="4">
-                                        <field name="name" placeholder="First Name" required="True"/>
-                                        <!--                                        <field name="middle" placeholder="Middle Name" />-->
-                                        <!--                                        <field name="last" placeholder="Last Name" />-->
-                                        <field name="designation" placeholder="Designation"/>
-                                        <field name="phone" placeholder="Phone Number"/>
-                                        <field name="gender" placeholder="Gender"/>
-                                    </group>
-                                </form>
-                            </field>
-                        </page>
-                        <page string="Thông tin trường cũ">
-                            <field name="previous_school_ids" nolabel="1" colspan="4"
-                                   attrs="{'readonly':[('state','=','alumni')]}">
-                                <tree string="Previous School Details">
-                                    <field name="name"/>
-                                    <field name="registration_no"/>
-                                    <field name="admission_date"/>
-                                    <field name="exit_date"/>
-                                    <field name="course_id" widget="selection"/>
-                                </tree>
-                                <form string="Previous School Details">
-                                    <separator string="Previous School Details"/>
-                                    <group col="4" colspan="4">
-                                        <field name="name" placeholder="School Name"/>
-                                        <field name="registration_no" placeholder="Registration No"/>
-                                        <field name="admission_date" placeholder="Admission Date"/>
-                                        <field name="exit_date" placeholder="Exit Date"/>
-                                        <field name="course_id" placeholder="Course" widget="selection"/>
-                                        <newline/>
-                                        <separator string="Subjects Details"/>
-                                        <field name="add_sub" nolabel="1" colspan="4"/>
-                                    </group>
-                                </form>
-                            </field>
-                        </page>
+<!--                        <page string="Người liên hệ">-->
+<!--                            <field name="reference_ids" nolabel="1" colspan="4"-->
+<!--                                   attrs="{'readonly':[('state','=','alumni')]}">-->
+<!--                                <tree string="Reference" editable="top">-->
+<!--                                    <field name="name" placeholder="Firstname"/>-->
+<!--                                    &lt;!&ndash;                                    <field name="middle" placeholder="Middlename"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                    <field name="last" placeholder="Surname"/>&ndash;&gt;-->
+<!--                                    <field name="designation" placeholder="Designation"/>-->
+<!--                                    <field name="phone" placeholder="Phone"/>-->
+<!--                                    <field name="gender" placeholder="Gender"/>-->
+<!--                                </tree>-->
+<!--                                <form string="Reference">-->
+<!--                                    <group col="4" colspan="4">-->
+<!--                                        <field name="name" placeholder="First Name" required="True"/>-->
+<!--                                        &lt;!&ndash;                                        <field name="middle" placeholder="Middle Name" />&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                        <field name="last" placeholder="Last Name" />&ndash;&gt;-->
+<!--                                        <field name="designation" placeholder="Designation"/>-->
+<!--                                        <field name="phone" placeholder="Phone Number"/>-->
+<!--                                        <field name="gender" placeholder="Gender"/>-->
+<!--                                    </group>-->
+<!--                                </form>-->
+<!--                            </field>-->
+<!--                        </page>-->
+<!--                        <page string="Thông tin trường cũ">-->
+<!--                            <field name="previous_school_ids" nolabel="1" colspan="4"-->
+<!--                                   attrs="{'readonly':[('state','=','alumni')]}">-->
+<!--                                <tree string="Previous School Details">-->
+<!--                                    <field name="name"/>-->
+<!--                                    <field name="registration_no"/>-->
+<!--                                    <field name="admission_date"/>-->
+<!--                                    <field name="exit_date"/>-->
+<!--                                    <field name="course_id" widget="selection"/>-->
+<!--                                </tree>-->
+<!--                                <form string="Previous School Details">-->
+<!--                                    <separator string="Previous School Details"/>-->
+<!--                                    <group col="4" colspan="4">-->
+<!--                                        <field name="name" placeholder="School Name"/>-->
+<!--                                        <field name="registration_no" placeholder="Registration No"/>-->
+<!--                                        <field name="admission_date" placeholder="Admission Date"/>-->
+<!--                                        <field name="exit_date" placeholder="Exit Date"/>-->
+<!--                                        <field name="course_id" placeholder="Course" widget="selection"/>-->
+<!--                                        <newline/>-->
+<!--                                        <separator string="Subjects Details"/>-->
+<!--                                        <field name="add_sub" nolabel="1" colspan="4"/>-->
+<!--                                    </group>-->
+<!--                                </form>-->
+<!--                            </field>-->
+<!--                        </page>-->
                         <page string="Thông tin gia đình">
                             <field name="family_con_ids" nolabel="1" colspan="4"
                                    attrs="{'readonly':[('state','=','alumni')]}">

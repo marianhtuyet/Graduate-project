@@ -19,33 +19,35 @@
             id="menu_voucher_breakfast_base"
             name="Voucher Breakfast"
             sequence="2"
-            groups="base.group_user"
+            groups="voucher.group_school_vice_principal,voucher.group_school_principal"
             web_icon="voucher,static/description/voucher.jpg"
     />
+<!--    groups="base.group_user"-->
 
     <menuitem
             id="menu_voucher_breakfast"
             name="Voucher Breakfast"
             sequence="1"
             action="action_voucher_breakfast"
+            groups="voucher.group_school_vice_principal,voucher.group_school_principal"
             parent="menu_voucher_breakfast_base"
-            groups="base.group_user"
+
     />
-    <menuitem
-            id="menu_ingredient"
-            name="Ingredient"
-            sequence="2"
-            action="action_ingredient"
-            parent="menu_voucher_breakfast_base"
-            groups="base.group_user"
-    />
+<!--    groups="base.group_user"-->
+<!--    <menuitem-->
+<!--            id="menu_ingredient"-->
+<!--            name="Ingredient"-->
+<!--            sequence="2"-->
+<!--            action="action_ingredient"-->
+<!--            parent="menu_voucher_breakfast_base"-->
+<!--            groups="base.group_user"-->
+<!--    />-->
     <menuitem
             id="menu_uom_inherit"
             name="UOM"
             sequence="3"
             action="uom.product_uom_form_action"
             parent="menu_voucher_breakfast_base"
-            groups="base.group_user"
     />
-
+<!--groups="base.group_user"-->
 </odoo>

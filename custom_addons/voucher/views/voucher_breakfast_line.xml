@@ -5,7 +5,7 @@
         <field name="model">voucher.breakfast.line</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="ingredient_id"/>
+                <field name="nutrition_id"/>
                 <field name="uom_id"/>
                 <field name="quantity"/>
                 <field name="price"/>
@@ -23,7 +23,7 @@
                     <group>
                         <group>
                             <field name="voucher_id"/>
-                            <field name="ingredient_id"/>
+                            <field name="nutrition_id"/>
                             <field name="currency_id"/>
                             <field name="uom_id"/>
                         </group>
