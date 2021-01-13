@@ -14,7 +14,7 @@ class FeePrice(models.Model):
         string='Trạng thái'
     )
     date_apply = fields.Date('Ngày áp dụng')
-    detail_line_ids = fields.One2many('fee.line.detail', 'fee_id')
+    detail_line_ids = fields.One2many('fee.line.detail', 'price_id')
 
     @api.multi
     def add_all_fee(self):
@@ -24,7 +24,7 @@ class FeePrice(models.Model):
             list_fee_detail = fee_detail_env.search([('status', '=', 1)])
             for fee_detail in list_fee_detail:
                 detail = fee_line_detail.create({
-                    'fee_id': rec.id,
+                    'price_id': rec.id,
                     'fee_detail': fee_detail.id,
                     'amount': fee_detail.amount,
                     'currency_id': fee_detail.currency_id.id,

@@ -7,6 +7,7 @@ access_meal_food,access_meal_food,model_meal_food,nutrition.group_school_princip
 access_meal_food_line,access_meal_food_line,model_meal_food_line,nutrition.group_school_principal,1,1,1,1
 access_menu_food,access_menu_food,model_menu_food,nutrition.group_school_principal,1,1,1,1
 access_menu_food_line,access_menu_food_line,model_menu_food_line,nutrition.group_school_principal,1,1,1,1
+
 access_modify_menu_food,access_modify_menu_food,model_modify_menu_food,nutrition.group_school_principal,1,1,1,1
 access_modify_menu_food_line,access_modify_menu_food_line,model_modify_menu_food_line,nutrition.group_school_principal,1,1,1,1
 access_nutrition,access_nutrition,model_nutrition,nutrition.group_school_principal,1,1,1,1

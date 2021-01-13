@@ -59,7 +59,7 @@ class SchoolTeacher(models.Model):
         print("*" * 80)
         ctx_vals = {'teacher_create': True,
                     'school_id': teacher_id.school_id.company_id.id,
-                    'company_id': self.env.company.id
+                    'company_id': self.env.user.company_id.id
                     }
         user_id = user_obj.with_context(ctx_vals).create(user_vals)
 
